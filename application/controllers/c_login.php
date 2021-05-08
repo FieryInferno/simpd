@@ -1,0 +1,102 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+require_once("./vendor/autoload.php");
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
+class c_login extends CI_Controller {
+
+
+public function index()
+	{
+		$this->load->view('v_login');
+	}
+
+	public function cek(){
+$username = $this->input->post('username');
+$password= $this->input->post('password');
+$cnt   = $this->db->get_where('pegawai',array('username'=> $username,'password' => $password))->num_rows();
+$user = $this->db->get_where('pegawai', array('username' => $username ))->row_array();
+	$this->username = $username ;
+if ($cnt > 0 && $user ['akses'] == 'pegawai'){
+
+			
+			$_SESSION['nip'] = $user['nip'];
+			$_SESSION['nama'] = $user['nama'];
+			$_SESSION['pegawai'] = $user['pegawai'];
+			$_SESSION['jabatan'] = $user['jabatan'];
+			$_SESSION['golongan'] = $user['golongan'];
+			$_SESSION['username'] = $user['username'];
+			$_SESSION['akses'] = $user['akses'];
+			$_SESSION['foto'] = $user['foto'];
+			echo "<script> 
+			alert ('login user pegawai')
+			</script>" ;
+			header ('location:'.base_url().'index.php/pegawai/pegawai/index');
+
+	}else if ($cnt > 0 && $user ['akses'] == 'admin')
+	{
+			$_SESSION['nip'] = $user['nip'];
+			$_SESSION['nama'] = $user['nama'];
+			$_SESSION['pegawai'] = $user['pegawai'];
+			$_SESSION['jabatan'] = $user['jabatan'];
+			$_SESSION['golongan'] = $user['golongan'];
+			$_SESSION['username'] = $user['username'];
+			$_SESSION['akses'] = $user['akses'];
+			$_SESSION['foto'] = $user['foto'];
+		echo "<script> 
+		alert ('login user administrator')
+		</script>" ;
+		header ('location:'.base_url().'index.php/administrator/Administrator/index');
+		
+	}else if ($cnt > 0 && $user ['akses'] == 'tu')
+	{
+			$_SESSION['nip'] = $user['nip'];
+			$_SESSION['nama'] = $user['nama'];
+			$_SESSION['pegawai'] = $user['pegawai'];
+			$_SESSION['jabatan'] = $user['jabatan'];
+			$_SESSION['golongan'] = $user['golongan'];
+			$_SESSION['username'] = $user['username'];
+			$_SESSION['akses'] = $user['akses'];
+			$_SESSION['foto'] = $user['foto'];
+		echo "<script> 
+		alert ('login user tata usaha')
+		</script>" ;
+		header ('location:'.base_url().'index.php/tata_usaha/Tata_usaha/index');
+	}else if ($cnt > 0 && $user ['akses'] == 'kasi')
+	{
+			$_SESSION['nip'] = $user['nip'];
+			$_SESSION['nama'] = $user['nama'];
+			$_SESSION['pegawai'] = $user['pegawai'];
+			$_SESSION['jabatan'] = $user['jabatan'];
+			$_SESSION['golongan'] = $user['golongan'];
+			$_SESSION['username'] = $user['username'];
+			$_SESSION['akses'] = $user['akses'];
+			$_SESSION['foto'] = $user['foto'];
+		echo "<script> 
+		alert ('login user kepala seksi')
+		</script>" ;
+		header ('location:'.base_url().'index.php/kepala_seksi/Kasi/index');
+	}else{
+		$this->session->set_flashdata('pesan', '
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          <strong>Gagal!</strong> Username atau password salah.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ');
+      redirect();
+    }
+
+}
+
+ function logout()
+	{
+		$this->session->sess_destroy();
+    redirect('index.php/c_login');
+
+	}
+}
+?>
