@@ -32,7 +32,6 @@ class Spd extends CI_Controller {
       $data['kecamatan_tujuan']     = $this->M_Wilayah->getKecamatan($this->input->post('tempat_tujuan_kecamatan'));
       ob_start();
         $this->load->view('tata_usaha/spd/pdf', $data);
-        // $this->load->view('v_login');
         $html = ob_get_contents();
       ob_end_clean();
       ob_clean();
@@ -46,7 +45,7 @@ class Spd extends CI_Controller {
       $output = $dompdf->output();
       file_put_contents('./assets/' . $filename . '.pdf', $output);
       $this->M_SPD->insert($data['lama_hari'], $filename);
-      redirect('index.php/tata_usaha/tata_usaha/spd');
+      redirect('tata_usaha/spd');
     }
 
     $dariDB           = $this->M_SPD->idspd();
