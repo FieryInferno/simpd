@@ -11,3 +11,9 @@ $route['tata_usaha/spd/upload'] = 'tata_usaha/Spd/upload';
 
 $route['wilayah/kabupaten'] = 'wilayah/kabupaten';
 $route['wilayah/kecamatan'] = 'wilayah/kecamatan';
+
+$route['pegawai/lhp/tambah']              = 'pegawai/Pegawai/inputLhp';
+$route['pegawai/lhp/lihat/(:any)']        = 'pegawai/Pegawai/lihatLhp/$1';
+$route['pegawai/lhp/edit/(:any)']         = 'pegawai/Pegawai/editLhp/$1';
+$route['pegawai/lhp/hapus/(:any)/(:any)'] = 'pegawai/Pegawai/hapusLhp/$1/$2';
+$route['pegawai/lhp/cetak/(:any)']        = 'pegawai/Pegawai/cetakLhp/$1';

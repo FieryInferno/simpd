@@ -110,7 +110,7 @@
         <div class="panel">
           <ul class="sidebar-menu" data-widget="tree">
             <li>
-              <a href="<?php echo base_url()."index.php/tata_usaha/C_SPD/index"?>">
+              <a href="<?php echo base_url()."tata_usaha/tata_usaha"?>">
                 <i class="fa fa-bank"></i> <span>Dashboard</span>
               </a>
             </li>
@@ -119,16 +119,7 @@
                 <i class="fa fa-file"></i> <span>SPD</span>
               </a>
             </li>
-            <li>
-              <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
-                <i class="fa fa-money"></i> <span>RAB</span>
-              </a>
-            </li>
-            <li>
-              <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
-                <i class="fa fa-folder"></i> <span>SPJ</span>
-              </a>
-            </li>
+            
           </ul>
         </div>
       </div>

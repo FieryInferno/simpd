@@ -27,7 +27,8 @@
     </tr>
   </table>
   <br>
-  <div class="text-center"><strong>SURAT PERJALANAN DINAS</strong></div>
+  <center><div class="text-center"><strong>SURAT PERJALANAN DINAS</strong></div></center>
+  <br>
   <table border="1" width="100%">
     <tr>
       <td width="40%" style="padding-left:10px;">
@@ -38,7 +39,7 @@
           </tr>
         </table>
       </td>
-      <td width="60%" style="padding-left:10px;"><strong><u><?= $this->session->nama; ?></u></strong></td>
+      <td width="60%" style="padding-left:10px;"><strong><u><?= $ppk['nama']; ?></u></strong></td>
     </tr>
     <tr>
       <td width="40%" style="padding-left:10px;">
@@ -204,10 +205,10 @@
             <td>&nbsp;</td>
             <td>
               <div>Program Penyediaan dan Pelayanan Informasi Statistik</div>
-              <div>Penyediaan dan Pengembangan Statistik Harga</div>
-              <div>Survei Harga Perdesaan</div>
+              <div> <?= $kegiatan['nama_kegiatan']; ?></div>
+              <div><?= $komponen['nama_komponen']; ?></div>
               <div>a. Badan Pusat Statistik</div>
-              <div>b. 054.01.06.2903.009.300.52413</div>
+              <div>b. <?= $anggaran['nomor_anggaran']; ?></div>
             </td>
           </tr>
         </table>
@@ -270,16 +271,16 @@
     </tr>
     <tr>
       <td width="40%" style="padding-left:10px;">&nbsp;</td>
-      <td width="60%" style="padding-left:10px;" class="text-center"><strong><u><?= $this->session->nama; ?></u></strong></td><?= $this->session->nip; ?>
+      <td width="60%" style="padding-left:10px;" class="text-center"><strong><u><?= $ppk['nama']; ?></u></strong></td>
     </tr>
     <tr>
       <td width="40%" style="padding-left:10px;">&nbsp;</td>
-      <td width="60%" style="padding-left:10px;" class="text-center">NIP. <?= $this->session->nip; ?></td>
+      <td width="60%" style="padding-left:10px;" class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
   </table>
 
   <div style="page-break-before: always;"></div>
-  <div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div>
+  <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
   <div>Lampiran SPD Nomor : <?= $this->input->post('nomor_spd'); ?></div>
   <div>Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $this->input->post('tanggalBerangkat'); ?></div>
   <br>
@@ -309,24 +310,65 @@
     </tr>
     <tr>
       <td>3</td>
-      <td>Uang harian selama 1 hari x Rp. 170.000</td>
-      <td>170.000,-</td>
+      <td>Uang harian selama <?= $lama_hari; ?> hari x <?= "Rp " . number_format($uangHarian, 2, ',', '.'); ?></td>
+      <td><?= 'Rp. ' . number_format($totalUangHarian, 2, ',', '.'); ?></td>
       <td></td>
     </tr>
     <tr>
       <td>4</td>
-      <td>Uang saku fullday selama hari x Rp.</td>
-      <td>0,-</td>
+      <td>Uang saku fullday selama <?= $lama_hari; ?> hari x <?= "Rp " . number_format($uangFull, 2, ',', '.'); ?></td>
+      <td><?= 'Rp. ' . number_format($totalUangFull, 2, ',', '.'); ?></td>
       <td></td>
     </tr>
     <tr>
       <td></td>
       <td>Jumlah Rp.</td>
-      <td>170.000,-</td>
+      <td><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></td>
       <td></td>
     </tr>
     <tr>
-      <td class="text-center" colspan="4">Seratus tujuh puluh ribu rupiah</td>
+      <td class="text-center" colspan="4">
+        <?php
+          function penyebut($nilai) {
+            $nilai = abs($nilai);
+            $huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+            $temp = "";
+            if ($nilai < 12) {
+              $temp = " ". $huruf[$nilai];
+            } else if ($nilai <20) {
+              $temp = penyebut($nilai - 10). " belas";
+            } else if ($nilai < 100) {
+              $temp = penyebut($nilai/10)." puluh". penyebut($nilai % 10);
+            } else if ($nilai < 200) {
+              $temp = " seratus" . penyebut($nilai - 100);
+            } else if ($nilai < 1000) {
+              $temp = penyebut($nilai/100) . " ratus" . penyebut($nilai % 100);
+            } else if ($nilai < 2000) {
+              $temp = " seribu" . penyebut($nilai - 1000);
+            } else if ($nilai < 1000000) {
+              $temp = penyebut($nilai/1000) . " ribu" . penyebut($nilai % 1000);
+            } else if ($nilai < 1000000000) {
+              $temp = penyebut($nilai/1000000) . " juta" . penyebut($nilai % 1000000);
+            } else if ($nilai < 1000000000000) {
+              $temp = penyebut($nilai/1000000000) . " milyar" . penyebut(fmod($nilai,1000000000));
+            } else if ($nilai < 1000000000000000) {
+              $temp = penyebut($nilai/1000000000000) . " trilyun" . penyebut(fmod($nilai,1000000000000));
+            }     
+            return $temp;
+          }
+        
+          function terbilang($nilai) {
+            if($nilai<0) {
+              $hasil = "minus ". trim(penyebut($nilai));
+            } else {
+              $hasil = trim(penyebut($nilai));
+            }     		
+            return $hasil;
+          }
+
+          echo terbilang($totalUang);
+        ?>
+      </td>
     </tr>
   </table>
   
@@ -340,8 +382,8 @@
       <td>Telah menerima sejumlah uang sebesar : </td>
     </tr>
     <tr>
-      <td style="font-size: 20px;"><strong>Rp. 170.000</strong></td>
-      <td style="font-size: 20px;"><strong>Rp. 170.000</strong></td>
+      <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></strong></td>
+      <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></strong></td>
     </tr>
     <tr>
       <td>Lunas pada tanggal : </td>
@@ -365,11 +407,11 @@
       <td></td>
     </tr>
     <tr>
-      <td class="text-center"><strong><u>Sri Agustia Merliawati, S.AN</u></strong></td>
+      <td class="text-center"><strong><u><?= $bendahara['nama']; ?></u></strong></td>
       <td class="text-center"><strong><u><?= $pegawai['nama']; ?></u></strong></td>
     </tr>
     <tr>
-      <td class="text-center">NIP. 19840814 200212 2 003</td>
+      <td class="text-center">NIP. <?= $bendahara['nip']; ?></td>
       <td class="text-center"><?= $pegawai['nip']; ?></td>
     </tr>
   </table>
@@ -380,13 +422,13 @@
     <tr>
       <td width="30%">Ditetapkan sejumlah</td>
       <td width="5%">Rp.</td>
-      <td class="text-right" width="30%">170.000,-</td>
+      <td class="text-right" width="30%"><?= number_format($totalUang, 2, ',', '.'); ?></td>
       <td width="35%"></td>
     </tr>
     <tr>
       <td>Yang telah dibayar semula</td>
       <td>Rp.</td>
-      <td class="text-right">0,-</td>
+      <td class="text-right"><?= number_format($totalUang, 2, ',', '.'); ?></td>
       <td></td>
     </tr>
     <tr>
@@ -398,7 +440,7 @@
     <tr>
       <td>Jumlah</td>
       <td>Rp.</td>
-      <td class="text-right">0,-</td>
+      <td class="text-right"><?= number_format($totalUang, 2, ',', '.'); ?></td>
       <td></td>
     </tr>
   </table>
@@ -421,11 +463,11 @@
     </tr>
     <tr>
       <td></td>
-      <td class="text-center"><strong><u>Santhi Susana Dewi, S.SI</u></strong></td>
+      <td class="text-center"><strong><u><?= $ppk['nama']; ?></u></strong></td>
     </tr>
     <tr>
       <td></td>
-      <td class="text-center">NIP. 19790130 200604 2 003</td>
+      <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
   </table>
 
@@ -437,8 +479,8 @@
     </tr>
   </table>
   <br><br>
-  <div class="text-center" style="font-size: 18px;"><strong><u>SURAT-TUGAS</u></strong></div>
-  <div class="text-center">Nomor : <?= $this->input->post('nomor_spd'); ?></div>
+  <center><div class="text-center" style="font-size: 18px;"><strong><u>SURAT-TUGAS</u></strong></div></center>
+  <center><div class="text-center">Nomor : <?= $this->input->post('nomor_spd'); ?></div></center>
   <br>
   <div>Yang bertandatangan di bawah ini :</div>
   <br>
@@ -503,7 +545,7 @@
     </tr>
     <tr>
       <td></td>
-      <td class="text-center"><strong>(Andi Wijaya, S.ST)</strong></td>
+      <td class="text-center"><strong>(<?= $kepala['nama']; ?>)</strong></td>
     </tr>
   </table>
   <br><br><br>
@@ -540,7 +582,7 @@
   </table>
   <br><br><br>
   <br><br>
-  <div class="text-center" style="font-size: 25px;"><strong>KUITANSI</strong></div>
+  <center><div class="text-center" style="font-size: 25px;"><strong>KWITANSI</strong></div></center>
   <br><br><br>
   <table width="100%">
     <tr>
@@ -556,7 +598,7 @@
     <tr>
       <td>Uang sebesar</td>
       <td>:</td>
-      <td></td>
+      <td><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></td>
     </tr>
     <tr>
       <td><br></td>
@@ -586,7 +628,7 @@
     <tr>
       <td>Untuk perjalanan dinas dari</td>
       <td>:</td>
-      <td></td>
+      <td>Provinsi <?= $provinsi_berangkat['nama']; ?> Kabupaten <?= $kabupaten_berangkat['nama']; ?> Kecamatan <?= $kecamatan_berangkat['nama']; ?></td>
     </tr>
     <tr>
       <td><br></td>
@@ -596,7 +638,7 @@
     <tr>
       <td>Terbilang</td>
       <td>:</td>
-      <td></td>
+      <td><?= terbilang($totalUang); ?></td>
     </tr>
   </table>
   <br><br><br>
@@ -623,17 +665,15 @@
       <td class="text-center"></td>
     </tr>
     <tr>
-      <td class="text-center"><strong><u>Sri Agustia Merliawati, S.AN</u></strong></td>
-      <td class="text-center"><strong><u>Santhi Susana Dewi, S.SI</u></strong></td>
+      <td class="text-center"><strong><u><?= $bendahara['nama']; ?></u></strong></td>
+      <td class="text-center"><strong><u><?= $ppk['nama']; ?></u></strong></td>
       <td class="text-center"><strong><u><?= $pegawai['nama']; ?></u></strong></td>
     </tr>
     <tr>
-      <td class="text-center">NIP. 19840814 200212 2 003</td>
-      <td class="text-center">NIP. 19790130 200604 2 003</td>
+      <td class="text-center">NIP. <?= $bendahara['nip']; ?></td>
+      <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
       <td class="text-center">NIP. <?= $pegawai['nip']; ?></td>
     </tr>
   </table>
-<!-- <script src="../../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script> -->
 </body>
 </html>

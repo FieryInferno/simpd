@@ -136,6 +136,39 @@
         </select>
       </div>
       <div class="form-group">
+        <label>Kegiatan</label>
+        <select name="id_kegiatan" class='form-control'>
+          <option>Pilih Kegiatan</option>
+          <?php
+            foreach ($kegiatan as $key) { ?>  
+              <option value='<?= $key['id_kegiatan']; ?>'><?= $key['nama_kegiatan'] ?></option>
+            <?php } 
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Komponen</label>
+        <select name="id_komponen" class='form-control'>
+          <option>Pilih Komponen</option>
+          <?php
+            foreach ($komponen as $key) { ?>  
+              <option value='<?= $key['id_komponen']; ?>'><?= $key['nama_komponen'] ?></option>
+            <?php } 
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Program</label>
+        <select name="id_anggaran" class='form-control'>
+          <option>Pilih Anggaran</option>
+          <?php
+            foreach ($anggaran as $key) { ?>  
+              <option value='<?= $key['id_anggaran']; ?>'><?= $key['nomor_anggaran'] ?></option>
+            <?php } 
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
         <label>Keterangan</label>
         <textarea type="text" name="keterangan" class="form-control" placeholder="Enter ..." rows="3" ></textarea>
       </div>

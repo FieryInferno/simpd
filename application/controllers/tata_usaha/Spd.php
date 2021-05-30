@@ -30,6 +30,45 @@ class Spd extends CI_Controller {
       $data['provinsi_tujuan']      = $this->M_Wilayah->getProvinsi($this->input->post('tempat_tujuan_provinsi'));
       $data['kabupaten_tujuan']     = $this->M_Wilayah->getKabupaten($this->input->post('tempat_tujuan_kabupaten'));
       $data['kecamatan_tujuan']     = $this->M_Wilayah->getKecamatan($this->input->post('tempat_tujuan_kecamatan'));
+       $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($this->input->post('id_kegiatan'));
+       $data['komponen']             = $this->M_Komponen->getbykomponen($this->input->post('id_komponen'));
+       $data['anggaran']             = $this->M_Anggaran->getbyanggaran($this->input->post('id_anggaran'));
+      $sbm                          = $this->M_SBM->get();
+      if ($this->input->post('tempat_berangkat_kabupaten') == $this->input->post('tempat_tujuan_kabupaten')) {
+        $data['uangHarian'] = $sbm['dalam_kota'];
+      } else {
+        $data['uangHarian'] = $sbm['luar_kota'];
+      }
+
+      if ($data['lama_hari'] > 1) {
+        $golongan = explode('/', $data['pegawai']['namagolongan']);
+        switch ($golongan[0]) {
+          case 'I':
+            $data['uangFull'] = $sbm['i'];
+            break;
+          case 'II':
+            $data['uangFull'] = $sbm['ii'];
+            break;
+          case 'III':
+            $data['uangFull'] = $sbm['iii'];
+            break;
+          case 'IV':
+            $data['uangFull'] = $sbm['iv'];
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+      } else {
+        $data['uangFull'] = 0;
+      }
+      $data['totalUangHarian']  = $data['uangHarian'] * $data['lama_hari'];
+      $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
+      $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
+      $data['bendahara']= $this->M_Pegawai->getBendahara();
+    $data['ppk']      = $this->M_Pegawai->getPPK();
+    $data['kepala']   = $this->M_Pegawai->getKepala();
       ob_start();
         $this->load->view('tata_usaha/spd/pdf', $data);
         $html = ob_get_contents();
@@ -54,7 +93,12 @@ class Spd extends CI_Controller {
     $data['id_spd']   = $idspdskrng;
     $data['content']	= 'tata_usaha/V_inputSPD';
     $data['pegawai']  = $this->M_Pegawai->getAll();
+   
     $data['provinsi'] = $this->M_Wilayah->getProvinsi();
+    $data['kegiatan'] = $this->M_Kegiatan->getAll();
+    $data['komponen'] = $this->M_Komponen->getAll();
+    $data['anggaran'] = $this->M_Anggaran->getAll();
+
 		$this->load->view('tata_usaha/temp_tu', $data);
   }
 

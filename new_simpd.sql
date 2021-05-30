@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2021 pada 13.50
+-- Waktu pembuatan: 30 Bulan Mei 2021 pada 14.08
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -21,6 +21,25 @@ SET time_zone = "+00:00";
 --
 -- Database: `new_simpd`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `anggaran`
+--
+
+CREATE TABLE `anggaran` (
+  `id_anggaran` int(11) NOT NULL,
+  `nomor_anggaran` varchar(100) NOT NULL,
+  `nama_anggaran` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `anggaran`
+--
+
+INSERT INTO `anggaran` (`id_anggaran`, `nomor_anggaran`, `nama_anggaran`) VALUES
+(1, '054.01.06.2903.009.300.524113', 'Perjalanan Dinas\r\n');
 
 -- --------------------------------------------------------
 
@@ -82,6 +101,24 @@ INSERT INTO `jabatan` (`id`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `kegiatan`
+--
+
+CREATE TABLE `kegiatan` (
+  `id_kegiatan` int(11) NOT NULL,
+  `nama_kegiatan` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`) VALUES
+(1, 'Penyediaan dan Pengembangan Statistik Harga');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `kendaraan`
 --
 
@@ -100,35 +137,174 @@ INSERT INTO `kendaraan` (`id`, `kendaraan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `komponen`
+--
+
+CREATE TABLE `komponen` (
+  `id_komponen` int(11) NOT NULL,
+  `nama_komponen` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `komponen`
+--
+
+INSERT INTO `komponen` (`id_komponen`, `nama_komponen`) VALUES
+(1, 'Survey Harga Perdesaan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lhp`
+--
+
+CREATE TABLE `lhp` (
+  `id_lhp` int(11) NOT NULL,
+  `id_spd` int(11) NOT NULL,
+  `id_pegawai` varchar(100) NOT NULL,
+  `jam` varchar(100) NOT NULL,
+  `kegiatan` varchar(200) NOT NULL,
+  `permasalahan` varchar(200) NOT NULL,
+  `solusi` varchar(200) NOT NULL,
+  `keterangan` varchar(200) NOT NULL,
+  `bukti_kegiatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `lhp`
+--
+
+INSERT INTO `lhp` (`id_lhp`, `id_spd`, `id_pegawai`, `jam`, `kegiatan`, `permasalahan`, `solusi`, `keterangan`, `bukti_kegiatan`) VALUES
+(1, 35, '1', '07.21-08.15', 'Berangkat dari BPS Kabupaten Subang ke Kantor Kecamatan Binong', '-', '-', '-', ''),
+(7, 34, '1', '01', 'a', 'a', 'a', 'a', 'document.pdf');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
   `id` int(11) NOT NULL,
-  `nip` varchar(20) NOT NULL,
+  `nip` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `alamat` text NOT NULL,
   `tempatlahir` varchar(20) NOT NULL,
   `tanggallahir` date NOT NULL,
-  `jabatan` varchar(15) NOT NULL,
+  `jabatan` varchar(100) NOT NULL,
   `namagolongan` varchar(20) NOT NULL,
   `agama` varchar(10) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `akses` varchar(20) NOT NULL,
-  `foto` varchar(100) NOT NULL
+  `foto` varchar(100) NOT NULL,
+  `bagian` varchar(191) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `agama`, `username`, `password`, `akses`, `foto`) VALUES
-(1, '021200100001', 'Andri Hadian', 'Laki-laki', 'Bandung', 'Bandung', '2000-08-22', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'andri', 'andri', 'admin', 'Screenshot_(2)11.png'),
-(87, '021200100002', 'Zaenudin', 'Laki-laki', 'Subang', 'Subang', '2000-04-01', 'Kepala Sub Bagi', 'II/A (Pengatur Muda)', 'islam', 'zezen', 'zezen', 'tu', 'gambar.png'),
-(84, '021200100003', 'Dika Maulana', 'Laki-laki', 'kp. Ciherang', 'Subang', '2000-08-02', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'admin01', 'admin01', 'kasi', 'IMG-20200502-WA00455.jpg'),
-(2, '89797987897', 'Adi', 'Laki-laki', 'hghjgjhghjghghg', 'Jakarta', '2021-04-14', 'Kepala Seksi', 'I', 'islam', 'pegawai', 'pegawai', 'pegawai', 'jkjk.jpg\r\n');
+INSERT INTO `pegawai` (`id`, `nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `agama`, `username`, `password`, `akses`, `foto`, `bagian`) VALUES
+(1, '021200100001', 'Andri Hadian', 'Laki-laki', 'Bandung', 'Bandung', '2000-08-22', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'andri', 'andri', 'pegawai', 'Screenshot_(2)11.png', 'pegawai'),
+(2, '021200100002', 'Zaenudin', 'Laki-laki', 'Subang', 'Subang', '2000-04-01', 'Kepala Sub Bagi', 'II/A (Pengatur Muda)', 'islam', 'zezen', 'zezen', 'tu', 'gambar.png', ''),
+(3, ' 19790130 200604 2 002 ', 'Andi WIbowo', 'Laki-laki', 'kp. Ciherang', 'Subang', '2000-08-02', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'admin01', 'admin01', 'kasi', 'IMG-20200502-WA00455.jpg', 'kepala'),
+(4, ' 19790130 200604 2 003 ', 'Santhi Susana Dewi, S.SI', 'Perempuan', 'hghjgjhghjghghg', 'Jakarta', '2021-04-14', 'Kepala Seksi', 'I', 'islam', 'pegawai', 'pegawai', 'pegawai', 'jkjk.jpg\r\n', 'ppk'),
+(5, '19840814 200212 2 00', 'Sri Agustia Merliawati, S.AN', 'Perempuan', 'Kp. Pasir Gombong Rt. 15/07 Desa Sukamandi Kec. Sagalaherang Kab. Subang', 'Bandung', '1998-11-26', 'Koordinator Fun', 'I/A (Juru Muda)', 'islam', 'bagassetia', '12345678', 'Administrator', 'Foto_Wisuda.jpg', 'bendahara');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sbm`
+--
+
+CREATE TABLE `sbm` (
+  `id_sbm` int(11) NOT NULL,
+  `provinsi` int(191) NOT NULL,
+  `luar_kota` int(191) NOT NULL,
+  `dalam_kota` int(191) NOT NULL,
+  `i` int(191) NOT NULL,
+  `ii` int(191) NOT NULL,
+  `iii` int(191) NOT NULL,
+  `iv` int(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `sbm`
+--
+
+INSERT INTO `sbm` (`id_sbm`, `provinsi`, `luar_kota`, `dalam_kota`, `i`, `ii`, `iii`, `iv`) VALUES
+(1, 11, 360000, 140000, 4420000, 3526000, 1294000, 556000),
+(2, 12, 370000, 150000, 4960000, 3518000, 1100000, 530000),
+(3, 13, 380000, 150000, 5236000, 3332000, 1353000, 650000),
+(4, 14, 370000, 150000, 3820000, 3119000, 1650000, 852000),
+(5, 15, 370000, 150000, 4000000, 3337000, 1212000, 580000),
+(6, 16, 380000, 150000, 5850000, 3083000, 1571000, 861000),
+(7, 17, 380000, 150000, 2140000, 1628000, 1546000, 630000),
+(8, 18, 380000, 150000, 4491000, 2067000, 1140000, 580000),
+(9, 19, 410000, 160000, 3827000, 2838000, 1957000, 622000),
+(10, 21, 370000, 150000, 4275000, 1854000, 1037000, 792000),
+(11, 31, 530000, 210000, 8720000, 1788000, 992000, 730000),
+(12, 32, 430000, 170000, 5381000, 2755000, 1201000, 570000),
+(13, 33, 370000, 150000, 4242000, 1480000, 954000, 600000),
+(14, 34, 420000, 170000, 5017000, 2695000, 1384000, 845000),
+(15, 35, 410000, 160000, 4400000, 1605000, 1076000, 664000),
+(16, 36, 370000, 150000, 5725000, 2373000, 1000000, 718000),
+(17, 51, 480000, 190000, 4890000, 1946000, 1078000, 910000),
+(18, 52, 380000, 150000, 2654000, 2648000, 1418000, 580000),
+(19, 53, 430000, 170000, 3000000, 1706000, 1507000, 550000),
+(20, 61, 380000, 150000, 2654000, 1538000, 1125000, 538000),
+(21, 62, 360000, 140000, 4901000, 3391000, 1160000, 659000),
+(22, 63, 380000, 150000, 4797000, 3316000, 1500000, 648000),
+(23, 64, 430000, 170000, 4000000, 2188000, 1507000, 804000),
+(24, 65, 430000, 170000, 4000000, 2188000, 1507000, 804000),
+(25, 71, 370000, 150000, 4919000, 2290000, 1034000, 782000),
+(26, 72, 370000, 150000, 2309000, 2077000, 1567000, 951000),
+(27, 73, 430000, 170000, 4820000, 1550000, 1138000, 732000),
+(28, 74, 380000, 150000, 2475000, 2059000, 1297000, 786000),
+(29, 75, 370000, 150000, 4168000, 2549000, 1586000, 764000),
+(30, 76, 410000, 160000, 4076000, 3098000, 1075000, 704000),
+(31, 81, 380000, 150000, 3467000, 3240000, 1048000, 667000),
+(32, 82, 430000, 170000, 3440000, 3175000, 1073000, 600000),
+(33, 91, 480000, 190000, 3872000, 3212000, 2056000, 718000),
+(34, 94, 580000, 230000, 3859000, 3318000, 2521000, 829000),
+(35, 0, 0, 0, 0, 0, 0, 0),
+(36, 0, 0, 0, 0, 0, 0, 0),
+(37, 0, 0, 0, 0, 0, 0, 0),
+(38, 0, 0, 0, 0, 0, 0, 0),
+(39, 0, 0, 0, 0, 0, 0, 0),
+(40, 0, 0, 0, 0, 0, 0, 0),
+(41, 0, 0, 0, 0, 0, 0, 0),
+(42, 0, 0, 0, 0, 0, 0, 0),
+(43, 0, 0, 0, 0, 0, 0, 0),
+(44, 0, 0, 0, 0, 0, 0, 0),
+(45, 0, 0, 0, 0, 0, 0, 0),
+(46, 0, 0, 0, 0, 0, 0, 0),
+(47, 0, 0, 0, 0, 0, 0, 0),
+(48, 0, 0, 0, 0, 0, 0, 0),
+(49, 0, 0, 0, 0, 0, 0, 0),
+(50, 0, 0, 0, 0, 0, 0, 0),
+(51, 0, 0, 0, 0, 0, 0, 0),
+(52, 0, 0, 0, 0, 0, 0, 0),
+(53, 0, 0, 0, 0, 0, 0, 0),
+(54, 0, 0, 0, 0, 0, 0, 0),
+(55, 0, 0, 0, 0, 0, 0, 0),
+(56, 0, 0, 0, 0, 0, 0, 0),
+(57, 0, 0, 0, 0, 0, 0, 0),
+(58, 0, 0, 0, 0, 0, 0, 0),
+(59, 0, 0, 0, 0, 0, 0, 0),
+(60, 0, 0, 0, 0, 0, 0, 0),
+(61, 0, 0, 0, 0, 0, 0, 0),
+(62, 0, 0, 0, 0, 0, 0, 0),
+(63, 0, 0, 0, 0, 0, 0, 0),
+(64, 0, 0, 0, 0, 0, 0, 0),
+(65, 0, 0, 0, 0, 0, 0, 0),
+(66, 0, 0, 0, 0, 0, 0, 0),
+(67, 0, 0, 0, 0, 0, 0, 0),
+(68, 0, 0, 0, 0, 0, 0, 0),
+(69, 0, 0, 0, 0, 0, 0, 0),
+(70, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -151,6 +327,9 @@ CREATE TABLE `spd` (
   `pengikut_2` varchar(100) NOT NULL,
   `pengikut_3` varchar(100) NOT NULL,
   `keterangan` varchar(500) NOT NULL,
+  `id_kegiatan` int(11) NOT NULL,
+  `id_komponen` int(11) NOT NULL,
+  `id_anggaran` int(11) NOT NULL,
   `tanggalKembali` date NOT NULL,
   `file` varchar(191) NOT NULL,
   `file_ttd` varchar(100) NOT NULL,
@@ -158,21 +337,17 @@ CREATE TABLE `spd` (
   `kabupaten_berangkat` varchar(191) NOT NULL,
   `kecamatan_berangkat` varchar(191) NOT NULL,
   `kabupaten_tujuan` varchar(191) NOT NULL,
-  `kecamatan_tujuan` varchar(191) NOT NULL
+  `kecamatan_tujuan` varchar(191) NOT NULL,
+  `no_urut` int(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `spd`
 --
 
-INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`) VALUES
-(4, '100/SPD/BPS/3213/03/2020', 1, 'C', 'Perjalanan dinas dalam kota lebih dari 8 jam dalam rangka pengawasan survei HPD', '', 'Subang', 'Subang', 2, '2021-04-18', '', '', '', ' ', '2021-04-20', '607c54e5b7d54.pdf', '', 0, '', '', '', ''),
-(19, '019/SPD/BPS/3213/04/2021', 87, 'A', 'hjJ', 'Kendaraan Pribadi', 'sudhg', 'gjhg', 1, '2021-04-19', '', '', '', 'jhdjhd', '2021-04-20', '607d7616035b1.pdf', 'CV_M_Bagas_Setia03.pdf', 0, '', '', '', ''),
-(20, '020/SPD/BPS/3213/04/2021', 1, 'A', 'jhjhh', '', 'jnmxdmbj', 'gjhg', 1, '2021-04-28', '', '', '', 'kjk', '2021-04-29', '607d76bb1b58d.pdf', '', 0, '', '', '', ''),
-(21, '021/SPD/BPS/3213/04/2021', 1, 'C', 'kjkj', '', 'sjksk', 'kjhsjsh', 1, '2021-04-19', '', '', '', 'ksjkj', '2021-04-20', '607d799b3e7d0.pdf', '', 0, '', '', '', ''),
-(22, '022/SPD/BPS/3213/04/2021', 1, 'A', 'Melakukan survey', '', 'jnmxdmbj', 'hgjg', 20, '2021-04-01', '', '', '', 'jsjshshssjkhaka', '2021-04-21', '607e600d53320.pdf', '', 0, '', '', '', ''),
-(23, '023/SPD/BPS/3213/05/2021', 1, 'A', 'a', '', '11', '11', 7, '2021-05-12', '', '', '', 'a', '2021-05-05', '6091185bbe1de.pdf', '', 0, '1101', '1101010', '1102', '1102011'),
-(24, '024/SPD/BPS/3213/05/2021', 1, 'A', 'a', '', '12', '12', 0, '0000-00-00', '', '', '', 'g', '0000-00-00', '6091259baee9b.pdf', 'CV_M_Bagas_Setia04.pdf', 0, '1202', '1202010', '1202', '1202010');
+INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `id_kegiatan`, `id_komponen`, `id_anggaran`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`, `no_urut`) VALUES
+(34, '001/SPD/BPS/3213/05/2021', 1, 'A', 'Pengawasan Survey HPD', '', '32', '32', 1, '2021-05-25', '2', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-05-26', '60aca0d7c2557.pdf', '', 0, '3213', '3213070', '3213', '3213080', 0),
+(35, '035/SPD/BPS/3213/05/2021', 1, 'C', 'Perjalanan dinas dalam kota lebih dari 8 jam dalam rangka Pengawasan Survei HPD.', '', '32', '32', 0, '2020-03-12', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '', 1, 1, 1, '2020-03-12', '60aca6854277a.pdf', '', 0, '3213', '3213070', '3213', '3213030', 0);
 
 -- --------------------------------------------------------
 
@@ -87498,6 +87673,12 @@ INSERT INTO `wilayah_provinsi` (`id`, `nama`) VALUES
 --
 
 --
+-- Indeks untuk tabel `anggaran`
+--
+ALTER TABLE `anggaran`
+  ADD PRIMARY KEY (`id_anggaran`);
+
+--
 -- Indeks untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
@@ -87510,16 +87691,40 @@ ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id_kegiatan`);
+
+--
 -- Indeks untuk tabel `kendaraan`
 --
 ALTER TABLE `kendaraan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `komponen`
+--
+ALTER TABLE `komponen`
+  ADD PRIMARY KEY (`id_komponen`);
+
+--
+-- Indeks untuk tabel `lhp`
+--
+ALTER TABLE `lhp`
+  ADD PRIMARY KEY (`id_lhp`);
+
+--
 -- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `sbm`
+--
+ALTER TABLE `sbm`
+  ADD PRIMARY KEY (`id_sbm`);
 
 --
 -- Indeks untuk tabel `spd`
@@ -87574,6 +87779,12 @@ ALTER TABLE `wilayah_provinsi`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `anggaran`
+--
+ALTER TABLE `anggaran`
+  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
@@ -87592,16 +87803,28 @@ ALTER TABLE `kendaraan`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `lhp`
+--
+ALTER TABLE `lhp`
+  MODIFY `id_lhp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=89;
+
+--
+-- AUTO_INCREMENT untuk tabel `sbm`
+--
+ALTER TABLE `sbm`
+  MODIFY `id_sbm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT untuk tabel `spd`
 --
 ALTER TABLE `spd`
-  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_tugas`

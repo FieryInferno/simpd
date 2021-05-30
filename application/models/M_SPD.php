@@ -9,12 +9,22 @@ class M_SPD extends CI_Model {
 	{
 		return $this->db->get($this->table);
 	}
+
   function idspd(){
-    $q = $this->db->query("select MAX(id_spd) as id_spd from spd");
-       $hasil=$q->row();
-       return $hasil->id_spd;
+    $q      = $this->db->query("select MAX(id_spd) as id_spd from spd");
+    $hasil  = $q->row();
+    return $hasil->id_spd;
   }
-   public function getByIdSPD($id_spd)
+
+  public function getbyIdPegawai()
+  {
+    $this->db->select('*');
+    $this->db->from('spd');
+    $this->db->where('id_pegawai', $_SESSION['id']);
+    return $this->db->get()->result();
+  }
+
+  public function getByIdSPD($id_spd)
   {
     return $this->db->get_where($this->table, [
       'id_spd'  => $id_spd
@@ -38,6 +48,12 @@ class M_SPD extends CI_Model {
       'lama_hari'           => $lama_hari,
       'tanggalBerangkat'    => $this->input->post('tanggalBerangkat'),
       'tanggalKembali'      => $this->input->post('tanggalKembali'),
+      'pengikut_1'      => $this->input->post('pengikut_1'),
+      'pengikut_2'      => $this->input->post('pengikut_2'),
+      'pengikut_3'      => $this->input->post('pengikut_3'),
+      'id_kegiatan'      => $this->input->post('id_kegiatan'),
+      'id_komponen'      => $this->input->post('id_komponen'),
+      'id_anggaran'      => $this->input->post('id_anggaran'),
       'keterangan'          => $this->input->post('keterangan'),
       'file'                => $filename . '.pdf'
     ]);
