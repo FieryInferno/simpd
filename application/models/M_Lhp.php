@@ -6,10 +6,11 @@ class M_Lhp extends CI_Model {
   protected $table  = 'lhp';
 
   public function get_lhp($id_spd){
-    $this->db->select('*');
-    $this->db->from('lhp,spd');
-    $this->db->where('spd.id_spd', $id_spd);
-    return $this->db->get()->result();
+    $this->db->join('spd', 'lhp.id_spd = spd.id_spd');
+    $this->db->join('pegawai', 'spd.id_pegawai = pegawai.id');
+    $this->db->join('wilayah_kecamatan', 'spd.kecamatan_tujuan = wilayah_kecamatan.id');
+    $this->db->select('spd.*, lhp.*, wilayah_kecamatan.nama as nama_kecamatan, pegawai.nama as nama_pegawai');
+    return $this->db->get_where('lhp', ['spd.id_spd' => $id_spd])->result();
   }
 
   public function get_spd($id_spd){
@@ -48,7 +49,7 @@ class M_Lhp extends CI_Model {
         unlink('assets/' . $this->input->post('bukti_kegiatan_lama'));
       }
       $config['upload_path']    = './assets/';
-      $config['allowed_types']  = 'pdf';
+      $config['allowed_types']  = 'png|jpg|jpeg';
 
       $this->upload->initialize($config);
 

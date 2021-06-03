@@ -131,7 +131,7 @@ class Pegawai extends CI_Controller {
     $options->set('isRemoteEnabled', TRUE);
     $dompdf = new Dompdf($options);
     $dompdf->loadHtml($html);
-    $dompdf->setPaper('legal', 'portrait');
+    $dompdf->setPaper('legal', 'landscape');
     $dompdf->render();
     $dompdf->stream($filename, array("Attachment" => 0) );
   }

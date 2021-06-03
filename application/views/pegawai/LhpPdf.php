@@ -14,6 +14,51 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+  <div class="text-center">LAPORAN HASIL PERJALANAN DINAS DALAM KOTA (LEBIH DARI 8 JAM)</div>
+  <table>
+    <tr>
+      <td>Nama Pelaksana</td>
+      <td>&nbsp;:&nbsp;</td>
+      <td><?= $lhp[0]->nama_pegawai; ?></td>
+    </tr>
+    <tr>
+      <td>Wilayah Tugas</td>
+      <td>&nbsp;:&nbsp;</td>
+      <td>Kecamatan <?= $lhp[0]->nama_kecamatan; ?></td>
+    </tr>
+    <tr>
+      <td>Tanggal</td>
+      <td>&nbsp;:&nbsp;</td>
+      <td>
+        <?php 
+          function tgl_indo($tanggal){
+            $bulan = array (
+              1 =>   'Januari',
+              'Februari',
+              'Maret',
+              'April',
+              'Mei',
+              'Juni',
+              'Juli',
+              'Agustus',
+              'September',
+              'Oktober',
+              'November',
+              'Desember'
+            );
+            $pecahkan = explode('-', $tanggal);
+            return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
+          }
+          echo tgl_indo($lhp[0]->tanggalBerangkat); 
+        ?>
+      </td>
+    </tr>
+    <tr>
+      <td>Dalam Rangka</td>
+      <td>&nbsp;:&nbsp;</td>
+      <td><?= $lhp[0]->tujuan; ?></td>
+    </tr>
+  </table>
   <table class="table">
     <thead>
       <tr>
@@ -23,6 +68,7 @@
         <th scope="col">Permasalahan</th>
         <th scope="col">Solusi</th>
         <th scope="col">Keterangan</th>
+        <th scope="col">Bukti</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +81,7 @@
             <td><?php echo $row->permasalahan?></td>
             <td><?php echo $row->solusi?></td>
             <td><?php echo $row->keterangan?></td>
+            <td><img src="<?= base_url('assets/' . $row->bukti_kegiatan); ?>" alt="" width="10%"></td>
           </tr>
         <?php }
       ?>
