@@ -52,6 +52,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="sidebar-mini skin-blue-light">
 <div class="wrapper">
@@ -181,10 +182,11 @@
   <script src="<?php echo base_url(); ?>assets/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/dataTables.bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
-    $('document').ready(() => {
-
-    })
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2();
+    });
 
     $(function () {
       $("#example1").DataTable({

@@ -12,7 +12,7 @@
       </div>
       <div class="form-group">
         <label>Nama Pegawai</label>
-        <select name="id_pegawai" class='form-control'>
+        <select name="id_pegawai" class='form-control js-example-basic-single'>
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
@@ -37,7 +37,7 @@
       <div class="form-group">
         <label>Tempat Berangkat</label><br/>
         <label for="">Provinsi</label>
-        <select name="tempat_berangkat_provinsi" id="" onchange="pilihProvinsi(this)" class="form-control">
+        <select name="tempat_berangkat_provinsi" id="" onchange="pilihProvinsi(this)" class="form-control js-example-basic-single">
           <option>Pilih Provinsi</option>
           <?php
             foreach ($provinsi as $key) { ?>
@@ -46,18 +46,18 @@
           ?>
         </select>
         <label for="">Kabupaten</label>
-        <select name="tempat_berangkat_kabupaten" id="tempat_berangkat_kabupaten" onchange="pilihKabupaten(this)" class="form-control">
+        <select name="tempat_berangkat_kabupaten" id="tempat_berangkat_kabupaten" onchange="pilihKabupaten(this)" class="form-control js-example-basic-single">
           <option>Pilih Kabupaten</option>
         </select>
         <label for="">Kecamatan</label>
-        <select name="tempat_berangkat_kecamatan" id="tempat_berangkat_kecamatan" class="form-control">
+        <select name="tempat_berangkat_kecamatan" id="tempat_berangkat_kecamatan" class="form-control js-example-basic-single">
           <option>Pilih Kecamatan</option>
         </select>
       </div>
       <div class="form-group">
         <label>Tempat Tujuan</label><br/>
         <label for="">Provinsi</label>
-        <select name="tempat_tujuan_provinsi" id="" onchange="pilihProvinsi(this, 'tujuan')" class="form-control">
+        <select name="tempat_tujuan_provinsi" id="" onchange="pilihProvinsi(this, 'tujuan')" class="form-control js-example-basic-single">
           <option>Pilih Provinsi</option>
           <?php
             foreach ($provinsi as $key) { ?>
@@ -66,11 +66,11 @@
           ?>
         </select>
         <label for="">Kabupaten</label>
-        <select name="tempat_tujuan_kabupaten" id="tempat_tujuan_kabupaten" onchange="pilihKabupaten(this, 'tujuan')" class="form-control">
+        <select name="tempat_tujuan_kabupaten" id="tempat_tujuan_kabupaten" onchange="pilihKabupaten(this, 'tujuan')" class="form-control js-example-basic-single">
           <option>Pilih Kabupaten</option>
         </select>
         <label for="">Kecamatan</label>
-        <select name="tempat_tujuan_kecamatan" id="tempat_tujuan_kecamatan" class="form-control">
+        <select name="tempat_tujuan_kecamatan" id="tempat_tujuan_kecamatan" class="form-control js-example-basic-single">
           <option>Pilih Kecamatan</option>
         </select>
       </div>
@@ -94,7 +94,7 @@
       </div>
       <div class="form-group">
         <label>Pengikut 1</label>
-        <select name="pengikut_1" class='form-control'>
+        <select name="pengikut_1" class='form-control js-example-basic-single'>
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
@@ -105,7 +105,7 @@
       </div>
       <div class="form-group">
         <label>Pengikut 2</label>
-        <select name="pengikut_2" class='form-control'>
+        <select name="pengikut_2" class='form-control js-example-basic-single'>
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
@@ -116,7 +116,7 @@
       </div>
       <div class="form-group">
         <label>Pengikut 3</label>
-        <select name="pengikut_3" class='form-control'>
+        <select name="pengikut_3" class='form-control js-example-basic-single'>
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
