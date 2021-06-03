@@ -58,6 +58,37 @@ class M_SPD extends CI_Model {
       'file'                => $filename . '.pdf'
     ]);
   }
+  
+  public function update($lama_hari, $filename, $id_spd)
+  {
+    if (file_exists('assets/' . $this->input->post('file_lama'))) {
+      unlink('assets/' . $this->input->post('file_lama'));
+    }
+    $this->db->update($this->table, [
+      'nomor_spd'           => $this->input->post('nomor_spd'),
+      'id_pegawai'          => $this->input->post('id_pegawai'),
+      'tingkat_biaya'       => $this->input->post('tingkat_biaya'),
+      'tujuan'              => $this->input->post('tujuan'),
+      'kendaraan'           => $this->input->post('kendaraan'),
+      'provinsi_berangkat'  => $this->input->post('tempat_berangkat_provinsi'),
+      'kabupaten_berangkat' => $this->input->post('tempat_berangkat_kabupaten'),
+      'kecamatan_berangkat' => $this->input->post('tempat_berangkat_kecamatan'),
+      'provinsi_tujuan'     => $this->input->post('tempat_tujuan_provinsi'),
+      'kabupaten_tujuan'    => $this->input->post('tempat_tujuan_kabupaten'),
+      'kecamatan_tujuan'    => $this->input->post('tempat_tujuan_kecamatan'),
+      'lama_hari'           => $lama_hari,
+      'tanggalBerangkat'    => $this->input->post('tanggalBerangkat'),
+      'tanggalKembali'      => $this->input->post('tanggalKembali'),
+      'pengikut_1'          => $this->input->post('pengikut_1'),
+      'pengikut_2'          => $this->input->post('pengikut_2'),
+      'pengikut_3'          => $this->input->post('pengikut_3'),
+      'id_kegiatan'         => $this->input->post('id_kegiatan'),
+      'id_komponen'         => $this->input->post('id_komponen'),
+      'id_anggaran'         => $this->input->post('id_anggaran'),
+      'keterangan'          => $this->input->post('keterangan'),
+      'file'                => $filename . '.pdf'
+    ], ['id_spd'  => $id_spd]);
+  }
 
   public function upload()
   {

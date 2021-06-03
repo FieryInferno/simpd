@@ -5,9 +5,10 @@ $route['default_controller'] = 'c_login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['tata_usaha/spd']        = 'tata_usaha/Spd';
-$route['tata_usaha/spd/tambah'] = 'tata_usaha/Spd/tambah';
-$route['tata_usaha/spd/upload'] = 'tata_usaha/Spd/upload';
+$route['tata_usaha/spd']              = 'tata_usaha/Spd';
+$route['tata_usaha/spd/tambah']       = 'tata_usaha/Spd/tambah';
+$route['tata_usaha/spd/upload']       = 'tata_usaha/Spd/upload';
+$route['tata_usaha/spd/edit/(:any)']  = 'tata_usaha/Spd/edit/$1';
 
 $route['wilayah/kabupaten'] = 'wilayah/kabupaten';
 $route['wilayah/kecamatan'] = 'wilayah/kecamatan';
