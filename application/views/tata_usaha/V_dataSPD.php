@@ -8,6 +8,7 @@
       <div class="box-body">
         <a href="<?= base_url(); ?>tata_usaha/spd/tambah" button type="button" class="btn btn-primary float-left"><i class="fa fa-plus-square-o"></i> Tambah </a>
         <hr>
+        <?= $this->session->pesan ? $this->session->pesan : '' ; ?>
         <table id="example1" class = "table table-bordered table-striped">
           <thead>
             <tr class="nowrap">
@@ -27,7 +28,7 @@
                 <td><?php echo $row->keterangan?></td>
                 <td>
                   <a href="<?= base_url(); ?>tata_usaha/spd/edit/<?php echo $row->id_spd ?>" type="button" class="btn btn-success btn-sm" ><i class="fa fa-edit"></i> Ubah </a>
-                  <a href="spd/delete_spd/<?php echo $row->id_spd ?>" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Hapus </a>
+                  <a href="<?= base_url(); ?>tata_usaha/spd/hapus/<?php echo $row->id_spd ?>" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Hapus </a>
                   <a href="<?= base_url('assets/' . $row->file); ?>" class="btn btn-warning btn-sm" ><i class="fa fa-print"></i> Lihat Surat</a>
                   <a  data-toggle="modal" data-target="#Modalupload<?= $row->id_spd; ?>" class="btn btn-primary btn-sm" ><i class="fa fa-upload"></i> Upload </a>
                   <?php

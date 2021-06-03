@@ -30,9 +30,9 @@ class Spd extends CI_Controller {
       $data['provinsi_tujuan']      = $this->M_Wilayah->getProvinsi($this->input->post('tempat_tujuan_provinsi'));
       $data['kabupaten_tujuan']     = $this->M_Wilayah->getKabupaten($this->input->post('tempat_tujuan_kabupaten'));
       $data['kecamatan_tujuan']     = $this->M_Wilayah->getKecamatan($this->input->post('tempat_tujuan_kecamatan'));
-       $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($this->input->post('id_kegiatan'));
-       $data['komponen']             = $this->M_Komponen->getbykomponen($this->input->post('id_komponen'));
-       $data['anggaran']             = $this->M_Anggaran->getbyanggaran($this->input->post('id_anggaran'));
+      $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($this->input->post('id_kegiatan'));
+      $data['komponen']             = $this->M_Komponen->getbykomponen($this->input->post('id_komponen'));
+      $data['anggaran']             = $this->M_Anggaran->getbyanggaran($this->input->post('id_anggaran'));
       $sbm                          = $this->M_SBM->get();
       if ($this->input->post('tempat_berangkat_kabupaten') == $this->input->post('tempat_tujuan_kabupaten')) {
         $data['uangHarian'] = $sbm['dalam_kota'];
@@ -67,8 +67,8 @@ class Spd extends CI_Controller {
       $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
       $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
       $data['bendahara']= $this->M_Pegawai->getBendahara();
-    $data['ppk']      = $this->M_Pegawai->getPPK();
-    $data['kepala']   = $this->M_Pegawai->getKepala();
+      $data['ppk']      = $this->M_Pegawai->getPPK();
+      $data['kepala']   = $this->M_Pegawai->getKepala();
       ob_start();
         $this->load->view('tata_usaha/spd/pdf', $data);
         $html = ob_get_contents();
@@ -84,6 +84,14 @@ class Spd extends CI_Controller {
       $output = $dompdf->output();
       file_put_contents('./assets/' . $filename . '.pdf', $output);
       $this->M_SPD->insert($data['lama_hari'], $filename);
+      $this->session->set_flashdata('pesan', '
+        <div class="alert alert-success alert-dismissible show" role="alert">
+          <strong>Sukses!</strong> Berhasil tambah data.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ');
       redirect('tata_usaha/spd');
     }
 
@@ -105,6 +113,14 @@ class Spd extends CI_Controller {
   public function upload()
   {
     $this->M_SPD->upload();
+    $this->session->set_flashdata('pesan', '
+      <div class="alert alert-success alert-dismissible show" role="alert">
+        <strong>Sukses!</strong> Berhasil upload data.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    ');
     redirect('tata_usaha/spd');
   }
   
@@ -160,9 +176,9 @@ class Spd extends CI_Controller {
       $data['totalUangHarian']  = $data['uangHarian'] * $data['lama_hari'];
       $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
       $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
-      $data['bendahara']= $this->M_Pegawai->getBendahara();
-    $data['ppk']      = $this->M_Pegawai->getPPK();
-    $data['kepala']   = $this->M_Pegawai->getKepala();
+      $data['bendahara']        = $this->M_Pegawai->getBendahara();
+      $data['ppk']              = $this->M_Pegawai->getPPK();
+      $data['kepala']           = $this->M_Pegawai->getKepala();
       ob_start();
         $this->load->view('tata_usaha/spd/pdf', $data);
         $html = ob_get_contents();
@@ -178,6 +194,14 @@ class Spd extends CI_Controller {
       $output = $dompdf->output();
       file_put_contents('./assets/' . $filename . '.pdf', $output);
       $this->M_SPD->update($data['lama_hari'], $filename, $id_spd);
+      $this->session->set_flashdata('pesan', '
+        <div class="alert alert-success alert-dismissible show" role="alert">
+          <strong>Sukses!</strong> Berhasil edit data.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ');
       redirect('tata_usaha/spd');
     }
     $data             = $this->M_SPD->getByIdSpd($id_spd);
@@ -189,5 +213,19 @@ class Spd extends CI_Controller {
     $data['anggaran'] = $this->M_Anggaran->getAll();
 
 		$this->load->view('tata_usaha/temp_tu', $data);
+  }
+
+  public function hapus($id_spd)
+  {
+    $this->M_SPD->hapus($id_spd);
+    $this->session->set_flashdata('pesan', '
+      <div class="alert alert-success alert-dismissible show" role="alert">
+        <strong>Sukses!</strong> Berhasil hapus data.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    ');
+    redirect('tata_usaha/spd');
   }
 }

@@ -117,4 +117,17 @@ class M_SPD extends CI_Model {
       ]);
     }
   }
+
+  public function hapus($id_spd)
+  {
+    $data = $this->getByIdSPD($id_spd);
+    if (file_exists('assets/' . $data['file'])) unlink('assets/' . $data['file']);
+    if (file_exists('assets/' . $data['file_ttd'])) unlink('assets/' . $data['file_ttd']);
+    $lhp  = $this->db->get_where('lhp', ['id_spd' => $id_spd])->result_array();
+    foreach ($lhp as $key) {
+      if (file_exists('assets/' . $lhp['bukti_kegiatan'])) unlink('assets/' . $lhp['bukti_kegiatan']);
+    }
+    $this->db->delete('spd', ['id_spd'  => $id_spd]);
+    $this->db->delete('lhp', ['id_spd'  => $id_spd]);
+  }
 }
