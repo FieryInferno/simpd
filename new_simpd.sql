@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 30 Bulan Mei 2021 pada 14.08
+-- Waktu pembuatan: 03 Jun 2021 pada 06.43
 -- Versi server: 10.1.32-MariaDB
 -- Versi PHP: 7.2.5
 
@@ -170,14 +170,6 @@ CREATE TABLE `lhp` (
   `bukti_kegiatan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data untuk tabel `lhp`
---
-
-INSERT INTO `lhp` (`id_lhp`, `id_spd`, `id_pegawai`, `jam`, `kegiatan`, `permasalahan`, `solusi`, `keterangan`, `bukti_kegiatan`) VALUES
-(1, 35, '1', '07.21-08.15', 'Berangkat dari BPS Kabupaten Subang ke Kantor Kecamatan Binong', '-', '-', '-', ''),
-(7, 34, '1', '01', 'a', 'a', 'a', 'a', 'document.pdf');
-
 -- --------------------------------------------------------
 
 --
@@ -340,14 +332,6 @@ CREATE TABLE `spd` (
   `kecamatan_tujuan` varchar(191) NOT NULL,
   `no_urut` int(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `spd`
---
-
-INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `id_kegiatan`, `id_komponen`, `id_anggaran`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`, `no_urut`) VALUES
-(34, '001/SPD/BPS/3213/05/2021', 1, 'A', 'Pengawasan Survey HPD', '', '32', '32', 1, '2021-05-25', '2', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-05-26', '60aca0d7c2557.pdf', '', 0, '3213', '3213070', '3213', '3213080', 0),
-(35, '035/SPD/BPS/3213/05/2021', 1, 'C', 'Perjalanan dinas dalam kota lebih dari 8 jam dalam rangka Pengawasan Survei HPD.', '', '32', '32', 0, '2020-03-12', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '', 1, 1, 1, '2020-03-12', '60aca6854277a.pdf', '', 0, '3213', '3213070', '3213', '3213030', 0);
 
 -- --------------------------------------------------------
 
