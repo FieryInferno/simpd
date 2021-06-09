@@ -11,6 +11,7 @@ $route['tata_usaha/spd/upload']       = 'tata_usaha/Spd/upload';
 $route['tata_usaha/spd/edit/(:any)']  = 'tata_usaha/Spd/edit/$1';
 $route['tata_usaha/spd/hapus/(:any)'] = 'tata_usaha/Spd/hapus/$1';
 $route['tata_usaha/lhp']              = 'tata_usaha/Lhp';
+$route['tata_usaha/lhp/lihat/(:any)'] = 'tata_usaha/Lhp/lihat/$1';
 
 $route['wilayah/kabupaten'] = 'wilayah/kabupaten';
 $route['wilayah/kecamatan'] = 'wilayah/kecamatan';

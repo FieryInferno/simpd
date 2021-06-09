@@ -9,4 +9,12 @@ class Lhp extends CI_Controller {
     $data['content']  = 'tata_usaha/lhp';
 		$this->load->view('tata_usaha/temp_tu', $data);
 	}
+
+  public function lihat($id_spd)
+  {
+    $data             = $this->M_SPD->getByIdSPD($id_spd);
+    $data['data']     = $this->M_Lhp->get_lhp($id_spd);
+    $data['content']  = 'tata_usaha/lihatLhp';
+    $this->load->view('tata_usaha/temp_tu', $data);
+  }
 }
