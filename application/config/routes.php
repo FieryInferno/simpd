@@ -10,6 +10,7 @@ $route['tata_usaha/spd/tambah']       = 'tata_usaha/Spd/tambah';
 $route['tata_usaha/spd/upload']       = 'tata_usaha/Spd/upload';
 $route['tata_usaha/spd/edit/(:any)']  = 'tata_usaha/Spd/edit/$1';
 $route['tata_usaha/spd/hapus/(:any)'] = 'tata_usaha/Spd/hapus/$1';
+$route['tata_usaha/lhp']              = 'tata_usaha/Lhp';
 
 $route['wilayah/kabupaten'] = 'wilayah/kabupaten';
 $route['wilayah/kecamatan'] = 'wilayah/kecamatan';

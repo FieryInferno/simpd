@@ -120,7 +120,11 @@
                 <i class="fa fa-file"></i> <span>SPD</span>
               </a>
             </li>
-            
+            <li>
+              <a href="<?= base_url('tata_usaha/lhp'); ?>">
+                <i class="fa fa-file"></i> <span>LHP</span>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
