@@ -19,7 +19,7 @@ class Spd extends CI_Controller {
     if ($this->input->post()) {
       $tanggalBerangkat             = new DateTime($this->input->post('tanggalBerangkat'));
       $tanggalKembali               = new DateTime($this->input->post('tanggalKembali'));
-      $data['lama_hari']            = $tanggalKembali->diff($tanggalBerangkat)->format("%a");
+      $data['lama_hari']            = $tanggalKembali->diff($tanggalBerangkat)->format("%a") + 1;
       $data['pegawai']              = $this->M_Pegawai->getById($this->input->post('id_pegawai'));
       $data['pegawai1']             = $this->M_Pegawai->getByP1($this->input->post('pengikut_1'));
       $data['pegawai2']             = $this->M_Pegawai->getByP2($this->input->post('pengikut_2'));
