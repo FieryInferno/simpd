@@ -19,12 +19,12 @@
     <tr>
       <td>Nama Pelaksana</td>
       <td>&nbsp;:&nbsp;</td>
-      <td><?= $lhp[0]->nama_pegawai; ?></td>
+      <td><?= count($lhp) > 0 ? $lhp[0]->pegawai : '' ; ?></td>
     </tr>
     <tr>
       <td>Wilayah Tugas</td>
       <td>&nbsp;:&nbsp;</td>
-      <td>Kecamatan <?= $lhp[0]->nama_kecamatan; ?></td>
+      <td>Kecamatan <?= count($lhp) > 0 ? $lhp[0]->nama_kecamatan : '' ; ?></td>
     </tr>
     <tr>
       <td>Tanggal</td>
@@ -49,14 +49,13 @@
             $pecahkan = explode('-', $tanggal);
             return $pecahkan[2] . ' ' . $bulan[ (int)$pecahkan[1] ] . ' ' . $pecahkan[0];
           }
-          echo tgl_indo($lhp[0]->tanggalBerangkat); 
-        ?>
+          echo count($lhp) > 0 ? tgl_indo($lhp[0]->tanggalBerangkat) : '' ; ?>
       </td>
     </tr>
     <tr>
       <td>Dalam Rangka</td>
       <td>&nbsp;:&nbsp;</td>
-      <td><?= $lhp[0]->tujuan; ?></td>
+      <td><?= count($lhp) > 0 ? $lhp[0]->tujuan : '' ; ?></td>
     </tr>
   </table>
   <table class="table">
