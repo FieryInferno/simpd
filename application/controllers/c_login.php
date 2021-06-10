@@ -10,9 +10,8 @@ class c_login extends CI_Controller {
 
 public function index()
 	{
-    // $data = [];
     // ob_start();
-    //   $this->load->view('tata_usaha/spd/pdf', $data);
+    //   $this->load->view('pdf');
     //   $html = ob_get_contents();
     // ob_end_clean();
     // ob_clean();

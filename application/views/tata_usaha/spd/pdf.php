@@ -675,5 +675,183 @@
       <td class="text-center">NIP. <?= $pegawai['nip']; ?></td>
     </tr>
   </table>
+
+  <div style="page-break-before: always;"></div>
+  <table width="100%" border="1">
+    <tr>
+      <td width="50%"></td>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Berangkat dari</td>
+            <td width="1%">:</td>
+            <td width="50%">BPS Kabupaten Subang</td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <div class="text-center">A.n KEPALA BPS KABUPATEN SUBANG</div>
+        <div class="text-center">Pejabat Pembuat Komitmen</div>
+        <br><br><br>
+        <div class="text-center"><strong><u><?= $ppk['nama']; ?></u></strong></div>
+        <div class="text-center"><?= $ppk['nip']; ?></div>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Berangkat dari</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <br><br><br><br><br><br><br>
+      </td>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Berangkat dari</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <br><br><br><br><br><br><br>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Berangkat dari</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <br><br><br><br><br><br><br>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Berangkat dari</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <br><br><br><br><br><br><br>
+      </td>
+    </tr>
+    <tr>
+      <td width="50%">
+        <table width="100%">
+          <tr>
+            <td width="49%">Tiba Kembali di</td>
+            <td width="1%">:</td>
+            <td width="50%">BPS Kabupaten Subang</td>
+          </tr>
+          <tr>
+            <td width="49%" colspan="2">(Tempat Kedudukan)</td>
+          </tr>
+          <tr>
+            <td width="49%">Pada Tanggal</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+          <tr>
+            <td width="49%">Ke</td>
+            <td width="1%">:</td>
+            <td width="50%"></td>
+          </tr>
+        </table>
+        <div class="text-center">A.n KEPALA BPS KABUPATEN SUBANG</div>
+        <div class="text-center">Pejabat Pembuat Komitmen</div>
+        <br><br><br>
+        <div class="text-center"><strong><u><?= $ppk['nama']; ?></u></strong></div>
+        <div class="text-center"><?= $ppk['nip']; ?></div>
+      </td>
+      <td width="50%">
+        <p class="text-justify">Telah diperiksa dengan keterangan bahwa Perjalanan tersebut di atas benar dilakukan atas perintahnya dan semata mata untuk kepentingan jabatan dalam waktu yang sesingkat singkatnya.</p>
+        <div class="text-center">A.n KEPALA BPS KABUPATEN SUBANG</div>
+        <div class="text-center">Pejabat Pembuat Komitmen</div>
+        <br><br><br>
+        <div class="text-center"><strong><u>M. Bagas Setia</u></strong></div>
+        <div class="text-center">1234567890</div>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        Catatan Lain - Lain :
+        <div>&nbsp;</div> 
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <p><strong><u>Perhatian :</u></strong></p>
+        <div>Pejabat yang berwengang menerbitkan SPPD Pegawai yang melakukan Perjalanan Dinas, para pejabat yang mengesahkan tanggal berangkat/iba serta Bendaharawan bertanggung jawab berdasarjan Peraturan Keuangan Negara, apabila Negara menderita rugi akibat kesalahan, kekeliruan, kealpaan (angka 8 lampiran Surat Edaran Menteri Keuangan tanggal 30 April 1984 Nomor 8 269/MK/1/1984 dan Surat Edaran Menteri Keuangan tanggal 23 Februari 1989 Noomor MK.03/1989 dan Surat Edaran Menterui.</div>
+      </td>
+    </tr>
+  </table>
 </body>
 </html>
