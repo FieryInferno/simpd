@@ -15,7 +15,7 @@
 </head>
 <body>
   <!-- surat perjalanan dinas -->
-  <!-- <table>
+  <table>
     <tr>
       <td width="150px" class="text-center">BADAN PUSAT STATISTIK</td>
       <td width="300px">&nbsp;</td>
@@ -273,10 +273,10 @@
       <td width="60%" style="padding-left:10px;" class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
   </table> 
-  <div style="page-break-before: always;"></div>-->
+  <div style="page-break-before: always;"></div>
 
   <!-- rincian biaya perjalanan dinas -->
-  <!-- <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
+  <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
   <div>Lampiran SPD Nomor : <?= $this->input->post('nomor_spd'); ?></div>
   <div>Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $this->input->post('tanggalBerangkat'); ?></div>
   <br>
@@ -469,7 +469,7 @@
       <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
   </table> 
-  <div style="page-break-before: always;"></div>-->
+  <div style="page-break-before: always;"></div>
 
   <!-- surat tugas -->
   <table width="100%">
@@ -573,7 +573,7 @@
   <div style="page-break-before: always;"></div>
 
   <!-- kwitansi -->
-  <!-- <table width="100%">
+  <table width="100%">
     <tr>
       <td width="20%"><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="100%"></td>
       <td style="font-size: 20px;" width="40%"><strong><i>BADAN PUSAT STATISTIK KABUPATEN SUBANG</i></strong></td>
@@ -870,6 +870,6 @@
         <div>Pejabat yang berwengang menerbitkan SPPD Pegawai yang melakukan Perjalanan Dinas, para pejabat yang mengesahkan tanggal berangkat/iba serta Bendaharawan bertanggung jawab berdasarjan Peraturan Keuangan Negara, apabila Negara menderita rugi akibat kesalahan, kekeliruan, kealpaan (angka 8 lampiran Surat Edaran Menteri Keuangan tanggal 30 April 1984 Nomor 8 269/MK/1/1984 dan Surat Edaran Menteri Keuangan tanggal 23 Februari 1989 Noomor MK.03/1989 dan Surat Edaran Menterui.</div>
       </td>
     </tr>
-  </table> -->
+  </table>
 </body>
 </html>

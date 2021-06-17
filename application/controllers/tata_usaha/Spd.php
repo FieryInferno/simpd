@@ -81,19 +81,19 @@ class Spd extends CI_Controller {
       $dompdf->loadHtml($html);
       $dompdf->setPaper('legal', 'portrait');
       $dompdf->render();
-      $dompdf->stream($filename, array("Attachment" => 0) );
-      // $output = $dompdf->output();
-      // file_put_contents('./assets/' . $filename . '.pdf', $output);
-      // $this->M_SPD->insert($data['lama_hari'], $filename);
-      // $this->session->set_flashdata('pesan', '
-      //   <div class="alert alert-success alert-dismissible show" role="alert">
-      //     <strong>Sukses!</strong> Berhasil tambah data.
-      //     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      //       <span aria-hidden="true">&times;</span>
-      //     </button>
-      //   </div>
-      // ');
-      // redirect('tata_usaha/spd');
+      
+      $output = $dompdf->output();
+      file_put_contents('./assets/' . $filename . '.pdf', $output);
+      $this->M_SPD->insert($data['lama_hari'], $filename);
+      $this->session->set_flashdata('pesan', '
+        <div class="alert alert-success alert-dismissible show" role="alert">
+          <strong>Sukses!</strong> Berhasil tambah data.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ');
+      redirect('tata_usaha/spd');
     }
 
     $dariDB           = $this->M_SPD->idspd();
