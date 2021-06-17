@@ -14,6 +14,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 <body>
+  <!-- surat perjalanan dinas -->
   <table>
     <tr>
       <td width="150px" class="text-center">BADAN PUSAT STATISTIK</td>
@@ -58,21 +59,17 @@
           <tr>
             <td>3. </td>
             <td>
-              <ol type="a">
-                <li>Pangkat dan Golongan</li>
-                <li>Jabatan/Instansi</li>
-                <li>Tingkat Biaya Perjalanan Dinas</li>
-              </ol>
+              <div>a. Pangkat dan Golongan</div>
+              <div>b. Jabatan/Instansi</div>
+              <div>c. Tingkat Biaya Perjalanan Dinas</div>
             </td>
           </tr>
         </table>
       </td>
       <td width="60%" style="padding-left:10px;">
-        <ol type="a">
-          <li><?= $pegawai['namagolongan']; ?></li>
-          <li><?= $pegawai['jabatan']; ?></li>
-          <li>Tingkat <?= $this->input->post('tingkat_biaya'); ?></li>
-        </ol>
+        <div>a. <?= $pegawai['namagolongan']; ?></div>
+        <div>b. <?= $pegawai['jabatan']; ?></div>
+        <div>c. Tingkat <?= $this->input->post('tingkat_biaya'); ?></div>
       </td>
     </tr>
     <tr>
@@ -103,10 +100,8 @@
           <tr>
             <td>6. </td>
             <td>
-              <ol type="a">
-                <li>Tempat Berangkat</li>
-                <li>Tempat Tujuan</li>
-              </ol>
+              <div>a. Tempat Berangkat</div>
+              <div>b. Tempat Tujuan</div>
             </td>
           </tr>
         </table>
@@ -279,12 +274,13 @@
     </tr>
   </table>
 
-  <div style="page-break-before: always;"></div>
+  <!-- rincian biaya perjalanan dinas -->
+  <!-- <div style="page-break-before: always;"></div>
   <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
   <div>Lampiran SPD Nomor : <?= $this->input->post('nomor_spd'); ?></div>
   <div>Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $this->input->post('tanggalBerangkat'); ?></div>
   <br>
-  <table class="table">
+  <table class="table" border="1">
     <tr>
       <th width="5%">No</th>
       <th width="65%">Perincian Biaya</th>
@@ -298,6 +294,9 @@
         <div>Pangkat/Golongan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai['namagolongan']; ?></div>
         <div>Jabatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai['jabatan']; ?></div>
         <div>Lamanya tugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $lama_hari; ?></div>
+        <div>Pengikut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai1['nama']; ?></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai2['nama']; ?></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai3['nama']; ?></div>
       </td>
       <td></td>
       <td></td>
@@ -469,9 +468,10 @@
       <td></td>
       <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
-  </table>
+  </table> -->
 
-  <div style="page-break-before: always;"></div>
+  <!-- surat tugas -->
+  <!-- <div style="page-break-before: always;"></div>
   <table width="100%">
     <tr>
       <td width="20%"><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="100%"></td>
@@ -492,7 +492,12 @@
     <tr>
       <td width="23%">Nama</td>
       <td width="5%">:</td>
-      <td><?= $pegawai['nama']; ?></td>
+      <td>
+        <div><?= $pegawai['nama']; ?></div>
+        <div><?= $pegawai1['nama']; ?></div>
+        <div><?= $pegawai2['nama']; ?></div>
+        <div><?= $pegawai3['nama']; ?></div>
+      </td>
     </tr>
     <tr>
       <td><br></td>
@@ -553,9 +558,10 @@
   <br><br><br>
   <div class="text-center"><strong>Jl. Aipda KS Tubun No.12, Cigadung, Kec. Subang, Kabupaten Subang, Jawa Barat 41211</strong></div>
   <div class="text-center">Website : www.subangkab.bps.go.id Email : bps3213@bps.go.id</div>
-  
-  <div style="page-break-before: always;"></div>
-  <table width="100%">
+  <div style="page-break-before: always;"></div> -->
+
+  <!-- kwitansi -->
+  <!-- <table width="100%">
     <tr>
       <td width="20%"><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="100%"></td>
       <td style="font-size: 20px;" width="40%"><strong><i>BADAN PUSAT STATISTIK KABUPATEN SUBANG</i></strong></td>
@@ -852,6 +858,6 @@
         <div>Pejabat yang berwengang menerbitkan SPPD Pegawai yang melakukan Perjalanan Dinas, para pejabat yang mengesahkan tanggal berangkat/iba serta Bendaharawan bertanggung jawab berdasarjan Peraturan Keuangan Negara, apabila Negara menderita rugi akibat kesalahan, kekeliruan, kealpaan (angka 8 lampiran Surat Edaran Menteri Keuangan tanggal 30 April 1984 Nomor 8 269/MK/1/1984 dan Surat Edaran Menteri Keuangan tanggal 23 Februari 1989 Noomor MK.03/1989 dan Surat Edaran Menterui.</div>
       </td>
     </tr>
-  </table>
+  </table> -->
 </body>
 </html>
