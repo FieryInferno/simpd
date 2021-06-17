@@ -276,7 +276,7 @@
   <div style="page-break-before: always;"></div>-->
 
   <!-- rincian biaya perjalanan dinas -->
-  <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
+  <!-- <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
   <div>Lampiran SPD Nomor : <?= $this->input->post('nomor_spd'); ?></div>
   <div>Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $this->input->post('tanggalBerangkat'); ?></div>
   <br>
@@ -468,10 +468,10 @@
       <td></td>
       <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
-  </table>
+  </table> 
+  <div style="page-break-before: always;"></div>-->
 
   <!-- surat tugas -->
-  <!-- <div style="page-break-before: always;"></div>
   <table width="100%">
     <tr>
       <td width="20%"><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="100%"></td>
@@ -494,9 +494,21 @@
       <td width="5%">:</td>
       <td>
         <div><?= $pegawai['nama']; ?></div>
-        <div><?= $pegawai1['nama']; ?></div>
-        <div><?= $pegawai2['nama']; ?></div>
-        <div><?= $pegawai3['nama']; ?></div>
+      </td>
+    </tr>
+    <tr>
+      <td>Pengikut</td>
+      <td>:</td>
+      <td>
+        <div><?= $pegawai1['nama']; ?> </div>
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <div><?= $pegawai2['nama']; ?> </div>
+        <div><?= $pegawai3['nama']; ?> </div>
       </td>
     </tr>
     <tr>
@@ -558,7 +570,7 @@
   <br><br><br>
   <div class="text-center"><strong>Jl. Aipda KS Tubun No.12, Cigadung, Kec. Subang, Kabupaten Subang, Jawa Barat 41211</strong></div>
   <div class="text-center">Website : www.subangkab.bps.go.id Email : bps3213@bps.go.id</div>
-  <div style="page-break-before: always;"></div> -->
+  <div style="page-break-before: always;"></div>
 
   <!-- kwitansi -->
   <!-- <table width="100%">
