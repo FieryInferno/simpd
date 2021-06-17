@@ -15,7 +15,7 @@
 </head>
 <body>
   <!-- surat perjalanan dinas -->
-  <table>
+  <!-- <table>
     <tr>
       <td width="150px" class="text-center">BADAN PUSAT STATISTIK</td>
       <td width="300px">&nbsp;</td>
@@ -272,10 +272,10 @@
       <td width="40%" style="padding-left:10px;">&nbsp;</td>
       <td width="60%" style="padding-left:10px;" class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
-  </table>
+  </table> 
+  <div style="page-break-before: always;"></div>-->
 
   <!-- rincian biaya perjalanan dinas -->
-  <!-- <div style="page-break-before: always;"></div>
   <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
   <div>Lampiran SPD Nomor : <?= $this->input->post('nomor_spd'); ?></div>
   <div>Tanggal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $this->input->post('tanggalBerangkat'); ?></div>
@@ -294,9 +294,9 @@
         <div>Pangkat/Golongan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai['namagolongan']; ?></div>
         <div>Jabatan&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai['jabatan']; ?></div>
         <div>Lamanya tugas&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $lama_hari; ?></div>
-        <div>Pengikut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai1['nama']; ?></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai2['nama']; ?></div>
-        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai3['nama']; ?></div>
+        <div>Pengikut&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai1['nama']; ?></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai2['nama']; ?></div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <?= $pegawai3['nama']; ?></div>
       </td>
       <td></td>
       <td></td>
@@ -468,7 +468,7 @@
       <td></td>
       <td class="text-center">NIP. <?= $ppk['nip']; ?></td>
     </tr>
-  </table> -->
+  </table>
 
   <!-- surat tugas -->
   <!-- <div style="page-break-before: always;"></div>
