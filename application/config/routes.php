@@ -22,3 +22,4 @@ $route['pegawai/lhp/lihat/(:any)']        = 'pegawai/Pegawai/lihatLhp/$1';
 $route['pegawai/lhp/edit/(:any)']         = 'pegawai/Pegawai/editLhp/$1';
 $route['pegawai/lhp/hapus/(:any)/(:any)'] = 'pegawai/Pegawai/hapusLhp/$1/$2';
 $route['pegawai/lhp/cetak/(:any)']        = 'pegawai/Pegawai/cetakLhp/$1';
+$route['pegawai/tingkat']                 = 'pegawai/Pegawai/tingkat';

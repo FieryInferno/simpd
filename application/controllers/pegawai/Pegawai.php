@@ -135,4 +135,12 @@ class Pegawai extends CI_Controller {
     $dompdf->render();
     $dompdf->stream($filename, array("Attachment" => 0) );
   }
+
+  public function tingkat()
+  {
+    $data = $this->M_Pegawai->getById($this->input->post('id'));
+    $this->output
+        ->set_content_type('application/json')
+        ->set_output(json_encode($data));
+  }
 }

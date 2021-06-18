@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 03 Jun 2021 pada 06.43
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 7.2.5
+-- Waktu pembuatan: 18 Jun 2021 pada 03.32
+-- Versi server: 10.4.19-MariaDB
+-- Versi PHP: 8.0.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -186,6 +185,7 @@ CREATE TABLE `pegawai` (
   `tanggallahir` date NOT NULL,
   `jabatan` varchar(100) NOT NULL,
   `namagolongan` varchar(20) NOT NULL,
+  `eselon` varchar(191) NOT NULL,
   `agama` varchar(10) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
@@ -198,12 +198,12 @@ CREATE TABLE `pegawai` (
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `agama`, `username`, `password`, `akses`, `foto`, `bagian`) VALUES
-(1, '021200100001', 'Andri Hadian', 'Laki-laki', 'Bandung', 'Bandung', '2000-08-22', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'andri', 'andri', 'pegawai', 'Screenshot_(2)11.png', 'pegawai'),
-(2, '021200100002', 'Zaenudin', 'Laki-laki', 'Subang', 'Subang', '2000-04-01', 'Kepala Sub Bagi', 'II/A (Pengatur Muda)', 'islam', 'zezen', 'zezen', 'tu', 'gambar.png', ''),
-(3, ' 19790130 200604 2 002 ', 'Andi WIbowo', 'Laki-laki', 'kp. Ciherang', 'Subang', '2000-08-02', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'admin01', 'admin01', 'kasi', 'IMG-20200502-WA00455.jpg', 'kepala'),
-(4, ' 19790130 200604 2 003 ', 'Santhi Susana Dewi, S.SI', 'Perempuan', 'hghjgjhghjghghg', 'Jakarta', '2021-04-14', 'Kepala Seksi', 'I', 'islam', 'pegawai', 'pegawai', 'pegawai', 'jkjk.jpg\r\n', 'ppk'),
-(5, '19840814 200212 2 00', 'Sri Agustia Merliawati, S.AN', 'Perempuan', 'Kp. Pasir Gombong Rt. 15/07 Desa Sukamandi Kec. Sagalaherang Kab. Subang', 'Bandung', '1998-11-26', 'Koordinator Fun', 'I/A (Juru Muda)', 'islam', 'bagassetia', '12345678', 'Administrator', 'Foto_Wisuda.jpg', 'bendahara');
+INSERT INTO `pegawai` (`id`, `nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `eselon`, `agama`, `username`, `password`, `akses`, `foto`, `bagian`) VALUES
+(1, '021200100001', 'Andri Hadian', 'Laki-laki', 'Bandung', 'Bandung', '2000-08-22', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'III', 'islam', 'andri', 'andri', 'pegawai', 'Screenshot_(2)11.png', 'pegawai'),
+(2, '021200100002', 'Zaenudin', 'Laki-laki', 'Subang', 'Subang', '2000-04-01', 'Kepala Sub Bagi', 'II/A (Pengatur Muda)', 'II', 'islam', 'zezen', 'zezen', 'tu', 'gambar.png', ''),
+(3, ' 19790130 200604 2 002 ', 'Andi WIbowo', 'Laki-laki', 'kp. Ciherang', 'Subang', '2000-08-02', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'I', 'islam', 'admin01', 'admin01', 'kasi', 'IMG-20200502-WA00455.jpg', 'kepala'),
+(4, ' 19790130 200604 2 003 ', 'Santhi Susana Dewi, S.SI', 'Perempuan', 'hghjgjhghjghghg', 'Jakarta', '2021-04-14', 'Kepala Seksi', 'I', 'IV', 'islam', 'pegawai', 'pegawai', 'pegawai', 'jkjk.jpg\r\n', 'ppk'),
+(5, '19840814 200212 2 00', 'Sri Agustia Merliawati, S.AN', 'Perempuan', 'Kp. Pasir Gombong Rt. 15/07 Desa Sukamandi Kec. Sagalaherang Kab. Subang', 'Bandung', '1998-11-26', 'Koordinator Fun', 'I/A (Juru Muda)', 'III', 'islam', 'sriagustia', '12345678', 'admin', 'Foto_Wisuda.jpg', 'bendahara');
 
 -- --------------------------------------------------------
 
@@ -332,6 +332,13 @@ CREATE TABLE `spd` (
   `kecamatan_tujuan` varchar(191) NOT NULL,
   `no_urut` int(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `spd`
+--
+
+INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `id_kegiatan`, `id_komponen`, `id_anggaran`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`, `no_urut`) VALUES
+(36, '001/SPD/BPS/3213/06/2021', 1, 'A', 'a', '', '11', '11', 1, '2021-06-09', '1', '1', '1', 'a', 1, 1, 1, '2021-06-09', '60c00d392026e.pdf', '', 0, '1101', '1101010', '1101', '1101010', 0);
 
 -- --------------------------------------------------------
 
@@ -87808,7 +87815,7 @@ ALTER TABLE `sbm`
 -- AUTO_INCREMENT untuk tabel `spd`
 --
 ALTER TABLE `spd`
-  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_tugas`

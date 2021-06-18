@@ -41,8 +41,7 @@ class Spd extends CI_Controller {
       }
 
       if ($data['lama_hari'] > 1) {
-        $golongan = explode('/', $data['pegawai']['namagolongan']);
-        switch ($golongan[0]) {
+        switch ($data['pegawai']['eselon']) {
           case 'I':
             $data['uangFull'] = $sbm['i'];
             break;
@@ -81,7 +80,7 @@ class Spd extends CI_Controller {
       $dompdf->loadHtml($html);
       $dompdf->setPaper('legal', 'portrait');
       $dompdf->render();
-      
+      $dompdf->stream($filename, array("Attachment" => 0) );
       $output = $dompdf->output();
       file_put_contents('./assets/' . $filename . '.pdf', $output);
       $this->M_SPD->insert($data['lama_hari'], $filename);

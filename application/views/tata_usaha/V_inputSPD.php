@@ -11,11 +11,11 @@
       </div>
       <div class="form-group">
         <label>Nama Pegawai</label>
-        <select name="id_pegawai" class='form-control js-example-basic-single'>
+        <select name="id_pegawai" class='form-control js-example-basic-single' onchange="pilihTingkat(this)">
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
@@ -97,7 +97,7 @@
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
@@ -108,7 +108,7 @@
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
@@ -118,22 +118,15 @@
         <select name="pengikut_3" class='form-control js-example-basic-single'>
           <option>Pilih Pegawai</option>
           <?php
-            foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+            foreach ($pegawai as $key) { ?> 
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
       </div>
       <div class="form-group">
         <label>Tingkat Biaya</label>
-        <select name ="tingkat_biaya" class="form-control" >
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-          <option>F</option>
-        </select>
+        <input type="text" name="tingkat_biaya" class="form-control" readonly id="tingkat_biaya">
       </div>
       <div class="form-group">
         <label>Kegiatan</label>

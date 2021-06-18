@@ -249,6 +249,35 @@
         }
       });
     }
+
+    function pilihTingkat(data) {
+      $.ajax({
+        url     : `<?= base_url(); ?>pegawai/tingkat`,
+        type    : 'post',
+        data    : {
+          id  : data.value
+        }, 
+        success : function(result){
+          switch (result.eselon) {
+            case 'I':
+              $('#tingkat_biaya').val('B')
+              break;
+            case 'II':
+              $('#tingkat_biaya').val('C')
+              break;
+            case 'III':
+              $('#tingkat_biaya').val('D')
+              break;
+            case 'IV':
+              $('#tingkat_biaya').val('E')
+              break;
+          
+            default:
+              break;
+          }
+        }
+      });
+    }
   </script>
 <div class="modal modal-info fade" id="modal-info">
           <div class="modal-dialog">
