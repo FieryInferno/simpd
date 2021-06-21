@@ -30,6 +30,71 @@
                   <td><img src="<?= base_url('assets/' . $row->bukti); ?>" alt="" width="30%"></td>
                   <td><?php echo $row->keterangan?></td>
                   <td>
+                    <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#modalEdit<?= $row->id_realisasi_biaya; ?>" class="btn btn-success float-left"><i class="fa fa-edit"></i>Edit</button>
+                    <a href="<?= base_url('pegawai/realisasi_biaya/hapus/' . $id_spd . '/' . $row->id_realisasi_biaya); ?>" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Hapus </a>
+
+                    <div class="modal fade" id="modalEdit<?= $row->id_realisasi_biaya; ?>">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">Edit Realisasi Biaya</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="card-body">
+                              <form role="form" enctype ="multipart/form-data" method = "post" action="<?= base_url('pegawai/realisasi_biaya/edit/' . $id_spd . '/' .  $row->id_realisasi_biaya); ?>">
+                                <div class="row">
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label>Nomor SPD</label>
+                                      <input type="text" class="form-control" value="<?= $nomor_spd; ?>" readonly>
+                                      <input type="hidden" name="id_spd" value="<?= $id_spd; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label>Nama Pengeluaran</label>
+                                      <input type="text" class="form-control" name="nama_pengeluaran" placeholder="" value="<?= $row->nama_pengeluaran; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label>Jumlah</label>
+                                      <input type="text" class="form-control" name="jumlah" placeholder="" value="<?= $row->jumlah; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label>Bukti</label>
+                                      <input type="file" class="form-control" name="bukti" placeholder="" >
+                                      <input type="hidden" value="<?= $row->bukti; ?>" name="buktiLama">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label>Keterangan</label>
+                                      <input type="text" class="form-control" name="keterangan" placeholder="" value="<?= $row->keterangan; ?>">
+                                    </div>
+                                  </div>
+                                  <div class="col-sm-6">
+                                    <div class="form-group">
+                                      <label></label>
+                                      <input type="hidden" class="form-control" rows="3" name="id_pegawai" value = "<?php echo $_SESSION['id'] ?>" placeholder=""></textarea>
+                                    </div>
+                                  </div>  
+                                </div>         
+                            </div>
+                            <div class="modal-footer justify-content-between">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="submit" name="submit"  value="SIMPAN"class="btn btn-primary">Edit</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               <?php }
@@ -38,65 +103,67 @@
         </table>
       </div>
     </div>
-    
-    <div class="modal fade" id="modal-lhp">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title">LHP</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="card-body">
-              <form role="form" enctype ="multipart/form-data" method = "post" action ="<?php echo base_url('pegawai/realisasi_biaya/detail/' . $id_spd); ?>">
-                <div class="row">
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Nomor SPD</label>
-                      <input type="text" class="form-control" value="<?= $nomor_spd; ?>" readonly>
-                      <input type="hidden" name="id_spd" value="<?= $id_spd; ?>">
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Nama Pengeluaran</label>
-                      <input type="text" class="form-control" name="nama_pengeluaran" placeholder="" >
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Jumlah</label>
-                      <input type="text" class="form-control" name="jumlah" placeholder="" >
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Bukti</label>
-                      <input type="file" class="form-control" name="bukti" placeholder="" >
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label>Keterangan</label>
-                      <input type="text" class="form-control" name="keterangan" placeholder="" >
-                    </div>
-                  </div>
-                  <div class="col-sm-6">
-                    <div class="form-group">
-                      <label></label>
-                      <input type="hidden" class="form-control" rows="3" name="id_pegawai" value = "<?php echo $_SESSION['id'] ?>" placeholder=""></textarea>
-                    </div>
-                  </div>  
-                </div>         
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" name="submit"  value="SIMPAN"class="btn btn-primary">Simpan</button>
-              </form>
-            </div>
-          </div>
+  </div>
+</div>
+
+
+
+<div class="modal fade" id="modal-lhp">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Tambah Realisasi Biaya</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card-body">
+          <form role="form" enctype ="multipart/form-data" method = "post" action="<?= base_url('pegawai/realisasi_biaya/detail/' . $id_spd); ?>">
+            <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Nomor SPD</label>
+                  <input type="text" class="form-control" value="<?= $nomor_spd; ?>" readonly>
+                  <input type="hidden" name="id_spd" value="<?= $id_spd; ?>">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Nama Pengeluaran</label>
+                  <input type="text" class="form-control" name="nama_pengeluaran" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Jumlah</label>
+                  <input type="text" class="form-control" name="jumlah" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Bukti</label>
+                  <input type="file" class="form-control" name="bukti" placeholder="" >
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label>Keterangan</label>
+                  <input type="text" class="form-control" name="keterangan" placeholder="">
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label></label>
+                  <input type="hidden" class="form-control" rows="3" name="id_pegawai" value = "<?php echo $_SESSION['id'] ?>" placeholder=""></textarea>
+                </div>
+              </div>  
+            </div>         
+        </div>
+        <div class="modal-footer justify-content-between">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          <button type="submit" name="submit"  value="SIMPAN"class="btn btn-primary">Tambah</button>
+          </form>
         </div>
       </div>
     </div>
