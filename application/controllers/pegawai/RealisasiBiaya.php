@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+require_once("./vendor/autoload.php");
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 class RealisasiBiaya extends CI_Controller {
   
 	public function index()
@@ -105,5 +109,25 @@ class RealisasiBiaya extends CI_Controller {
       </div>
     ');
     redirect('pegawai/realisasi_biaya/detail/' . $id_spd);
+  }
+
+  public function cetak($id_spd)
+  {
+    $this->db->join('spd', 'realisasi_biaya.id_spd = spd.id_spd');
+    $this->db->join('pegawai', 'spd.id_pegawai = pegawai.id');
+    $data['realisasi'] = $this->db->get_where('realisasi_biaya', ['realisasi_biaya.id_spd'  => $id_spd])->result_array();
+    ob_start();
+      $this->load->view('Pegawai/realisasi_biaya_pdf.php', $data);
+      $html = ob_get_contents();
+    ob_end_clean();
+    ob_clean();
+    $filename   = uniqid();
+    $options  	= new Options();
+    $options->set('isRemoteEnabled', TRUE);
+    $dompdf = new Dompdf($options);
+    $dompdf->loadHtml($html);
+    $dompdf->setPaper('legal', 'landscape');
+    $dompdf->render();
+    $dompdf->stream($filename, array("Attachment" => 0) );
   }
 }

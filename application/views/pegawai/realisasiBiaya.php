@@ -25,7 +25,7 @@
                   <td><?php echo $row->tanggalBerangkat?></td>
                   <td>
                     <a href="<?= base_url('pegawai/realisasi_biaya/detail/' . $row->id_spd); ?>" type="button" class="btn btn-success btn-sm" ><i class="fa fa-eye"></i> Detail </a>
-                    <a href="<?= base_url()."pegawai/lhp/cetak/$row->id_spd"?>" type="button" class="btn btn-primary btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak </a>
+                    <a href="<?= base_url('pegawai/realisasi_biaya/cetak/' . $row->id_spd); ?>" type="button" class="btn btn-primary btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak </a>
                   </td>
                 </tr>
               <?php }

@@ -27,3 +27,4 @@ $route['pegawai/realisasi_biaya']                     = 'pegawai/RealisasiBiaya'
 $route['pegawai/realisasi_biaya/detail/(:any)']       = 'pegawai/RealisasiBiaya/detail/$1';
 $route['pegawai/realisasi_biaya/edit/(:any)/(:any)']  = 'pegawai/RealisasiBiaya/edit/$1/$2';
 $route['pegawai/realisasi_biaya/hapus/(:any)/(:any)'] = 'pegawai/RealisasiBiaya/hapus/$1/$2';
+$route['pegawai/realisasi_biaya/cetak/(:any)']        = 'pegawai/RealisasiBiaya/cetak/$1';
