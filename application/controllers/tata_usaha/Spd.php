@@ -95,24 +95,11 @@ class Spd extends CI_Controller {
     $data['totalUangHarian']  = $data['uangHarian'] * $data['lama_hari'];
     $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
     $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
-    $data['bendahara']= $this->M_Pegawai->getBendahara();
-    $data['ppk']      = $this->M_Pegawai->getPPK();
-    $data['kepala']   = $this->M_Pegawai->getKepala();
-    // ob_start();
-      $this->load->view('tata_usaha/spd/pdf', $data);
-    //   $html = ob_get_contents();
-    // ob_end_clean();
-    // ob_clean();
-    // $filename   = uniqid();
-    // $options  	= new Options();
-    // $options->set('isRemoteEnabled', TRUE);
-    // $dompdf = new Dompdf($options);
-    // $dompdf->loadHtml($html);
-    // $dompdf->setPaper('legal', 'portrait');
-    // $dompdf->render();
-    // $dompdf->stream($filename, array("Attachment" => 0) );
-    // $output = $dompdf->output();
-    // file_put_contents('./assets/' . $filename . '.pdf', $output);
+    $data['bendahara']        = $this->M_Pegawai->getBendahara();
+    $data['ppk']              = $this->M_Pegawai->getPPK();
+    $data['kepala']           = $this->M_Pegawai->getKepala();
+    $data['transportasi']     = $this->db->get_where('transportasi', ['id_kabupaten'  => $data['kabupaten_tujuan']['id']])->row_array();
+    $this->load->view('tata_usaha/spd/pdf', $data);
   }
 
   public function upload()

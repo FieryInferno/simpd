@@ -363,7 +363,7 @@
           <tr>
             <td>2</td>
             <td>Biaya Transport : </td>
-            <td>0,-</td>
+            <td><?= 'Rp. ' . number_format($transportasi['biaya'], 2, ',', '.'); ?></td>
             <td></td>
           </tr>
           <tr>

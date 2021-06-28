@@ -22,4 +22,14 @@ class Welcome extends CI_Controller {
 	{
 		$this->load->view('welcome_message');
 	}
+
+  function gantiIdKabupaten()
+  {
+    $data = $this->db->get('transportasi')->result_array();
+    foreach ($data as $key) {
+      $kabupaten  = $this->db->get_where('wilayah_kabupaten', ['nama' => $key['id_kabupaten']])->row_array();
+      if ($kabupaten) $this->db->update('transportasi', ['id_kabupaten' => $kabupaten['id']], ['id' => $key['id']]);
+      else print_r($key['id_kabupaten']);echo '<br/>';
+    }
+  }
 }
