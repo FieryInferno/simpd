@@ -5,10 +5,10 @@ class M_SBM extends CI_Model {
   
   protected $table  = 'sbm';
 
-	public function get()
+	public function get($provinsi_tujuan)
 	{
 		return $this->db->get_where($this->table, [
-      'provinsi'  => $this->input->post('tempat_tujuan_provinsi')
+      'provinsi'  => $provinsi_tujuan['id']
     ])->row_array();
 	}
 }

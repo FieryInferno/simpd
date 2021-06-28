@@ -10,6 +10,7 @@ $route['tata_usaha/spd/tambah']       = 'tata_usaha/Spd/tambah';
 $route['tata_usaha/spd/upload']       = 'tata_usaha/Spd/upload';
 $route['tata_usaha/spd/edit/(:any)']  = 'tata_usaha/Spd/edit/$1';
 $route['tata_usaha/spd/hapus/(:any)'] = 'tata_usaha/Spd/hapus/$1';
+$route['tata_usaha/spd/lihat/(:any)'] = 'tata_usaha/Spd/lihat/$1';
 $route['tata_usaha/lhp']              = 'tata_usaha/Lhp';
 $route['tata_usaha/lhp/lihat/(:any)'] = 'tata_usaha/Lhp/lihat/$1';
 $route['tata_usaha/lhp/cetak/(:any)'] = 'tata_usaha/Lhp/cetak/$1';

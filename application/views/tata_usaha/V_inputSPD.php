@@ -7,7 +7,7 @@
     <form role="form" enctype ="multipart/form-data" method= "post" action ="<?= base_url(); ?>tata_usaha/spd/tambah">
       <div class="form-group">
         <label>Nomor</label>
-        <input type="text" name="nomor_spd" value = "<?php echo sprintf("%03s", $id_spd)."/"."SPD"."/"."BPS"."/"."3213"."/".date('m')."/".date('Y') ?>" class="form-control" >
+        <input type="text" name="nomor_spd" value = "<?php echo sprintf("%03s", $id_spd)."/"."SPD"."/"."BPS"."/"."3213"."/".date('m')."/".date('Y') ?>" class="form-control" readonly>
       </div>
       <div class="form-group">
         <label>Nama Pegawai</label>

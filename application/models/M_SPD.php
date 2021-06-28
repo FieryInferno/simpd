@@ -31,7 +31,7 @@ class M_SPD extends CI_Model {
     ])->row_array();
   }
   
-  public function insert($lama_hari, $filename)
+  public function insert($lama_hari)
   {
     $this->db->insert($this->table, [
       'nomor_spd'           => $this->input->post('nomor_spd'),
@@ -48,14 +48,13 @@ class M_SPD extends CI_Model {
       'lama_hari'           => $lama_hari,
       'tanggalBerangkat'    => $this->input->post('tanggalBerangkat'),
       'tanggalKembali'      => $this->input->post('tanggalKembali'),
-      'pengikut_1'      => $this->input->post('pengikut_1'),
-      'pengikut_2'      => $this->input->post('pengikut_2'),
-      'pengikut_3'      => $this->input->post('pengikut_3'),
-      'id_kegiatan'      => $this->input->post('id_kegiatan'),
-      'id_komponen'      => $this->input->post('id_komponen'),
-      'id_anggaran'      => $this->input->post('id_anggaran'),
-      'keterangan'          => $this->input->post('keterangan'),
-      'file'                => $filename . '.pdf'
+      'pengikut_1'          => $this->input->post('pengikut_1'),
+      'pengikut_2'          => $this->input->post('pengikut_2'),
+      'pengikut_3'          => $this->input->post('pengikut_3'),
+      'id_kegiatan'         => $this->input->post('id_kegiatan'),
+      'id_komponen'         => $this->input->post('id_komponen'),
+      'id_anggaran'         => $this->input->post('id_anggaran'),
+      'keterangan'          => $this->input->post('keterangan')
     ]);
   }
   
