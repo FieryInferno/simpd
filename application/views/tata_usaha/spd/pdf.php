@@ -196,11 +196,9 @@
           <tr>
             <td>&nbsp;</td>
             <td>
-              
-              <div> 1. <?= $pegawai1['nama']; ?> </div>
-              <div> 2. <?= $pegawai2['nama']; ?> </div>
-              <div> 3. <?= $pegawai3['nama']; ?> </div>
-              
+              <div> 1. <?= $pegawai1 ? $pegawai1['nama'] : ''; ?> </div>
+              <div> 2. <?= $pegawai2 ? $pegawai2['nama'] : ''; ?> </div>
+              <div> 3. <?= $pegawai3 ? $pegawai3['nama'] : ''; ?> </div>
             </td>
           </tr>
         </table>
@@ -214,11 +212,9 @@
           </tr>
           <tr>
             <td>
-              
-              <div>  1. <?= tgl_indo($pegawai1['tanggallahir']); ?> </div>
-            <div>    2. <?= tgl_indo($pegawai2['tanggallahir']); ?> </div>
-              <div>  3. <?= tgl_indo($pegawai3['tanggallahir']); ?> </div>
-              
+              <div> 1. <?= $pegawai1 ? tgl_indo($pegawai1['tanggallahir']) : ''; ?> </div>
+              <div> 2. <?= $pegawai2 ? tgl_indo($pegawai2['tanggallahir']) : ''; ?> </div>
+              <div> 3. <?= $pegawai3 ? tgl_indo($pegawai3['tanggallahir']) : ''; ?> </div>
             </td>
           </tr>
         </table>
@@ -332,10 +328,10 @@
   <!-- rincian biaya perjalanan dinas -->
   <?php
     $rbp  = [];
-    if ($pegawai) $rbp[0]   = $pegawai;
-    if ($pegawai1) $rbp[1]  = $pegawai1;
-    if ($pegawai2) $rbp[2]  = $pegawai2;
-    if ($pegawai3) $rbp[3]  = $pegawai3;
+    $rbp[0]   = $pegawai;
+    $rbp[1]  = $pegawai1;
+    $rbp[2]  = $pegawai2;
+    $rbp[3]  = $pegawai3;
     for ($i=0; $i < 4; $i++) { 
       if ($rbp[$i]) { ?>
         <center><div class="text-center"><strong>RINCIAN BIAYA PERJALANAN DINAS</strong></div></center>
@@ -523,15 +519,15 @@
       <td>Pengikut</td>
       <td>:</td>
       <td>
-        <div><?= $pegawai1['nama']; ?> </div>
+        <div><?= $pegawai1 ? $pegawai1['nama'] : ''; ?> </div>
       </td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td>
-        <div><?= $pegawai2['nama']; ?> </div>
-        <div><?= $pegawai3['nama']; ?> </div>
+        <div><?= $pegawai2 ? $pegawai2['nama'] : ''; ?> </div>
+        <div><?= $pegawai3 ? $pegawai3['nama'] : ''; ?> </div>
       </td>
     </tr>
     <tr>
@@ -598,10 +594,10 @@
   <!-- kwitansi -->
   <?php
     $rbp  = [];
-    if ($pegawai) $rbp[0]   = $pegawai;
-    if ($pegawai1) $rbp[1]  = $pegawai1;
-    if ($pegawai2) $rbp[2]  = $pegawai2;
-    if ($pegawai3) $rbp[3]  = $pegawai3;
+    $rbp[0] = $pegawai;
+    $rbp[1] = $pegawai1;
+    $rbp[2] = $pegawai2;
+    $rbp[3] = $pegawai3;
     for ($i=0; $i < 4; $i++) { 
       if ($rbp[$i]) { ?>
         <table width="100%">
