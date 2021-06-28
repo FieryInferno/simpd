@@ -19,7 +19,7 @@
     <tr>
       <td>Nama Pelaksana</td>
       <td>&nbsp;:&nbsp;</td>
-      <td><?= count($lhp) > 0 ? $lhp[0]->pegawai : '' ; ?></td>
+      <td><?= count($lhp) > 0 ? $lhp[0]->nama_pegawai : '' ; ?></td>
     </tr>
     <tr>
       <td>Wilayah Tugas</td>
@@ -80,11 +80,14 @@
             <td><?php echo $row->permasalahan?></td>
             <td><?php echo $row->solusi?></td>
             <td><?php echo $row->keterangan?></td>
-            <td><img src="<?= base_url('assets/' . $row->bukti_kegiatan); ?>" alt="" width="10%"></td>
+            <td><img src="<?= base_url('assets/' . $row->bukti_kegiatan); ?>" alt="" width="100%"></td>
           </tr>
         <?php }
       ?>
     </tbody>
   </table>
+  <script type="text/javascript">
+    window.print();
+  </script>
 </body>
 </html>

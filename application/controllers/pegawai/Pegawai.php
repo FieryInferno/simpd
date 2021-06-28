@@ -42,13 +42,20 @@ class Pegawai extends CI_Controller {
 		$keterangan   = $_POST ['keterangan'];
     
     $config['upload_path']    = './assets/';
-    $config['allowed_types']  = 'pdf';
+    $config['allowed_types']  = 'png|jpg|jpeg';
 
     $this->upload->initialize($config);
 
     if ( ! $this->upload->do_upload('bukti_kegiatan')) {
-      print_r($this->upload->display_errors());
-      die();
+      $this->session->set_flashdata('pesan', '
+        <div class="alert alert-danger alert-dismissible show" role="alert">
+          <strong>Gagal!</strong> ' . validation_errors() . '
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ');
+      redirect('pegawai/lhp/lihat/' . $id_spd);
     } else {
       $bukti_kegiatan = $this->upload->data('file_name');
     }
@@ -121,19 +128,19 @@ class Pegawai extends CI_Controller {
   public function cetakLhp($id_spd)
   {
     $data['lhp'] = $this->M_Lhp->get_lhp($id_spd);
-    ob_start();
+    // ob_start();
       $this->load->view('Pegawai/LhpPdf.php', $data);
-      $html = ob_get_contents();
-    ob_end_clean();
-    ob_clean();
-    $filename   = uniqid();
-    $options  	= new Options();
-    $options->set('isRemoteEnabled', TRUE);
-    $dompdf = new Dompdf($options);
-    $dompdf->loadHtml($html);
-    $dompdf->setPaper('legal', 'landscape');
-    $dompdf->render();
-    $dompdf->stream($filename, array("Attachment" => 0) );
+    //   $html = ob_get_contents();
+    // ob_end_clean();
+    // ob_clean();
+    // $filename   = uniqid();
+    // $options  	= new Options();
+    // $options->set('isRemoteEnabled', TRUE);
+    // $dompdf = new Dompdf($options);
+    // $dompdf->loadHtml($html);
+    // $dompdf->setPaper('legal', 'landscape');
+    // $dompdf->render();
+    // $dompdf->stream($filename, array("Attachment" => 0) );
   }
 
   public function tingkat()

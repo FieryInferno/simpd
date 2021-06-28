@@ -18,10 +18,11 @@ class M_SPD extends CI_Model {
 
   public function getbyIdPegawai()
   {
-    $this->db->select('*');
-    $this->db->from('spd');
-    $this->db->where('id_pegawai', $_SESSION['id']);
-    return $this->db->get()->result();
+    $this->db->where('id_pegawai', $this->session->id);
+    $this->db->or_where('pengikut_1', $this->session->id);
+    $this->db->or_where('pengikut_2', $this->session->id);
+    $this->db->or_where('pengikut_3', $this->session->id);
+    return $this->db->get('spd')->result();
   }
 
   public function getByIdSPD($id_spd)
