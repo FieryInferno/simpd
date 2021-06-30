@@ -44,6 +44,7 @@ public function index()
 			$_SESSION['username'] = $user['username'];
 			$_SESSION['akses']    = $user['akses'];
 			$_SESSION['foto']     = $user['foto'];
+			$_SESSION['eselon']   = $user['eselon'];
 
       switch ($user['akses']) {
         case 'pegawai':

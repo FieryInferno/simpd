@@ -130,4 +130,47 @@ class RealisasiBiaya extends CI_Controller {
     $dompdf->render();
     $dompdf->stream($filename, array("Attachment" => 0) );
   }
+
+  public function pengembalianBiaya($id_spd)
+  {
+    $this->db->join('wilayah_kecamatan', 'spd.kecamatan_tujuan = wilayah_kecamatan.id');
+    $this->db->select('spd.*, wilayah_kecamatan.nama as nama_kecamatan');
+    $data['spd']  = $this->db->get_where('spd', ['id_spd' => $id_spd])->row_array(); 
+
+    $data['transportasi'] = $this->db->get_where('transportasi', ['id_kabupaten'  => $data['spd']['kabupaten_tujuan']])->row_array();
+
+    $sbm  = $this->db->get_where('sbm', [
+      'provinsi'  => $data['spd']['provinsi_tujuan']
+    ])->row_array();
+    if ($data['spd']['kabupaten_berangkat'] == $data['spd']['kabupaten_tujuan']) {
+      $data['uangHarian']   = $sbm['dalam_kota'];
+      switch ($this->session->eselon) {
+        case 'I':
+          $data['representasi'] = 100000;
+          break;
+        case 'II':
+          $data['representasi'] = 75000;
+          break;
+        
+        default:
+          # code...
+          break;
+      }
+    } else {
+      $data['uangHarian'] = $sbm['luar_kota'];
+      switch ($this->session->eselon) {
+        case 'I':
+          $data['representasi'] = 200000;
+          break;
+        case 'II':
+          $data['representasi'] = 150000;
+          break;
+        
+        default:
+          # code...
+          break;
+      }
+    }
+    $this->load->view('pegawai/pengembalian_biaya', $data);
+  }
 }
