@@ -69,32 +69,105 @@ class Spd extends CI_Controller {
     } else {
       $data['uangHarian'] = $sbm['luar_kota'];
     }
-
+    $data['totalUangHarian']  = $data['uangHarian'] * $data['lama_hari'];
+    // $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
+    // $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
     if ($data['lama_hari'] > 1) {
       switch ($data['pegawai']['eselon']) {
         case 'I':
-          $data['uangFull'] = $sbm['i'];
+          $data['pegawai']['uangFull'] = $sbm['i'];
           break;
         case 'II':
-          $data['uangFull'] = $sbm['ii'];
+          $data['pegawai']['uangFull'] = $sbm['ii'];
           break;
         case 'III':
-          $data['uangFull'] = $sbm['iii'];
+          $data['pegawai']['uangFull'] = $sbm['iii'];
           break;
         case 'IV':
-          $data['uangFull'] = $sbm['iv'];
+          $data['pegawai']['uangFull'] = $sbm['iv'];
           break;
         
         default:
           # code...
           break;
       }
+      $data['pegawai']['totalUangFull']    = $data['pegawai']['uangFull'] * $data['lama_hari'];
+      $data['pegawai']['totalUang']   = $data['uangHarian'] + $data['pegawai']['totalUangFull'];
+
+      if ($data['pegawai1']) {
+        switch ($data['pegawai1']['eselon']) {
+          case 'I':
+            $data['pegawai1']['uangFull'] = $sbm['i'];
+            break;
+          case 'II':
+            $data['pegawai1']['uangFull'] = $sbm['ii'];
+            break;
+          case 'III':
+            $data['pegawai1']['uangFull'] = $sbm['iii'];
+            break;
+          case 'IV':
+            $data['pegawai1']['uangFull'] = $sbm['iv'];
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+        $data['pegawai1']['totalUangFull']    = $data['pegawai1']['uangFull'] * $data['lama_hari'];
+        $data['pegawai1']['totalUang']  = $data['uangHarian'] + $data['pegawai1']['totalUangFull'];
+      }
+      
+      if ($data['pegawai2']) {
+        switch ($data['pegawai2']['eselon']) {
+          case 'I':
+            $data['pegawai2']['uangFull'] = $sbm['i'];
+            break;
+          case 'II':
+            $data['pegawai2']['uangFull'] = $sbm['ii'];
+            break;
+          case 'III':
+            $data['pegawai2']['uangFull'] = $sbm['iii'];
+            break;
+          case 'IV':
+            $data['pegawai2']['uangFull'] = $sbm['iv'];
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+        $data['pegawai2']['totalUangFull']    = $data['pegawai2']['uangFull'] * $data['lama_hari'];
+        $data['pegawai2']['totalUang']  = $data['uangHarian'] + $data['pegawai2']['totalUangFull'];
+      }
+      
+      if ($data['pegawai3']) {
+        switch ($data['pegawai3']['eselon']) {
+          case 'I':
+            $data['pegawai3']['uangFull'] = $sbm['i'];
+            break;
+          case 'II':
+            $data['pegawai3']['uangFull'] = $sbm['ii'];
+            break;
+          case 'III':
+            $data['pegawai3']['uangFull'] = $sbm['iii'];
+            break;
+          case 'IV':
+            $data['pegawai3']['uangFull'] = $sbm['iv'];
+            break;
+          
+          default:
+            # code...
+            break;
+        }
+        $data['pegawai3']['totalUangFull']    = $data['pegawai3']['uangFull'] * $data['lama_hari'];
+        $data['pegawai3']['totalUang']  = $data['uangHarian'] + $data['pegawai3']['totalUangFull'];
+      }
     } else {
-      $data['uangFull'] = 0;
+      $data['pegawai']['totalUangFull']   = 0;
+      $data['pegawai1']['totalUangFull']  = 0;
+      $data['pegawai2']['totalUangFull']  = 0;
+      $data['pegawai3']['totalUangFull']  = 0;
     }
-    $data['totalUangHarian']  = $data['uangHarian'] * $data['lama_hari'];
-    $data['totalUangFull']    = $data['uangFull'] * $data['lama_hari'];
-    $data['totalUang']        = $data['uangHarian'] + $data['totalUangFull'];
     $data['bendahara']        = $this->M_Pegawai->getBendahara();
     $data['ppk']              = $this->M_Pegawai->getPPK();
     $data['kepala']           = $this->M_Pegawai->getKepala();

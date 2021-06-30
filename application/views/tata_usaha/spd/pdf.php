@@ -370,19 +370,19 @@
           </tr>
           <tr>
             <td>4</td>
-            <td>Uang saku fullday selama <?= $lama_hari; ?> hari x <?= "Rp " . number_format($uangFull, 2, ',', '.'); ?></td>
-            <td><?= 'Rp. ' . number_format($totalUangFull, 2, ',', '.'); ?></td>
+            <td>Uang saku fullday selama <?= $lama_hari; ?> hari x <?= "Rp " . number_format($rbp[$i]['uangFull'], 2, ',', '.'); ?></td>
+            <td><?= 'Rp. ' . number_format($rbp[$i]['totalUangFull'], 2, ',', '.'); ?></td>
             <td></td>
           </tr>
           <tr>
             <td></td>
             <td>Jumlah Rp.</td>
-            <td><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></td>
+            <td><?= 'Rp. ' . number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></td>
             <td></td>
           </tr>
           <tr>
             <td class="text-center" colspan="4">
-              <?= terbilang($totalUang); ?>
+              <?= terbilang($rbp[$i]['totalUang']); ?>
             </td>
           </tr>
         </table>
@@ -397,8 +397,8 @@
             <td>Telah menerima sejumlah uang sebesar : </td>
           </tr>
           <tr>
-            <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></strong></td>
-            <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></strong></td>
+            <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></strong></td>
+            <td style="font-size: 20px;"><strong><?= 'Rp. ' . number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></strong></td>
           </tr>
           <tr>
             <td>Lunas pada tanggal : </td>
@@ -437,13 +437,13 @@
           <tr>
             <td width="30%">Ditetapkan sejumlah</td>
             <td width="5%">Rp.</td>
-            <td class="text-right" width="30%"><?= number_format($totalUang, 2, ',', '.'); ?></td>
+            <td class="text-right" width="30%"><?= number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></td>
             <td width="35%"></td>
           </tr>
           <tr>
             <td>Yang telah dibayar semula</td>
             <td>Rp.</td>
-            <td class="text-right"><?= number_format($totalUang, 2, ',', '.'); ?></td>
+            <td class="text-right"><?= number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></td>
             <td></td>
           </tr>
           <tr>
@@ -455,7 +455,7 @@
           <tr>
             <td>Jumlah</td>
             <td>Rp.</td>
-            <td class="text-right"><?= number_format($totalUang, 2, ',', '.'); ?></td>
+            <td class="text-right"><?= number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></td>
             <td></td>
           </tr>
         </table>
@@ -643,7 +643,7 @@
           <tr>
             <td>Uang sebesar</td>
             <td>:</td>
-            <td><?= 'Rp. ' . number_format($totalUang, 2, ',', '.'); ?></td>
+            <td><?= 'Rp. ' . number_format($rbp[$i]['totalUang'], 2, ',', '.'); ?></td>
           </tr>
           <tr>
             <td><br></td>
@@ -683,7 +683,7 @@
           <tr>
             <td>Terbilang</td>
             <td>:</td>
-            <td><?= terbilang($totalUang); ?></td>
+            <td><?= terbilang($rbp[$i]['totalUang']); ?></td>
           </tr>
         </table>
         <br><br><br>
