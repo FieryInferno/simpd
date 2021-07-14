@@ -11,3 +11,5 @@ $route['tata_usaha/spd/upload'] = 'tata_usaha/Spd/upload';
 
 $route['wilayah/kabupaten'] = 'wilayah/kabupaten';
 $route['wilayah/kecamatan'] = 'wilayah/kecamatan';
+
+$route['kepala_seksi/spd']  = 'kepala_seksi/kasi/spd';

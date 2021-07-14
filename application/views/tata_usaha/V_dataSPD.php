@@ -1,20 +1,25 @@
- <center><div class="alert alert-success alert-dismissible" style = "color: blue;" role="alert"><h4>
-               Selamat datang <?php echo $_SESSION['nama']?>, anda login sebagai</strong>
-                <?php
-                switch ($_SESSION['akses']) {
-                  case 'tu':
-                    echo 'Tata Usaha';
-                    break;
-                  case 'Admin ':
-                    echo 'admin';
-                    break;
-                    default:
-                    # code...
-                    break;
-                }
-              ?>
-          <strong><h4>
-      </div> </center>
+<center>
+  <div class="alert alert-success alert-dismissible" style = "color: blue;" role="alert">
+    <h4>
+      Selamat datang <?php echo $_SESSION['nama']?>, anda login sebagai 
+      <strong>
+        <?php
+          switch ($_SESSION['akses']) {
+            case 'tu':
+              echo 'Tata Usaha';
+              break;
+            case 'Admin ':
+              echo 'admin';
+              break;
+              default:
+              # code...
+              break;
+          }
+        ?>
+      </strong>
+    <h4>
+  </div> 
+</center>
 
 <div class="row">
   <div class="col-xs-12">

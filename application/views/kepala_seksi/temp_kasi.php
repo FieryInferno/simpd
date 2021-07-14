@@ -28,11 +28,11 @@
  
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bower_components/datatables.net-bs/css/dataTables.bootstrap4.min.css">
-   <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/datatables.net-bs/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/bower_components/datatables.net-bs/css/responsive.bootstrap4.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
+    folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -43,8 +43,7 @@
   <![endif]-->
 
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -57,113 +56,94 @@
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="sidebar-mini skin-blue-light">
-<div class="wrapper">
-
-  <header class="main-header">
-    <!-- Logo -->
-    <a href="<?php echo base_url(); ?>assets/index2.html" class="logo">
-      <div class="pull-left image">
+  <div class="wrapper">
+    <header class="main-header">
+      <!-- Logo -->
+      <a href="<?php echo base_url(); ?>assets/index2.html" class="logo">
+        <div class="pull-left image">
           <br>
-         
         </div>
-
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>A</b>LT</span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"> <FONT SIZE= "5"><b>SIMKPD</b></FONT> 
-</span>
-
-    </a>
-
-
-    <!-- Header Navbar: style can be found in header.less -->
-    <nav class="navbar navbar-static-top">
-
-      <!-- Sidebar toggle button-->
-      <a href="<?php echo base_url(); ?>assets/#" class="sidebar-toggle" data-toggle="push-menu" role="button">
-        <span class="sr-only">Toggle navigation</span>
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>A</b>LT</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"> <FONT SIZE= "5"><b>SIMKPD</b></FONT> </span>
       </a>
-
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- Messages: style can be found in dropdown.less-->
-         
-          <!-- Notifications: style can be found in dropdown.less -->
+      <!-- Header Navbar: style can be found in header.less -->
+      <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a href="<?php echo base_url(); ?>assets/#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+          <span class="sr-only">Toggle navigation</span>
+        </a>
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+            <!-- Messages: style can be found in dropdown.less-->
           
-          <!-- Tasks: style can be found in dropdown.less -->
-          
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="<?php echo base_url(); ?>assets/#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?php echo base_url(); ?>assets/images/<?php echo $_SESSION['foto'] ;?>" class="user-image" alt="User Image">
-              <span class="hidden-xs"><?php echo $_SESSION['pegawai'] ;?></span>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-               <li class="user-header">
-                <img src="<?php echo base_url(); ?>assets/images/<?php echo $_SESSION['foto'] ;?>"  class="img-circle" alt="User Image">
+            <!-- Notifications: style can be found in dropdown.less -->
+            
+            <!-- Tasks: style can be found in dropdown.less -->
+            
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+              <a href="<?php echo base_url(); ?>assets/#" class="dropdown-toggle" data-toggle="dropdown">
+                <img src="<?php echo base_url(); ?>assets/images/<?php echo $_SESSION['foto'] ;?>" class="user-image" alt="User Image">
+                <span class="hidden-xs"><?php echo $_SESSION['pegawai'] ;?></span>
+              </a>
+              <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                  <img src="<?php echo base_url(); ?>assets/images/<?php echo $_SESSION['foto'] ;?>"  class="img-circle" alt="User Image">
 
-                <p>
-                <?php echo $_SESSION['pegawai'] ;?>
-                 <font face="calibri" size = "5 " color="white"><?php echo $_SESSION['nama'] ;?></font> 
-                </p>
-              </li>
-              <!-- Menu Body -->
-              <li class="user-body">
-                
-                <!-- /.row -->
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a class="btn btn-default btn-default" data-toggle="modal" data-target="#modal-info">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="<?php echo base_url()."index.php/c_login/logout"?>" class="btn btn-default btn-flat">Log out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-       
-        </ul>
-      </div>
+                  <p>
+                  <?php echo $_SESSION['pegawai'] ;?>
+                  <font face="calibri" size = "5 " color="white"><?php echo $_SESSION['nama'] ;?></font> 
+                  </p>
+                </li>
+                <!-- Menu Body -->
+                <li class="user-body">
+                  
+                  <!-- /.row -->
+                </li>
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                  <div class="pull-left">
+                    <a class="btn btn-default btn-default" data-toggle="modal" data-target="#modal-info">Profile</a>
+                  </div>
+                  <div class="pull-right">
+                    <a href="<?php echo base_url()."index.php/c_login/logout"?>" class="btn btn-default btn-flat">Log out</a>
+                  </div>
+                </li>
+              </ul>
+            </li>
+            <!-- Control Sidebar Toggle Button -->
+          </ul>
+        </div>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
     <section class="sidebar">
-       <div class="user-panel">
+      <div class="user-panel">
         <div class="pull-left image">
           <br>
-         <img src="<?php echo base_url(); ?>assets/images/logobps.png" width = "100px">
+          <img src="<?php echo base_url(); ?>assets/images/logobps.png" width = "100px">
         </div>
-       <br>
-       
-          <a href="#" class="logo">
-            <span class="logo-lg"><font face="arial" size ="5">  BPS Subang </font></span>
+        <br>
+        <a href="#" class="logo">
+          <span class="logo-lg"><font face="arial" size ="5">  BPS Subang </font></span>
+        </a>
+        <br>
+        <div class="panel">
+          <ul class="sidebar-menu" data-widget="tree">
+          <li>
+            <a href="<?php echo base_url()."index.php/kepala_seksi/Kasi/index"?>">
+              <i class="fa fa-bank"></i> <span>Dashboard</span>
             </a>
-        
-       
-         <br>
-       
-<div class="panel">
-        <ul class="sidebar-menu" data-widget="tree">
-         
-         <li>
-          <a href="<?php echo base_url()."index.php/kepala_seksi/Kasi/index"?>">
-            <i class="fa fa-bank"></i> <span>Dashboard</span>
-
-          </a>
-        </li>
-         <li>
-          <a href="<?php echo base_url()."index.php/kepala_seksi/Kasi/surat_tugas"?>">
-            <i class="fa fa-file"></i> <span>Surat Tugas</span>
-
-          </a>
-       
-          
-</li> 
+          </li>
+          <li>
+            <a href="<?= base_url('kepala_seksi/spd'); ?>">
+              <i class="fa fa-file"></i> <span>SPD</span>
+            </a>
+          </li> 
 </ul>
  </div>
 

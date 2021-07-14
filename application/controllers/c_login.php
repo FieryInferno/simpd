@@ -7,8 +7,7 @@ use Dompdf\Options;
 
 class c_login extends CI_Controller {
 
-
-public function index()
+  public function index()
 	{
     // $data = [];
     // ob_start();
@@ -29,14 +28,12 @@ public function index()
 	}
 
 	public function cek(){
-$username = $this->input->post('username');
-$password= $this->input->post('password');
-$cnt   = $this->db->get_where('pegawai',array('username'=> $username,'password' => $password))->num_rows();
-$user = $this->db->get_where('pegawai', array('username' => $username ))->row_array();
-	$this->username = $username ;
-if ($cnt > 0 && $user ['akses'] == 'pegawai'){
-
-			
+    $username = $this->input->post('username');
+    $password = $this->input->post('password');
+    $cnt      = $this->db->get_where('pegawai',array('username'=> $username,'password' => $password))->num_rows();
+    $user     = $this->db->get_where('pegawai', array('username' => $username ))->row_array();
+    $this->username = $username ;
+    if ($cnt > 0 && $user ['akses'] == 'pegawai'){			
 			$_SESSION['nip'] = $user['nip'];
 			$_SESSION['id'] = $user['id'];
 			$_SESSION['nama'] = $user['nama'];
@@ -51,9 +48,7 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			alert ('login user pegawai')
 			</script>" ;
 			header ('location:'.base_url().'pegawai/pegawai');
-
-	}else if ($cnt > 0 && $user ['akses'] == 'admin')
-	{
+    } else if ($cnt > 0 && $user ['akses'] == 'admin') {
 			$_SESSION['nip'] = $user['nip'];
 			$_SESSION['nama'] = $user['nama'];
 			$_SESSION['pegawai'] = $user['pegawai'];
@@ -63,13 +58,11 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
-		echo "<script> 
-		alert ('login user administrator')
-		</script>" ;
-		header ('location:'.base_url().'administrator/administrator');
-		
-	}else if ($cnt > 0 && $user ['akses'] == 'tu')
-	{
+      echo "<script> 
+      alert ('login user administrator')
+      </script>" ;
+      header ('location:'.base_url().'administrator/administrator');
+    } else if ($cnt > 0 && $user ['akses'] == 'tu') {
 			$_SESSION['nip'] = $user['nip'];
 			$_SESSION['nama'] = $user['nama'];
 			$_SESSION['pegawai'] = $user['pegawai'];
@@ -79,26 +72,25 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
-		echo "<script> 
-		alert ('login user tata usaha')
-		</script>" ;
-		header ('location:'.base_url().'tata_usaha/tata_usaha');
-	}else if ($cnt > 0 && $user ['akses'] == 'kasi')
-	{
-			$_SESSION['nip'] = $user['nip'];
-			$_SESSION['nama'] = $user['nama'];
-			$_SESSION['pegawai'] = $user['pegawai'];
-			$_SESSION['jabatan'] = $user['jabatan'];
+      echo "<script> 
+      alert ('login user tata usaha')
+      </script>" ;
+      header ('location:'.base_url().'tata_usaha/tata_usaha');
+    } else if ($cnt > 0 && $user ['akses'] == 'kepala_seksi') {
+			$_SESSION['nip']      = $user['nip'];
+			$_SESSION['nama']     = $user['nama'];
+			$_SESSION['pegawai']  = $user['pegawai'];
+			$_SESSION['jabatan']  = $user['jabatan'];
 			$_SESSION['golongan'] = $user['golongan'];
 			$_SESSION['username'] = $user['username'];
-			$_SESSION['eselon'] = $user['eselon'];
-			$_SESSION['akses'] = $user['akses'];
-			$_SESSION['foto'] = $user['foto'];
-		echo "<script> 
-		alert ('login user kepala seksi')
-		</script>" ;
-		header ('location:'.base_url().'index.php/kepala_seksi/Kasi/index');
-	}else{
+			$_SESSION['eselon']   = $user['eselon'];
+			$_SESSION['akses']    = $user['akses'];
+			$_SESSION['foto']     = $user['foto'];
+      echo "<script> 
+      alert ('login user kepala seksi')
+      </script>" ;
+      header ('location:'.base_url().'index.php/kepala_seksi/Kasi/index');
+    } else {
 		$this->session->set_flashdata('pesan', '
         <div class="alert alert-danger alert-dismissible" role="alert">
           <strong>Gagal!</strong> Username atau password salah.
@@ -109,7 +101,6 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
       ');
       redirect();
     }
-
 }
 
  function logout()

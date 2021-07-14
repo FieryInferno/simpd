@@ -50,4 +50,11 @@ class Kasi extends CI_Controller {
   
 		$this->load->view('kepala_seksi/temp_kasi', $data);
   }
+
+  public function spd()
+  {
+    $data['data']     = $this->db->get_where('spd', ['bagian' => $this->session->jabatan])->result();
+		$data['content']	= 'kepala_seksi/spd';
+		$this->load->view('kepala_seksi/temp_kasi', $data);
+  }
 }
