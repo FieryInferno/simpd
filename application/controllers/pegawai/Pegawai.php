@@ -165,19 +165,19 @@ class Pegawai extends CI_Controller {
   public function cetak_Lhp($id_spd)
   {
     $data['lhp'] = $this->M_Lhp->get_lhp($id_spd);
-    ob_start();
+    // ob_start();
       $this->load->view('Pegawai/LhpPdf.php', $data);
-      $html = ob_get_contents();
-    ob_end_clean();
-    ob_clean();
-    $filename   = uniqid();
-    $options    = new Options();
-    $options->set('isRemoteEnabled', TRUE);
-    $dompdf = new Dompdf($options);
-    $dompdf->loadHtml($html);
-    $dompdf->setPaper('legal', 'landscape');
-    $dompdf->render();
-    $dompdf->stream($filename, array("Attachment" => 0) );
+    //   $html = ob_get_contents();
+    // ob_end_clean();
+    // ob_clean();
+    // $filename   = uniqid();
+    // $options    = new Options();
+    // $options->set('isRemoteEnabled', TRUE);
+    // $dompdf = new Dompdf($options);
+    // $dompdf->loadHtml($html);
+    // $dompdf->setPaper('legal', 'landscape');
+    // $dompdf->render();
+    // $dompdf->stream($filename, array("Attachment" => 0) );
 
   }
   public function tingkat()
@@ -320,6 +320,10 @@ class Pegawai extends CI_Controller {
     $this->db->join('wilayah_kecamatan', 'spd.kecamatan_tujuan = wilayah_kecamatan.id');
     $this->db->select('spd.*, wilayah_kecamatan.nama as nama_kecamatan');
     $data['spd']  = $this->db->get_where('spd', ['id_spd' => $id_spd])->row_array(); 
+
+    $tanggalBerangkat   = new DateTime($data['spd']['tanggalBerangkat']);
+    $tanggalKembali     = new DateTime($data['spd']['tanggalKembali']);
+    $data['lama_hari']  = $tanggalKembali->diff($tanggalBerangkat)->format("%a")+1;
 
     $data['transportasi'] = $this->db->get_where('transportasi', ['id_kabupaten'  => $data['spd']['kabupaten_tujuan']])->row_array();
 

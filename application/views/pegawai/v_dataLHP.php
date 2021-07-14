@@ -49,7 +49,7 @@
                 <td>
                   <a href="<?= base_url()."pegawai/pegawai/lihat_lhp/$row->id_spd"?>" type="button" class="btn btn-success btn-sm" ><i class="fa fa-eye"></i> Detail </a>
                   <a href="<?= base_url('tata_usaha/tata_usaha/lihat_spd/' . $row->id_spd); ?>" type="button" class="btn btn-warning btn-sm" target="_blank"><i class="fa fa-eye"></i> Lihat Surat SPD </a>
-                  <a href="<?= base_url()."pegawai/pegawai/cetak_lhp/$row->id_spd" ?>" type="button" class="btn btn-primary btn-sm" ><i class="fa fa-print"></i> Cetak </a>
+                  <a href="<?= base_url()."pegawai/pegawai/cetak_lhp/$row->id_spd" ?>" type="button" class="btn btn-primary btn-sm" target="_blank"><i class="fa fa-print"></i> Cetak </a>
                 </td>
                 
               </tr>

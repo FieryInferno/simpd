@@ -122,59 +122,96 @@
       ?>
     </tbody>
   </table>
+
+  <table width="100%">
+    <tr>
+      <td width="50%"></td>
+      <td width ="50%">
+        <div class="text-center">Subang, <?= tgl_indo(date('Y-m-d')); ?></div>
+        <div class="text-center">Yang melaporkan</div>
+        <br><br><br><br>
+        <div class="text-center"><strong><u><?= $this->session->nama; ?></u></strong></div>
+        <div class="text-center">NIP. <?= $this->session->nip; ?></div>
+      </td>
+    </tr>
+  </table>
   <div style="page-break-before: always;"></div>
 
 <div class="text-center">PENGEMBALIAN BIAYA PERJALANAN DINAS</div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Rincian Biaya</th>
-        <th scope="col">Realiasasi Biaya</th>
-        <th scope="col">Pengembalian Biaya</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <tr>
-        <?php
-          $total_transportasi = ((integer) $transportasi['biaya']) - ((integer) $realisasi_transportasi);
-        ?>
-        <td>Transportasi : <?= 'Rp. ' . number_format($transportasi['biaya'], 2, ',', '.'); ?></td>
-        <td>Transportasi : <?= 'Rp. ' . number_format($realisasi_transportasi, 2, ',', '.'); ?></td>
-        <td><?= 'Rp. ' . number_format($total_transportasi, 2, ',', '.'); ?></td>
-      </tr>
-      <tr>
-        <?php
-          $total_penginapan = ((integer) $uangHarian) - ((integer) $realisasi_penginapan);
-        ?>
-        <td>Penginapan : <?= 'Rp. ' . number_format($uangHarian, 2, ',', '.'); ?></td>
-        <td>Penginapan : <?= 'Rp. ' . number_format($realisasi_penginapan, 2, ',', '.'); ?></td>
-        <td><?= 'Rp. ' . number_format($total_penginapan, 2, ',', '.'); ?></td>
-      </tr>
+<table>
+  <tr>
+    <td><strong>Nama Pelaksana</strong></td>
+    <td>&nbsp;:&nbsp;</td>
+    <td><?= count($realisasi) > 0 ? $realisasi[0]['nama'] : '' ; ?></td>
+  </tr>
+  <tr>
+    <td><strong>Nomor SPD</strong></td>
+    <td>&nbsp;:&nbsp;</td>
+    <td><?= count($realisasi) > 0 ? $realisasi[0]['nomor_spd'] : '' ; ?></td>
+  </tr>
+  <tr>
+    <td><strong>Tanggal</strong></td>
+    <td>&nbsp;:&nbsp;</td>
+    <td>
+      <?php 
+        echo count($realisasi) > 0 ? tgl_indo($realisasi[0]['tanggalBerangkat']) : '' ; ?>
+    </td>
+  </tr>
+  <tr>
+    <td><strong>Dalam Rangka</strong></td>
+    <td>&nbsp;:&nbsp;</td>
+    <td><?= count($realisasi) > 0 ? $realisasi[0]['tujuan'] : '' ; ?></td>
+  </tr>
+</table>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Rincian Biaya</th>
+      <th scope="col">Realiasasi Biaya</th>
+      <th scope="col">Pengembalian Biaya</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
       <?php
-        if (isset($representasi)) { ?>
-          <tr>
-            <?php
-              $total_representasi = ((integer) $representasi) - ((integer) $realisasi_representasi);
-            ?>
-            <td>Representasi : <?= 'Rp. ' . number_format($representasi, 2, ',', '.'); ?></td>
-            <td>Representasi : <?= 'Rp. ' . number_format($realisasi_representasi, 2, ',', '.'); ?></td>
-            <td><?= 'Rp. ' . number_format($total_representasi, 2, ',', '.'); ?></td>
-          </tr>
-        <?php }
+        $total_transportasi = ((integer) $transportasi['biaya'] * $lama_hari) - ((integer) $realisasi_transportasi);
       ?>
-       <tr>
+      <td>Transportasi : <?= 'Rp. ' . number_format($transportasi['biaya'] * $lama_hari, 2, ',', '.'); ?></td>
+      <td>Transportasi : <?= 'Rp. ' . number_format($realisasi_transportasi, 2, ',', '.'); ?></td>
+      <td><?= 'Rp. ' . number_format($total_transportasi, 2, ',', '.'); ?></td>
+    </tr>
+    <tr>
+      <?php
+        $total_penginapan = ((integer) $uangHarian * $lama_hari) - ((integer) $realisasi_penginapan);
+      ?>
+      <td>Penginapan : <?= 'Rp. ' . number_format($uangHarian * $lama_hari, 2, ',', '.'); ?></td>
+      <td>Penginapan : <?= 'Rp. ' . number_format($realisasi_penginapan, 2, ',', '.'); ?></td>
+      <td><?= 'Rp. ' . number_format($total_penginapan, 2, ',', '.'); ?></td>
+    </tr>
+    <?php
+      if (isset($representasi)) { ?>
+        <tr>
+          <?php
+            $total_representasi = ((integer) $representasi * $lama_hari) - ((integer) $realisasi_representasi);
+          ?>
+          <td>Representasi : <?= 'Rp. ' . number_format($representasi * $lama_hari, 2, ',', '.'); ?></td>
+          <td>Representasi : <?= 'Rp. ' . number_format($realisasi_representasi, 2, ',', '.'); ?></td>
+          <td><?= 'Rp. ' . number_format($total_representasi, 2, ',', '.'); ?></td>
+        </tr>
+      <?php }
+    ?>
       <tr>
-        <?php
-          $total_total  = $total_penginapan + $total_transportasi;
-          isset($representasi) ? $total_total += $total_representasi : '';
-        ?>
-        <td></td>
-        <td></td>
-        <td><?='Rp. ' . number_format($total_total, 2, ',', '.'); ?></td>
-      </tr>
-    </tbody>
-  </table>
+    <tr>
+      <?php
+        $total_total  = $total_penginapan + $total_transportasi;
+        isset($representasi) ? $total_total += $total_representasi : '';
+      ?>
+      <td></td>
+      <td></td>
+      <td><?='Rp. ' . number_format($total_total, 2, ',', '.'); ?></td>
+    </tr>
+  </tbody>
+</table>
 
   <table width="100%">
     <tr>

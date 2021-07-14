@@ -30,7 +30,7 @@
                     </a>
 
                     <!-- Button trigger modal -->
-                    <a href="<?= base_url('pegawai/pegawai/pengembalianbiaya/' . $row->id_spd); ?>" class="btn btn-warning">
+                    <a href="<?= base_url('pegawai/pegawai/pengembalianbiaya/' . $row->id_spd); ?>" class="btn btn-warning" target="_blank">
                       Pengembalian Biaya
                     </a>
                     <a  data-toggle="modal" data-target="#Modalupload<?= $row->id_spd; ?>" class="btn btn-primary" ><i class="fa fa-upload"></i> Upload </a>
