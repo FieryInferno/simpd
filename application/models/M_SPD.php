@@ -55,7 +55,8 @@ class M_SPD extends CI_Model {
       'id_kegiatan'         => $this->input->post('id_kegiatan'),
       'id_komponen'         => $this->input->post('id_komponen'),
       'id_anggaran'         => $this->input->post('id_anggaran'),
-      'keterangan'          => $this->input->post('keterangan')
+      'keterangan'          => $this->input->post('keterangan'),
+      'bagian'              => $this->input->post('bagian')
     ]);
   }
   

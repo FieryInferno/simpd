@@ -31,9 +31,9 @@ class Spd extends CI_Controller {
       $data['provinsi_tujuan']      = $this->M_Wilayah->getProvinsi($this->input->post('tempat_tujuan_provinsi'));
       $data['kabupaten_tujuan']     = $this->M_Wilayah->getKabupaten($this->input->post('tempat_tujuan_kabupaten'));
       $data['kecamatan_tujuan']     = $this->M_Wilayah->getKecamatan($this->input->post('tempat_tujuan_kecamatan'));
-       $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($this->input->post('id_kegiatan'));
-       $data['komponen']             = $this->M_Komponen->getbykomponen($this->input->post('id_komponen'));
-       $data['anggaran']             = $this->M_Anggaran->getbyanggaran($this->input->post('id_anggaran'));
+      $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($this->input->post('id_kegiatan'));
+      $data['komponen']             = $this->M_Komponen->getbykomponen($this->input->post('id_komponen'));
+      $data['anggaran']             = $this->M_Anggaran->getbyanggaran($this->input->post('id_anggaran'));
       $sbm                          = $this->M_SBM->get();
       if ($this->input->post('tempat_berangkat_kabupaten') == $this->input->post('tempat_tujuan_kabupaten')) {
         $data['uangHarian'] = $sbm['dalam_kota'];

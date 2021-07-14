@@ -10,6 +10,17 @@
         <input type="text" name="nomor_spd" value = "<?php echo sprintf("%03s", $id_spd)."/"."SPD"."/"."BPS"."/"."3213"."/".date('m')."/".date('Y') ?>" class="form-control" readonly>
       </div>
       <div class="form-group">
+        <label>Bagian</label>
+        <select name="bagian" class='form-control js-example-basic-single'>
+          <option disabled selected>Pilih Bagian</option>
+          <option value="Kepala Seksi Statistik Produksi">Kepala Seksi Statistik Produksi</option>
+          <option value="Kepala Seksi Statistik Sosial">Kepala Seksi Statistik Sosial</option>
+          <option value="Kepala Seksi Statistik Distribusi">Kepala Seksi Statistik Distribusi</option>
+          <option value="Kepala Seksi NAS">Kepala Seksi NAS</option>
+          <option value="Kepala Seksi IPDS">Kepala Seksi IPDS</option>
+        </select>
+      </div>
+      <div class="form-group">
         <label>Nama Pegawai</label>
         <select name="id_pegawai" class='form-control js-example-basic-single' onchange="pilihTingkat(this)">
           <option>Pilih Pegawai</option>
