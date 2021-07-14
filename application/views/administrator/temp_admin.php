@@ -115,9 +115,7 @@
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="pull-left">
-                  <a class="btn btn-default btn-default" data-toggle="modal" data-target="#modal-info">Profile</a>
-                </div>
+                
                 <div class="pull-right">
                   <a href="<?php echo base_url()."index.php/c_login/logout"?>" class="btn btn-default btn-flat">Log out</a>
                 </div>
@@ -151,7 +149,7 @@
         <ul class="sidebar-menu" data-widget="tree">
          
          <li>
-          <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
+          <a href="<?php echo base_url()."Administrator/Administrator/index"?>">
             <i class="fa fa-bank"></i> <span>Dashboard</span>
 
           </a>
@@ -165,12 +163,24 @@
             </span>
           </a>
         <ul class ="treeview-menu">  
-        <li><a href="<?php echo base_url()."index.php/Administrator/Administrator/data_pegawai"?>">
+        <li><a href="<?php echo base_url()."administrator/administrator/data_pegawai"?>">
             <i class="fa fa-circle-o"></i>Data Pegawai</a></li>
-        <li><a href="<?php echo base_url()."index.php/Administrator/Administrator/data_jabatan"?>">
+        <li><a href="<?php echo base_url()."administrator/administrator/data_jabatan"?>">
             <i class="fa fa-circle-o"></i>Data Jabatan</a></li>
-        <li><a href="<?php echo base_url()."index.php/Administrator/Administrator/data_golongan"?>">
+        <li><a href="<?php echo base_url()."administrator/administrator/data_golongan"?>">
             <i class="fa fa-circle-o"></i>Data Golongan</a></li>
+         <li><a href="<?php echo base_url()."administrator/administrator/data_kegiatan"?>">
+            <i class="fa fa-circle-o"></i>Data Kegiatan</a></li> 
+          <li><a href="<?php echo base_url()."administrator/administrator/data_komponen"?>">
+            <i class="fa fa-circle-o"></i>Data Komponen</a></li>
+           <li><a href="<?php echo base_url()."administrator/administrator/data_anggaran"?>">
+            <i class="fa fa-circle-o"></i>Data Anggaran</a></li> 
+          <li><a href="<?php echo base_url()."administrator/administrator/data_provinsi"?>">
+            <i class="fa fa-circle-o"></i>Data Provinsi</a></li> 
+          <li><a href="<?php echo base_url()."administrator/administrator/data_kota"?>">
+            <i class="fa fa-circle-o"></i>Data Kabupaten/Kota</a></li> 
+          <li><a href="<?php echo base_url()."administrator/administrator/data_kecamatan"?>">
+            <i class="fa fa-circle-o"></i>Data Kecamatan</a></li>        
         </ul>
         
 </li> 

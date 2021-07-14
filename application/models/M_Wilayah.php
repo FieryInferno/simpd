@@ -14,6 +14,12 @@ class M_Wilayah extends CI_Model {
     }
 	}
 
+public function Insertdata($tableName,$data)
+  {
+    
+    $res = $this->db->insert($tableName,$data);
+    return $res ;
+    }
 	public function getKabupaten($id_kabupaten = null)
 	{
     if ($id_kabupaten) {
@@ -39,4 +45,33 @@ class M_Wilayah extends CI_Model {
       ])->result_array();
     }
 	}
+  public function Getallprovinsi($where="")
+  {
+    $data = $this->db->query('select * from wilayah_provinsi '.$where);
+    return $data->result_array();
+  }
+   public function Getallkota($where="")
+  {
+    $data = $this->db->query('select * from wilayah_kabupaten '.$where);
+return $data->result_array();
+
+}   
+ public function Getallkecamatan($where="")
+  {
+    $data = $this->db->query('select * from wilayah_kecamatan '.$where);
+return $data->result_array();
+    
+}  
+ public function Updatedata($tableName,$data,$where)
+  {
+    $res = $this->db->update($tableName,$data, $where);
+    return $res ;
+
+    }
+    public function Deletedata($tableName,$where)
+  {
+    $res = $this->db->delete($tableName,$where);
+    return $res ;
+
+    }
 }

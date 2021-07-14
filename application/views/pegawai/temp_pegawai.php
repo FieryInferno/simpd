@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/images/logobps.png" type="image/x-icon" />
-  <title>SIMPD | TU</title>
+  <title>SIMPD | Pegawai</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -116,7 +116,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a class="btn btn-default btn-default" data-toggle="modal" data-target="#modal-info">Profile</a>
+                  
                 </div>
                 <div class="pull-right">
                   <a href="<?php echo base_url()."index.php/c_login/logout"?>" class="btn btn-default btn-flat">Log out</a>
@@ -151,29 +151,24 @@
         <ul class="sidebar-menu" data-widget="tree">
          
          <li>
-          <a href="<?php echo base_url()."index.php/tata_usaha/C_SPD/index"?>">
+          <a href="<?php echo base_url()."pegawai/pegawai/index"?>">
             <i class="fa fa-bank"></i> <span>Dashboard</span>
 
           </a>
         </li>
          <li>
-          <a href="<?php echo base_url()."index.php/tata_usaha/tata_usaha/spd"?>">
+          <a href="<?php echo base_url()."pegawai/pegawai/data_lhp"?>">
             <i class="fa fa-file"></i> <span>LHP</span>
 
           </a>
         </li>
          <li>
-          <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
+          <a href="<?php echo base_url()."pegawai/pegawai/data_realisasi"?>">
             <i class="fa fa-money"></i> <span>Realisasi Biaya</span>
 
           </a>
         </li>
-         <li>
-          <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
-            <i class="fa fa-money"></i> <span>Pengembalian Biaya</span>
-
-          </a>
-        </li>
+         
          
           
 </li> 

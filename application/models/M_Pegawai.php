@@ -58,6 +58,27 @@ public function Getpegawai($where="")
 		return $res ;
 
 		}
+
+		public function getPPK()
+  {
+    return $this->db->get_where('pegawai', [
+      'bagian'  => 'ppk'
+    ])->row_array();
+  }
+
+  public function getBendahara()
+  {
+    return $this->db->get_where('pegawai', [
+      'bagian'  => 'bendahara'
+    ])->row_array();
+  }
+
+  public function getKepala()
+  {
+    return $this->db->get_where('pegawai', [
+      'bagian'  => 'kepala'
+    ])->row_array();
+  }
 }
 
 

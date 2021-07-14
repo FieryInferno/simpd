@@ -38,17 +38,19 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 
 			
 			$_SESSION['nip'] = $user['nip'];
+			$_SESSION['id'] = $user['id'];
 			$_SESSION['nama'] = $user['nama'];
 			$_SESSION['pegawai'] = $user['pegawai'];
 			$_SESSION['jabatan'] = $user['jabatan'];
 			$_SESSION['golongan'] = $user['golongan'];
 			$_SESSION['username'] = $user['username'];
+			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
 			echo "<script> 
 			alert ('login user pegawai')
 			</script>" ;
-			header ('location:'.base_url().'index.php/pegawai/pegawai/index');
+			header ('location:'.base_url().'pegawai/pegawai');
 
 	}else if ($cnt > 0 && $user ['akses'] == 'admin')
 	{
@@ -58,12 +60,13 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			$_SESSION['jabatan'] = $user['jabatan'];
 			$_SESSION['golongan'] = $user['golongan'];
 			$_SESSION['username'] = $user['username'];
+			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
 		echo "<script> 
 		alert ('login user administrator')
 		</script>" ;
-		header ('location:'.base_url().'index.php/administrator/Administrator/index');
+		header ('location:'.base_url().'administrator/administrator');
 		
 	}else if ($cnt > 0 && $user ['akses'] == 'tu')
 	{
@@ -73,12 +76,13 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			$_SESSION['jabatan'] = $user['jabatan'];
 			$_SESSION['golongan'] = $user['golongan'];
 			$_SESSION['username'] = $user['username'];
+			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
 		echo "<script> 
 		alert ('login user tata usaha')
 		</script>" ;
-		header ('location:'.base_url().'index.php/tata_usaha/Tata_usaha/index');
+		header ('location:'.base_url().'tata_usaha/tata_usaha');
 	}else if ($cnt > 0 && $user ['akses'] == 'kasi')
 	{
 			$_SESSION['nip'] = $user['nip'];
@@ -87,6 +91,7 @@ if ($cnt > 0 && $user ['akses'] == 'pegawai'){
 			$_SESSION['jabatan'] = $user['jabatan'];
 			$_SESSION['golongan'] = $user['golongan'];
 			$_SESSION['username'] = $user['username'];
+			$_SESSION['eselon'] = $user['eselon'];
 			$_SESSION['akses'] = $user['akses'];
 			$_SESSION['foto'] = $user['foto'];
 		echo "<script> 

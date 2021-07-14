@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 04 Bulan Mei 2021 pada 13.50
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 7.2.5
+-- Waktu pembuatan: 02 Jul 2021 pada 22.21
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `new_simpd`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `anggaran`
+--
+
+CREATE TABLE `anggaran` (
+  `id_anggaran` int(11) NOT NULL,
+  `nomor_anggaran` varchar(100) NOT NULL,
+  `nama_anggaran` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `anggaran`
+--
+
+INSERT INTO `anggaran` (`id_anggaran`, `nomor_anggaran`, `nama_anggaran`) VALUES
+(1, '054.01.06.2903.009.300.524113', 'Perjalanan Dinas\r\n'),
+(4, '12345.6789', 'anggaran lainnya'),
+(5, '12345.6789', 'anggaran lainnya');
 
 -- --------------------------------------------------------
 
@@ -77,7 +98,26 @@ INSERT INTO `jabatan` (`id`, `jabatan`) VALUES
 (2, 'Kepala Sub Bagian Tata Usaha'),
 (3, 'Koordinator Fungsi'),
 (4, 'Fungsional Statistik'),
-(5, 'jksjkj');
+(5, 'jksjkj'),
+(6, ',,m');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kegiatan`
+--
+
+CREATE TABLE `kegiatan` (
+  `id_kegiatan` int(11) NOT NULL,
+  `nama_kegiatan` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id_kegiatan`, `nama_kegiatan`) VALUES
+(1, 'Penyediaan dan Pengembangan Statistik Harga');
 
 -- --------------------------------------------------------
 
@@ -100,35 +140,235 @@ INSERT INTO `kendaraan` (`id`, `kendaraan`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `komponen`
+--
+
+CREATE TABLE `komponen` (
+  `id_komponen` int(11) NOT NULL,
+  `nama_komponen` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `komponen`
+--
+
+INSERT INTO `komponen` (`id_komponen`, `nama_komponen`) VALUES
+(1, 'Survey Harga Perdesaan');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lhp`
+--
+
+CREATE TABLE `lhp` (
+  `id_lhp` int(11) NOT NULL,
+  `id_spd` int(11) NOT NULL,
+  `id_pegawai` varchar(100) NOT NULL,
+  `jam` varchar(100) NOT NULL,
+  `kegiatan` varchar(200) NOT NULL,
+  `permasalahan` varchar(200) NOT NULL,
+  `solusi` varchar(200) NOT NULL,
+  `keterangan` varchar(200) NOT NULL,
+  `bukti_kegiatan` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `lhp`
+--
+
+INSERT INTO `lhp` (`id_lhp`, `id_spd`, `id_pegawai`, `jam`, `kegiatan`, `permasalahan`, `solusi`, `keterangan`, `bukti_kegiatan`) VALUES
+(1, 2, '2', '07.00 - 12.00', 'mendata penduduk', 'kemdala hujan', 'pendataan di dalam ruangan', 'masalah selesai', 'New_Mockup_2_copy.png'),
+(2, 2, '2', '07.21 - 08.15', 'meminta data pegawia', 'kemdala hujan', 'pendataan di dalam ruangan', 'masalah selesai', 'New_Mockup_1_copy.png'),
+(3, 4, '24', 'contoh', 'contoh', 'contoh', 'contoh', 'contoh', 'Drawing1.jpg'),
+(4, 3, '11', '-', '-', '-', '-', '-', 'Drawing11.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `pegawai`
 --
 
 CREATE TABLE `pegawai` (
-  `id` int(11) NOT NULL,
-  `nip` varchar(20) NOT NULL,
+  `nip` varchar(50) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan','','') NOT NULL,
   `alamat` text NOT NULL,
-  `tempatlahir` varchar(20) NOT NULL,
+  `tempatlahir` varchar(100) NOT NULL,
   `tanggallahir` date NOT NULL,
-  `jabatan` varchar(15) NOT NULL,
-  `namagolongan` varchar(20) NOT NULL,
-  `agama` varchar(10) NOT NULL,
+  `jabatan` varchar(40) NOT NULL,
+  `namagolongan` varchar(50) NOT NULL,
+  `eselon` varchar(100) NOT NULL,
+  `agama` varchar(100) NOT NULL,
+  `id` int(11) NOT NULL,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `akses` varchar(20) NOT NULL,
-  `foto` varchar(100) NOT NULL
+  `foto` varchar(100) NOT NULL,
+  `bagian` varchar(100) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `pegawai`
 --
 
-INSERT INTO `pegawai` (`id`, `nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `agama`, `username`, `password`, `akses`, `foto`) VALUES
-(1, '021200100001', 'Andri Hadian', 'Laki-laki', 'Bandung', 'Bandung', '2000-08-22', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'andri', 'andri', 'admin', 'Screenshot_(2)11.png'),
-(87, '021200100002', 'Zaenudin', 'Laki-laki', 'Subang', 'Subang', '2000-04-01', 'Kepala Sub Bagi', 'II/A (Pengatur Muda)', 'islam', 'zezen', 'zezen', 'tu', 'gambar.png'),
-(84, '021200100003', 'Dika Maulana', 'Laki-laki', 'kp. Ciherang', 'Subang', '2000-08-02', 'Kepala Sub Bagi', 'I/A (Juru Muda)', 'islam', 'admin01', 'admin01', 'kasi', 'IMG-20200502-WA00455.jpg'),
-(2, '89797987897', 'Adi', 'Laki-laki', 'hghjgjhghjghghg', 'Jakarta', '2021-04-14', 'Kepala Seksi', 'I', 'islam', 'pegawai', 'pegawai', 'pegawai', 'jkjk.jpg\r\n');
+INSERT INTO `pegawai` (`nip`, `nama`, `jenis_kelamin`, `alamat`, `tempatlahir`, `tanggallahir`, `jabatan`, `namagolongan`, `eselon`, `agama`, `id`, `username`, `password`, `akses`, `foto`, `bagian`) VALUES
+('19681127 199402 1 00', 'Muhammad Sholihin, S.E., M.E.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala', 'I/A (Juru Muda) ', 'I', 'islam', 1, 'kepala', 'kepala', 'admin', 'kepala1.png', 'kepala'),
+('19680607 198703 1 00', 'Budi Rahayu, S.Si.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala Seksi Statistik Produksi', 'III/D (Penata Tingkat I)', 'II', 'islam', 2, 'budi', 'budi', 'pegawai', 'budi.png', 'pegawai'),
+('19760130 200212 1 00', 'Cecep Muhram Mubarok, S.Si., M.M.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala Sub Bagian Tata Usaha', 'IV/A (Pembina)', 'II', 'islam', 4, 'cecep', 'cecep', 'tu', 'cecep.png', 'pegawai'),
+('19790130 200604 2 00', 'Santhi Susana Dewi, S,Si.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala Seksi Statistik Sosial', 'III/C (Penata)', 'IV', 'islam', 3, 'santhi', 'santhi', 'pegawai', 'santhi.png', 'ppk'),
+('112113114111', 'admin', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'KSK', 'I/A (Juru Muda) ', 'III', 'islam', 5, 'admin', 'admin123', 'admin', 'admin', 'pegawai'),
+('19780426 199903 1 001', 'Affan Afriyana, S.P.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala Seksi Statistik Distribusi', 'III/C (Penata)', 'III', 'islam', 6, 'affan', 'affan', 'kepala_seksi', 'affan.png', 'pegawai'),
+('19830103 201003 1 001', 'Indra Satrio, S.Si., M.E.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Kepala Seksi NAS', 'III/C (Penata)', 'IV', 'islam', 24, 'indra', 'indra', 'pegawai', '-', 'pegawai'),
+('19640405 198803 2 003', 'Hj. Imas Heryani', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Stastisi Penyedia', 'III/D (Penata Tingkat I)', 'IV', 'islam', 7, 'imas', 'imas', 'pegawai', 'imas.png', 'pegawai'),
+('19700901 199303 2 004', 'Iis Sri Hidayati', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Staf Statistik Sosial', 'III/B (Penata Muda Tingkat I)', 'IV', 'islam', 8, 'iis', 'iis', 'pegawai', 'iis.png', 'pegawai'),
+('19780708 201101 008', 'Adi Yuliandi, S.Kom.', 'Laki-laki', 'Subang', 'Subang', '2021-06-23', 'Kepala Seksi IPDS', 'III/C (Penata)', 'IV', 'islam', 9, 'adi', 'adi', 'pegawai', 'adi.png', 'pegawai'),
+('19840814 200212 2 0003', 'Sri Agustia Merliawati, S. AN.', 'Laki-laki', 'Subang', 'Subang', '2021-06-01', 'Staf Sub bag Tata Usaha', 'III/A (Penata Muda)', 'IV', 'islam', 10, 'sri', 'sri', 'pegawai', 'sri.png', 'bendahara'),
+('19760707 200701 1 005', 'Sukendar', 'Laki-laki', 'Subang', 'Subang', '2021-06-23', 'Staf Sub bag Tata Usaha', 'II/D (Pengatur Tingkat I)', 'IV', 'islam', 11, 'sukendar', 'sukendar', 'pegawai', 'sukendar.png', 'pegawai'),
+('19640821 198703 1 003', 'Agus Rusdiana', 'Laki-laki', 'Subang', 'Subang', '2021-06-23', 'KSK', 'III/B (Penata Muda Tingkat I)', 'IV', 'islam', 12, 'agus', 'agus', 'pegawai', 'agus.png', 'pegawai'),
+('19650515 198803 1 001', 'Obih Sobihin', 'Laki-laki', 'Subang', 'subang', '2021-06-01', 'KSK', 'III/B (Penata Muda Tingkat I)', 'IV', 'islam', 13, 'obih', 'obih', '', 'obih.png', 'pegawai'),
+('19680412 198803 1 003', 'Frans Kristianto', 'Laki-laki', 'Subang', 'Subang', '2021-06-08', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 14, 'frans', 'frans', 'pegawai', 'frans.png', 'pegawai'),
+('19690423 198902 1 001', 'Nandang Purnama', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 15, 'nandang', 'nandang', 'pegawai', 'nandang.png', 'pegawai'),
+('19691215 199203 1 002', 'Adang Herman', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 16, 'adang', 'adang', 'pegawai', 'adang.png', 'pegawai'),
+('19701029 199203 1 003', 'Agus Mulia', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 17, 'mulia', 'mulia', 'pegawai', 'mulia.png', 'pegawai'),
+('19721010 199302 1 001', 'Yuke Musliawan', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 18, 'yuke', 'yuke', 'pegawai', 'yuke.png', 'pegawai'),
+('19850313 201003 1 001', 'Rusmanto, S.Si.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/C (Penata)', '', '', 19, 'rusmanto', 'rusmanto', 'pegawai', 'rusmanto.png', 'pegawai'),
+('19770223 201101 1 004', 'Elven Sukirno, S.Si.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/C (Penata)', '', '', 25, 'elven', 'elven', 'pegawai', 'elven.png', 'pegawai'),
+('19861221 201101 1 007', 'Yaya Sukarya, S.Si.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/C (Penata)', '', '', 20, 'yaya', 'yaya', 'pegawai', 'yaya.png', 'pegawai'),
+('19870512 201003 2 002', 'Nita Meiliana, Amd.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/B (Penata Muda Tingkat I)', '', '', 21, 'nita', 'nita', 'pegawai', 'nita.png', 'pegawai'),
+('19700313 200212 1 002', 'Tantular KGD ', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', '', '', 22, 'tantular', 'tantular', 'pegawai', 'tantular.png', 'pegawai'),
+('19790405 200212 1 002', 'Muhamad Subhiyadi ', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', '', '', 23, 'subhi', 'subhi', 'pegawai', 'subhi.png', 'pegawai'),
+('19851118 201003 1 001', 'Muhammad Yan Priono, A.Md.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'II/D (Pengatur Tingkat I)', 'IV', 'islam', 26, 'yan', 'yan', 'pegawai', 'yan.png', 'pegawai'),
+('19850824 201101 1 010', 'Andreas Saragih, A.Md. Kom.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', 'IV', 'islam', 29, 'andreas', 'andreas', 'pegawai', 'andreas.png', 'pegawai'),
+('19860805 201101 1 008', 'Didit Hermawan, A.Md.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', 'IV', 'islam', 27, 'didit', 'didit', 'pegawai', 'didit.png', 'pegawai'),
+('19870104 201101 1 011', 'Karyono, A.Md.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', 'IV', 'islam', 30, 'karyono', 'karyono', 'pegawai', 'yono.png', 'pegawai'),
+('19880325 201101 1 013', 'Vendy Syaiful Ahmad, A.Md.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'III/A (Penata Muda)', 'IV', 'islam', 32, 'vendy', 'vendy', 'pegawai', 'vendy.png', 'pegawai'),
+('19881224 201212 1 002 ', 'Ferstian Firmanogi, A.Md. ', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'II/D (Pengatur Tingkat I)', 'IV', 'islam', 28, 'ferstian', 'ferstian', 'pegawai', 'tian.png', 'pegawai'),
+('19900430 201212 2 001', 'Nur Asri Aprilia, A.Md.', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'II/D (Pengatur Tingkat I)', 'IV', 'islam', 31, 'nur', 'nur', 'pegawai', 'nur.png', 'pegawai'),
+('19820715 200604 1 005', 'Adhi Candra Maulana', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'II/D (Pengatur Tingkat I)', 'IV', 'islam', 33, 'adhi', 'adhi', 'pegawai', 'adhi.png', 'pegawai'),
+('pegawai', 'pegawai', 'Laki-laki', 'Subang', 'Subang', '2000-01-01', 'KSK', 'I/A (Juru Muda) ', 'IV', 'islam', 34, 'pegawai', 'pegawai', 'pegawai', 'pegawai.png', 'pegawai'),
+('10', 'pegawai', 'Laki-laki', 'kadnls', 'adb', '2021-06-24', 'Koordinator Fungsi', 'III/A (Penata Muda)', 'III', 'islam', 114, 'pegawai', 'pegawai', 'Pegawai', 'New_Mockup_1_copy.png', 'pegawai');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `realisasi_biaya`
+--
+
+CREATE TABLE `realisasi_biaya` (
+  `id_realisasi` int(11) NOT NULL,
+  `nama_pengeluaran` varchar(100) NOT NULL,
+  `id_spd` varchar(100) NOT NULL,
+  `jumlah` varchar(100) NOT NULL,
+  `bukti` varchar(100) NOT NULL,
+  `keterangan` varchar(100) NOT NULL,
+  `jenis` enum('transportasi','penginapan','representasi') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `realisasi_biaya`
+--
+
+INSERT INTO `realisasi_biaya` (`id_realisasi`, `nama_pengeluaran`, `id_spd`, `jumlah`, `bukti`, `keterangan`, `jenis`) VALUES
+(6, 'bensin', '2', '10000', 'Capture.PNG', 'a', 'transportasi'),
+(7, 'bensin', '2', '20000', 'Capture1.PNG', 'a', 'transportasi'),
+(8, 'hotel', '2', '100000', 'Drawinsaasg1.jpg', '-', 'penginapan'),
+(9, 'penginapan sementara', '2', '80000', 'Drawing1-2.jpg', '-', 'penginapan'),
+(10, 'naon', '2', '40000', 'Drawing1-21.jpg', 'a', 'representasi'),
+(11, 'dfb', '2', '60000', 'Screenshot_2020-04-16-14-19-54-03.jpg', '-', 'representasi');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sbm`
+--
+
+CREATE TABLE `sbm` (
+  `id_sbm` int(11) NOT NULL,
+  `provinsi` int(191) NOT NULL,
+  `luar_kota` int(191) NOT NULL,
+  `dalam_kota` int(191) NOT NULL,
+  `i` int(191) NOT NULL,
+  `ii` int(191) NOT NULL,
+  `iii` int(191) NOT NULL,
+  `iv` int(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `sbm`
+--
+
+INSERT INTO `sbm` (`id_sbm`, `provinsi`, `luar_kota`, `dalam_kota`, `i`, `ii`, `iii`, `iv`) VALUES
+(1, 11, 360000, 140000, 4420000, 3526000, 1294000, 556000),
+(2, 12, 370000, 150000, 4960000, 3518000, 1100000, 530000),
+(3, 13, 380000, 150000, 5236000, 3332000, 1353000, 650000),
+(4, 14, 370000, 150000, 3820000, 3119000, 1650000, 852000),
+(5, 15, 370000, 150000, 4000000, 3337000, 1212000, 580000),
+(6, 16, 380000, 150000, 5850000, 3083000, 1571000, 861000),
+(7, 17, 380000, 150000, 2140000, 1628000, 1546000, 630000),
+(8, 18, 380000, 150000, 4491000, 2067000, 1140000, 580000),
+(9, 19, 410000, 160000, 3827000, 2838000, 1957000, 622000),
+(10, 21, 370000, 150000, 4275000, 1854000, 1037000, 792000),
+(11, 31, 530000, 210000, 8720000, 1788000, 992000, 730000),
+(12, 32, 430000, 170000, 5381000, 2755000, 1201000, 570000),
+(13, 33, 370000, 150000, 4242000, 1480000, 954000, 600000),
+(14, 34, 420000, 170000, 5017000, 2695000, 1384000, 845000),
+(15, 35, 410000, 160000, 4400000, 1605000, 1076000, 664000),
+(16, 36, 370000, 150000, 5725000, 2373000, 1000000, 718000),
+(17, 51, 480000, 190000, 4890000, 1946000, 1078000, 910000),
+(18, 52, 380000, 150000, 2654000, 2648000, 1418000, 580000),
+(19, 53, 430000, 170000, 3000000, 1706000, 1507000, 550000),
+(20, 61, 380000, 150000, 2654000, 1538000, 1125000, 538000),
+(21, 62, 360000, 140000, 4901000, 3391000, 1160000, 659000),
+(22, 63, 380000, 150000, 4797000, 3316000, 1500000, 648000),
+(23, 64, 430000, 170000, 4000000, 2188000, 1507000, 804000),
+(24, 65, 430000, 170000, 4000000, 2188000, 1507000, 804000),
+(25, 71, 370000, 150000, 4919000, 2290000, 1034000, 782000),
+(26, 72, 370000, 150000, 2309000, 2077000, 1567000, 951000),
+(27, 73, 430000, 170000, 4820000, 1550000, 1138000, 732000),
+(28, 74, 380000, 150000, 2475000, 2059000, 1297000, 786000),
+(29, 75, 370000, 150000, 4168000, 2549000, 1586000, 764000),
+(30, 76, 410000, 160000, 4076000, 3098000, 1075000, 704000),
+(31, 81, 380000, 150000, 3467000, 3240000, 1048000, 667000),
+(32, 82, 430000, 170000, 3440000, 3175000, 1073000, 600000),
+(33, 91, 480000, 190000, 3872000, 3212000, 2056000, 718000),
+(34, 94, 580000, 230000, 3859000, 3318000, 2521000, 829000),
+(35, 0, 0, 0, 0, 0, 0, 0),
+(36, 0, 0, 0, 0, 0, 0, 0),
+(37, 0, 0, 0, 0, 0, 0, 0),
+(38, 0, 0, 0, 0, 0, 0, 0),
+(39, 0, 0, 0, 0, 0, 0, 0),
+(40, 0, 0, 0, 0, 0, 0, 0),
+(41, 0, 0, 0, 0, 0, 0, 0),
+(42, 0, 0, 0, 0, 0, 0, 0),
+(43, 0, 0, 0, 0, 0, 0, 0),
+(44, 0, 0, 0, 0, 0, 0, 0),
+(45, 0, 0, 0, 0, 0, 0, 0),
+(46, 0, 0, 0, 0, 0, 0, 0),
+(47, 0, 0, 0, 0, 0, 0, 0),
+(48, 0, 0, 0, 0, 0, 0, 0),
+(49, 0, 0, 0, 0, 0, 0, 0),
+(50, 0, 0, 0, 0, 0, 0, 0),
+(51, 0, 0, 0, 0, 0, 0, 0),
+(52, 0, 0, 0, 0, 0, 0, 0),
+(53, 0, 0, 0, 0, 0, 0, 0),
+(54, 0, 0, 0, 0, 0, 0, 0),
+(55, 0, 0, 0, 0, 0, 0, 0),
+(56, 0, 0, 0, 0, 0, 0, 0),
+(57, 0, 0, 0, 0, 0, 0, 0),
+(58, 0, 0, 0, 0, 0, 0, 0),
+(59, 0, 0, 0, 0, 0, 0, 0),
+(60, 0, 0, 0, 0, 0, 0, 0),
+(61, 0, 0, 0, 0, 0, 0, 0),
+(62, 0, 0, 0, 0, 0, 0, 0),
+(63, 0, 0, 0, 0, 0, 0, 0),
+(64, 0, 0, 0, 0, 0, 0, 0),
+(65, 0, 0, 0, 0, 0, 0, 0),
+(66, 0, 0, 0, 0, 0, 0, 0),
+(67, 0, 0, 0, 0, 0, 0, 0),
+(68, 0, 0, 0, 0, 0, 0, 0),
+(69, 0, 0, 0, 0, 0, 0, 0),
+(70, 0, 0, 0, 0, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -142,7 +382,7 @@ CREATE TABLE `spd` (
   `id_pegawai` int(20) NOT NULL,
   `tingkat_biaya` char(1) NOT NULL,
   `tujuan` varchar(100) NOT NULL,
-  `kendaraan` enum(' Kendaraan Dinas','Kendaraan Pribadi','Kendaraan Umum') NOT NULL,
+  `kendaraan` enum('Kendaraan Dinas','Kendaraan Pribadi','Kendaraan Umum') NOT NULL,
   `provinsi_berangkat` varchar(100) NOT NULL,
   `provinsi_tujuan` varchar(100) NOT NULL,
   `lama_hari` int(11) NOT NULL,
@@ -151,6 +391,9 @@ CREATE TABLE `spd` (
   `pengikut_2` varchar(100) NOT NULL,
   `pengikut_3` varchar(100) NOT NULL,
   `keterangan` varchar(500) NOT NULL,
+  `id_kegiatan` int(11) NOT NULL,
+  `id_komponen` int(11) NOT NULL,
+  `id_anggaran` int(11) NOT NULL,
   `tanggalKembali` date NOT NULL,
   `file` varchar(191) NOT NULL,
   `file_ttd` varchar(100) NOT NULL,
@@ -158,21 +401,27 @@ CREATE TABLE `spd` (
   `kabupaten_berangkat` varchar(191) NOT NULL,
   `kecamatan_berangkat` varchar(191) NOT NULL,
   `kabupaten_tujuan` varchar(191) NOT NULL,
-  `kecamatan_tujuan` varchar(191) NOT NULL
+  `kecamatan_tujuan` varchar(191) NOT NULL,
+  `no_urut` int(191) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `spd`
 --
 
-INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`) VALUES
-(4, '100/SPD/BPS/3213/03/2020', 1, 'C', 'Perjalanan dinas dalam kota lebih dari 8 jam dalam rangka pengawasan survei HPD', '', 'Subang', 'Subang', 2, '2021-04-18', '', '', '', ' ', '2021-04-20', '607c54e5b7d54.pdf', '', 0, '', '', '', ''),
-(19, '019/SPD/BPS/3213/04/2021', 87, 'A', 'hjJ', 'Kendaraan Pribadi', 'sudhg', 'gjhg', 1, '2021-04-19', '', '', '', 'jhdjhd', '2021-04-20', '607d7616035b1.pdf', 'CV_M_Bagas_Setia03.pdf', 0, '', '', '', ''),
-(20, '020/SPD/BPS/3213/04/2021', 1, 'A', 'jhjhh', '', 'jnmxdmbj', 'gjhg', 1, '2021-04-28', '', '', '', 'kjk', '2021-04-29', '607d76bb1b58d.pdf', '', 0, '', '', '', ''),
-(21, '021/SPD/BPS/3213/04/2021', 1, 'C', 'kjkj', '', 'sjksk', 'kjhsjsh', 1, '2021-04-19', '', '', '', 'ksjkj', '2021-04-20', '607d799b3e7d0.pdf', '', 0, '', '', '', ''),
-(22, '022/SPD/BPS/3213/04/2021', 1, 'A', 'Melakukan survey', '', 'jnmxdmbj', 'hgjg', 20, '2021-04-01', '', '', '', 'jsjshshssjkhaka', '2021-04-21', '607e600d53320.pdf', '', 0, '', '', '', ''),
-(23, '023/SPD/BPS/3213/05/2021', 1, 'A', 'a', '', '11', '11', 7, '2021-05-12', '', '', '', 'a', '2021-05-05', '6091185bbe1de.pdf', '', 0, '1101', '1101010', '1102', '1102011'),
-(24, '024/SPD/BPS/3213/05/2021', 1, 'A', 'a', '', '12', '12', 0, '0000-00-00', '', '', '', 'g', '0000-00-00', '6091259baee9b.pdf', 'CV_M_Bagas_Setia04.pdf', 0, '1202', '1202010', '1202', '1202010');
+INSERT INTO `spd` (`id_spd`, `nomor_spd`, `id_pegawai`, `tingkat_biaya`, `tujuan`, `kendaraan`, `provinsi_berangkat`, `provinsi_tujuan`, `lama_hari`, `tanggalBerangkat`, `pengikut_1`, `pengikut_2`, `pengikut_3`, `keterangan`, `id_kegiatan`, `id_komponen`, `id_anggaran`, `tanggalKembali`, `file`, `file_ttd`, `id_ppk`, `kabupaten_berangkat`, `kecamatan_berangkat`, `kabupaten_tujuan`, `kecamatan_tujuan`, `no_urut`) VALUES
+(1, '001/SPD/BPS/3213/06/2021', 32, '', 'Perjalanan dinas dalam kota lebih dari 8 jam dalam rangka pengawasan survey HPD', 'Kendaraan Pribadi', '32', '32', 2, '2021-06-24', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-06-25', '60d41a5c90a15.pdf', '', 0, '3213', '3213070', '3213', '3213050', 0),
+(2, '002/SPD/BPS/3213/06/2021', 2, '', 'perjalanan dinas', '', '32', '32', 3, '2021-06-24', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '', 1, 1, 1, '2021-06-26', '60d433aa918e0.pdf', '', 0, '3213', '3213070', '3211', '3211061', 0),
+(3, '012/SPD/BPS/3213/06/2021', 11, '', 'perjalanan dinas', '', '32', '32', 3, '2021-06-25', '14', 'Pilih Pegawai', 'Pilih Pegawai', 'perjalanan dinas luar kota', 1, 1, 1, '2021-06-27', '60d54cdddc305.pdf', '', 0, '3213', '3213070', '3216', '3216081', 0),
+(4, '004/SPD/BPS/3213/06/2021', 24, '', 'contoh', 'Kendaraan Pribadi', '32', '32', 1, '2021-06-27', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '', 1, 1, 1, '2021-06-27', '60d8a2fe266d7.pdf', '', 0, '3213', '3213070', '3208', '3208101', 0),
+(16, '001/SPD/BPS/3213/06/2021', 11, '', 'Pelaksanaan Survey Kerangka Sampe Area Tahun 2020', 'Kendaraan Pribadi', '32', '32', 1, '2021-06-29', '23', '13', '26', '-', 1, 1, 1, '2021-06-29', '', '', 0, '3213', '3213070', '3213', '3213191', 0),
+(17, '017/SPD/BPS/3213/06/2021', 11, '', 'asa', 'Kendaraan Pribadi', '32', '32', 1, '2021-06-29', '22', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-06-29', '', '', 0, '3213', '3213070', '3213', '3213010', 0),
+(18, '018/SPD/BPS/3213/06/2021', 25, '', 'pengawasan survei HPD', 'Kendaraan Pribadi', '32', '32', 1, '2021-06-29', '15', '22', '23', '-', 1, 1, 1, '2021-06-29', '', '', 0, '3213', '3213070', '3213', '3213170', 0),
+(21, '001/SPD/BPS/3213/07/2021', 2, '', 'nnununu\r\n', 'Kendaraan Pribadi', '32', '32', 3, '2021-07-01', '11', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-07-03', '', '', 0, '3213', '3213070', '3213', '3213030', 0),
+(22, '022/SPD/BPS/3213/07/2021', 32, '', 'Pengawasan Survey HPD', 'Kendaraan Pribadi', '32', '32', 1, '2021-07-02', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', '-', 1, 1, 1, '2021-07-02', '', '', 0, '3213', '3213070', '3213', '3213031', 0),
+(30, '023/SPD/BPS/3213/07/2021', 2, 'P', 'tujuan', '', '13', '12', 2, '2021-07-02', 'Pilih Pegawai', 'Pilih Pegawai', 'Pilih Pegawai', 'd', 1, 1, 4, '2021-07-03', '', '', 0, 'Pilih Kabupaten', 'Pilih Kecamatan', 'Pilih Kabupaten', 'Pilih Kecamatan', 0),
+(31, '031/SPD/BPS/3213/07/2021', 1, '', 'a', '', '11', '12', 2, '2021-07-09', '', '', '', '-', 1, 1, 1, '2021-07-10', '', '', 0, '1101', '1101010', '1201', '1201060', 0),
+(32, '032/SPD/BPS/3213/07/2021', 1, '', 'shgfjj', '', '11', '12', 9, '2021-07-02', '', '', '', 'rhhggss', 1, 1, 1, '2021-07-10', '', '', 0, '1101', '1101022', '1202', '1202011', 0);
 
 -- --------------------------------------------------------
 
@@ -243,6 +492,396 @@ CREATE TABLE `tb_pegawai` (
 
 INSERT INTO `tb_pegawai` (`nip`, `nama_pegawai`, `jenis_kelamin`, `tanggal_lahir`, `status`, `alamat`, `id_golongan`, `agama`, `username`, `password`, `foto`, `akses`) VALUES
 ('000000001', 'admin01', 'Laki-laki', '1111-01-01', 'Belum Nikah', 'Sektor01', '00001', 'Islam', 'admin01', 'admin01', '', 'Administrator');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `transportasi`
+--
+
+CREATE TABLE `transportasi` (
+  `id` int(11) NOT NULL,
+  `id_kabupaten` varchar(191) NOT NULL,
+  `biaya` varchar(191) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `transportasi`
+--
+
+INSERT INTO `transportasi` (`id`, `id_kabupaten`, `biaya`) VALUES
+(1, '1107', '275000'),
+(2, '1112', '298000'),
+(3, '1108', '183000'),
+(4, '1116', '238000'),
+(5, '1103', '325000'),
+(6, '1102', '420000'),
+(7, '1114', '315000'),
+(8, '1106', '293000'),
+(9, '1104', '460000'),
+(10, '1105', '289000'),
+(11, '1111', '270000'),
+(12, '1117', '278000'),
+(13, '1110', '220000'),
+(14, '1113', '370000'),
+(15, '1115', '275000'),
+(16, '1109', '190000'),
+(17, '1118', '205000'),
+(18, '1173', '301000'),
+(19, '1174', '240000'),
+(20, '1175', '400000'),
+(21, '1208', '259000'),
+(22, 'Kab, Batubara', '225000'),
+(23, '1210', '270000'),
+(24, '1212', '186000'),
+(25, '1215', '300000'),
+(26, '1211', '200000'),
+(27, '1207', '287000'),
+(28, '1222', '360000'),
+(29, '1223', '300000'),
+(30, '1213', '186000'),
+(31, '1202', '420000'),
+(32, 'Xab. Padan Lawas', '420000'),
+(33, '1220', '420000'),
+(34, '1216', '300000'),
+(35, '1217', '330000'),
+(36, '1218', '200000'),
+(37, '1209', '264000'),
+(38, '1203', '328000'),
+(39, '1204', '345000'),
+(40, '1205', '330000'),
+(41, '1206', '300000'),
+(42, '1276', '180000'),
+(43, '1273', '225000'),
+(44, '1271', '345000'),
+(45, '1272', '285000'),
+(46, '1274', '203000'),
+(47, 'Kab. lndragiri Hilir', '380000'),
+(48, 'Kab. lndragiri Hulu ', '315000'),
+(49, '1406', '200000'),
+(50, '1401', '300000'),
+(51, '1404', '225000'),
+(52, '1409', '350000'),
+(53, '1407', '322000'),
+(54, 'Kab. Siak', '350000'),
+(55, 'Kota Dumai', '400000'),
+(56, '2102', '185000'),
+(57, 'Kab. Batanghari', '175000'),
+(58, '1509', '270000'),
+(59, '1501', '325000'),
+(60, '1502', '260000'),
+(61, 'Kab. Muaro uambi', '170000'),
+(62, '1503', '241000'),
+(63, '1507', '225000'),
+(64, 'Kab. Tanjung uabung Timur', '190000'),
+(65, '1508', '250000'),
+(66, '1572', '308000'),
+(67, '1307', '225000'),
+(68, '1311', '250000'),
+(69, 'ftab. Lima Puluh Kota', '225000'),
+(70, 'Kab. Padang Pariarnan', '205000'),
+(71, '1309', '250000'),
+(72, '1312', '250000'),
+(73, 'Kab. Pesisir lselatan', '205000'),
+(74, '1304', '225000'),
+(75, '1303', '210000'),
+(76, '1310', '250000'),
+(77, '1305', '220000'),
+(78, 'Kota Bukit Tinggi', '215000'),
+(79, '1374', '210000'),
+(80, '1377', '200000'),
+(81, '1376', '225000'),
+(82, 'Kota Sawahlunto', '215000'),
+(83, '1372', '210000'),
+(84, 'Kab. Banyuasin', '203000'),
+(85, '1611', '815000'),
+(86, '1604', '250000'),
+(87, 'ltab. Muara Enim', '235000'),
+(88, '1606', '235000'),
+(89, '1605', '320000'),
+(90, 'Kab. Musi Rawas Utara', '325000'),
+(91, '1610', '205000'),
+(92, '1602', '205000'),
+(93, '1601', '248000'),
+(94, '1608', '250000'),
+(95, '1609', '245000'),
+(96, 'Kab. Pali', '265000'),
+(97, 'Kota Lubuk Linggau', '290000'),
+(98, '1673', '280000'),
+(99, '1672', '205000'),
+(100, '1801', '270000'),
+(101, '1803', '234000'),
+(102, '1805', '246000'),
+(103, '1804', '246000'),
+(104, '1806', '252000'),
+(105, 'Kab. Mesuji   ', '276000'),
+(106, '1809', '216000'),
+(107, '1813', '200000'),
+(108, '1810', '222000'),
+(109, '1802', '240000'),
+(110, 'Kab. Tulang Bawang', '252000'),
+(111, '1812', '267000'),
+(112, '1807', '270000'),
+(113, 'Kota Jvletro', '234000'),
+(114, 'Kab. Berigkulu Selatan', '344000'),
+(115, '1709', '232000'),
+(116, '1703', '313000'),
+(117, '1704', '385000'),
+(118, '1708', '298000'),
+(119, '1707', '375000'),
+(120, '1706', '423000'),
+(121, '1702', '313000'),
+(122, '1705', '282000'),
+(123, '1901', '250000'),
+(124, '1903', '275000'),
+(125, '1905', '275000'),
+(126, '1904', '250000'),
+(127, '3602', '208000'),
+(128, '3601', '138000'),
+(129, '3604', '160000'),
+(130, '3603', '254000'),
+(131, '3672', '160000'),
+(132, '3671', '313000'),
+(133, '3674', '347000'),
+(134, '3204', '183000'),
+(135, '3217', '275000'),
+(136, '3216', '265000'),
+(137, '3201', '185000'),
+(138, '3207', '245000'),
+(139, '3203', '215000'),
+(140, '3209', '280000'),
+(141, '3205', '203000'),
+(142, '3212', '275000'),
+(143, '3215', '248000'),
+(144, '3208', '275000'),
+(145, '3210', '235000'),
+(146, '3218', '283000'),
+(147, '3214', '218000'),
+(148, '3213', '208000'),
+(149, '3202', '245000'),
+(150, '3211', '230000'),
+(151, '3206', '245000'),
+(152, '3279', '283000'),
+(153, '3275', '265000'),
+(154, '3271', '285000'),
+(155, '3277', '168000'),
+(156, '3274', '270000'),
+(157, '3276', '275000'),
+(158, '3272', '226000'),
+(159, '3278', '285000'),
+(160, '3304', '260000'),
+(161, '3302', '257000'),
+(162, '3325', '240000'),
+(163, '3316', '270000'),
+(164, '3309', '240000'),
+(165, '3329', '263000'),
+(166, '3301', '280000'),
+(167, '3321', '230000'),
+(168, '3315', '235000'),
+(169, '3320', '240000'),
+(170, '3313', '250000'),
+(171, '3305', '260000'),
+(172, 'Kab. KendaJ', '260000'),
+(173, 'Kab. Klater?', '250000'),
+(174, '3319', '235000'),
+(175, '3308', '240000'),
+(176, 'Kab. Pat?', '240000'),
+(177, '3326', '246000'),
+(178, '3327', '250000'),
+(179, '3303', '270000'),
+(180, '3306', '250000'),
+(181, '3317', '250000'),
+(182, '3322', '230000'),
+(183, '3314', '250000'),
+(184, '3311', '250000'),
+(185, '3328', '260000'),
+(186, '3323', '240000'),
+(187, '3312', '250000'),
+(188, '3307', '250000'),
+(189, 'Kota tagelang', '240000'),
+(190, '3375', '245000'),
+(191, '3373', '235000'),
+(192, '3372', '245000'),
+(193, '3376', '260000'),
+(194, '3402', '250000'),
+(195, '3403', '350000'),
+(196, '3401', '350000'),
+(197, '3404', '200000'),
+(198, '3526', '230000'),
+(199, '3510', '385000'),
+(200, '3505', '255000'),
+(201, '3522', '225000'),
+(202, '3511', '255000'),
+(203, '3525', '225000'),
+(204, '3509', '261000'),
+(205, '3517', '235000'),
+(206, '3506', '235000'),
+(207, '3524', '725000'),
+(208, '3508', '261000'),
+(209, '3519', '245000'),
+(210, '3520', '253000'),
+(211, '3507', '228000'),
+(212, '3516', '225000'),
+(213, '3518', '245000'),
+(214, '3521', '253000'),
+(215, '3501', '285000'),
+(216, '3528', '243000'),
+(217, '3514', '228000'),
+(218, '3502', '255000'),
+(219, '3513', '228000'),
+(220, '3527', '235000'),
+(221, '3515', '240000'),
+(222, '3512', '255000'),
+(223, '3529', '255000'),
+(224, '3503', '245000'),
+(225, '3523', '245000'),
+(226, 'Kab. Tulurigagurig', '245000'),
+(227, '3579', '242000'),
+(228, '3572', '255000'),
+(229, 'Kota Bojonegoro', '225000'),
+(230, '3571', '235000'),
+(231, '3577', '245000'),
+(232, 'Kota MaJang', '228000'),
+(233, 'Kota Mojokerta', '225000'),
+(234, '3574', '228000'),
+(235, '5103', '188000'),
+(236, '5106', '225000'),
+(237, '5108', '265000'),
+(238, 'Kab Gianyar', '225000'),
+(239, 'Jembrana', '270000'),
+(240, 'Karangasem', '263000'),
+(241, 'Tabanan', '225000'),
+(242, '5201', '325000'),
+(243, '5202', '450000'),
+(244, '5203', '350000'),
+(245, '5306', '325000'),
+(246, '5303', '175000'),
+(247, '5304', '218000'),
+(248, '5305', '275000'),
+(249, '6102', '270000'),
+(250, '6108', '550000'),
+(251, '6111', '550000'),
+(252, '6106', '550000'),
+(253, '6112', '185000'),
+(254, '6103', '270000'),
+(255, '6110', '430000'),
+(256, 'Kab. Mempawah', '230000'),
+(257, '6101', '300000'),
+(258, '6105', '303000'),
+(259, '6109', '343000'),
+(260, '6107', '392000'),
+(261, '6172', '257000'),
+(262, 'Kah. Barito Selatan', '290000'),
+(263, 'Kab. Bar?to T?mur', '333000'),
+(264, '6205', '425000'),
+(265, 'Kab. Gunung Mae', '300000'),
+(266, 'Kab. Kapuae', '275000'),
+(267, '6209', '250000'),
+(268, '6201', '420000'),
+(269, '6202', '300000'),
+(270, '6207', '525000'),
+(271, '6213', '448000'),
+(272, 'Kab. Pulau Pisau', '250000'),
+(273, '6208', '328000'),
+(274, 'Kah. Sukamara', '525000'),
+(275, 'Kab. BMengan', '230000'),
+(276, '6303', '170000'),
+(277, '6304', '200000'),
+(278, '6306', '200000'),
+(279, '6307', '12000'),
+(280, 'Kab. Huh Sungai Utara', '218000'),
+(281, 'Kab. Knta Boru', '290000'),
+(282, '6309', '34000'),
+(283, '6310', '300000'),
+(284, '6301', '200000'),
+(285, '6305', '189000'),
+(286, 'Kota Banjarbaru', '225000'),
+(287, 'Kab. Kutai Barut', '1500000'),
+(288, '6403', '500000'),
+(289, '6404', '1250000'),
+(290, '6401', '1650000'),
+(291, '6409', '650000'),
+(292, '6471', '350000'),
+(293, '6474', '600000'),
+(294, 'Kgb. Bolaang Mongondow', '250000'),
+(295, 'Kab, Bolaang Mongondow Setatan', '275000'),
+(296, '7111', '250000'),
+(297, 'Kab, Bolaang Mongondow Utara ', '300000'),
+(298, 'Kab. Minahaea', '180000'),
+(299, 'Kab. M?nahaea Selatan', '180000'),
+(300, '7109', '200000'),
+(301, '7106', '175000'),
+(302, '7172', '175000'),
+(303, 'Kotu Kotamobagu', '250000'),
+(304, '7173', '170000'),
+(305, '7501', '400000'),
+(306, 'Kab. GorgntMo', '300000'),
+(307, '7505', '350000'),
+(308, 'Kab. Pahuwato   ', '650000'),
+(309, '7601', '240000'),
+(310, '7603', '359000'),
+(311, 'Kab. Mamuju Tengah', '200000'),
+(312, 'Kab. Mazauju u kara', '270000'),
+(313, '7602', '260000'),
+(314, 'Kab- Bantaeng', '235000'),
+(315, '7310', '210000'),
+(316, '7311', '280000'),
+(317, 'Kab- Bulukumba', '240000'),
+(318, '7316', '250000'),
+(319, '7306', '175000'),
+(320, '7304', '270000'),
+(321, '7317', '350000'),
+(322, '7325', '375000'),
+(323, '7322', '365000'),
+(324, 'Kab. Maraa', '170000'),
+(325, '7315', '230000'),
+(326, '7314', '230000'),
+(327, '7307', '235000'),
+(328, '7312', '225000'),
+(329, '7305', '190000'),
+(330, 'Kab. Tanatoraja', '850000'),
+(331, 'Kab. Tora?a Utara', '350000'),
+(332, '7313', '200000'),
+(333, '7373', '360000'),
+(334, 'Kota Pare-Pare', '225000'),
+(335, 'Kab. Luwuk', '400000'),
+(336, '7207', '472000'),
+(337, '7205', '130000'),
+(338, '7203', '400000'),
+(339, 'Kab. Morowali Utara', '400000'),
+(340, '7208', '250000'),
+(341, '7204', '280000'),
+(342, '7210', '219000'),
+(343, 'Kab. Tojouna-Una ', '550000'),
+(344, '7206', '912000'),
+(345, '7406', '355000'),
+(346, '7404', '370000'),
+(347, 'Kab. Kolaka Timur', '300000'),
+(348, '7408', '925000'),
+(349, '7403', '300000'),
+(350, '7405', '805000'),
+(351, '7410', '300000'),
+(352, '8201', '850000'),
+(353, '8202', '1000000'),
+(354, '8206', '1250000'),
+(355, '8205', '900000'),
+(356, '9403', '600000'),
+(357, '9420', '900000'),
+(358, '9419', '2700000'),
+(359, 'Kab Merauke ', '1134000'),
+(360, '9104', '900000'),
+(361, 'Kab. Manokwari Selatan', '750000'),
+(362, 'Kab. Pegunungan Arfak', '2650000'),
+(363, '9171', '1000000'),
+(364, '3275', '284000'),
+(365, '3216', '284000'),
+(366, '3201', '300000'),
+(367, '3271', '300000'),
+(368, '3276', '275000'),
+(369, '3671', '286000'),
+(370, 'Kota Tangerang 5elatan', '286000'),
+(371, '3603', '310000'),
+(372, 'Kepulauan Seribu', '428000');
 
 -- --------------------------------------------------------
 
@@ -87498,6 +88137,12 @@ INSERT INTO `wilayah_provinsi` (`id`, `nama`) VALUES
 --
 
 --
+-- Indeks untuk tabel `anggaran`
+--
+ALTER TABLE `anggaran`
+  ADD PRIMARY KEY (`id_anggaran`);
+
+--
 -- Indeks untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
@@ -87510,16 +88155,46 @@ ALTER TABLE `jabatan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id_kegiatan`);
+
+--
 -- Indeks untuk tabel `kendaraan`
 --
 ALTER TABLE `kendaraan`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `komponen`
+--
+ALTER TABLE `komponen`
+  ADD PRIMARY KEY (`id_komponen`);
+
+--
+-- Indeks untuk tabel `lhp`
+--
+ALTER TABLE `lhp`
+  ADD PRIMARY KEY (`id_lhp`);
+
+--
 -- Indeks untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `realisasi_biaya`
+--
+ALTER TABLE `realisasi_biaya`
+  ADD PRIMARY KEY (`id_realisasi`);
+
+--
+-- Indeks untuk tabel `sbm`
+--
+ALTER TABLE `sbm`
+  ADD PRIMARY KEY (`id_sbm`);
 
 --
 -- Indeks untuk tabel `spd`
@@ -87544,6 +88219,12 @@ ALTER TABLE `surat_tugas`
 --
 ALTER TABLE `tb_pegawai`
   ADD PRIMARY KEY (`nip`);
+
+--
+-- Indeks untuk tabel `transportasi`
+--
+ALTER TABLE `transportasi`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `wilayah_desa`
@@ -87574,6 +88255,12 @@ ALTER TABLE `wilayah_provinsi`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `anggaran`
+--
+ALTER TABLE `anggaran`
+  MODIFY `id_anggaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `golongan`
 --
 ALTER TABLE `golongan`
@@ -87583,7 +88270,13 @@ ALTER TABLE `golongan`
 -- AUTO_INCREMENT untuk tabel `jabatan`
 --
 ALTER TABLE `jabatan`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT untuk tabel `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  MODIFY `id_kegiatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `kendaraan`
@@ -87592,22 +88285,52 @@ ALTER TABLE `kendaraan`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT untuk tabel `komponen`
+--
+ALTER TABLE `komponen`
+  MODIFY `id_komponen` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT untuk tabel `lhp`
+--
+ALTER TABLE `lhp`
+  MODIFY `id_lhp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT untuk tabel `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
+
+--
+-- AUTO_INCREMENT untuk tabel `realisasi_biaya`
+--
+ALTER TABLE `realisasi_biaya`
+  MODIFY `id_realisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT untuk tabel `sbm`
+--
+ALTER TABLE `sbm`
+  MODIFY `id_sbm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT untuk tabel `spd`
 --
 ALTER TABLE `spd`
-  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_spd` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT untuk tabel `surat_tugas`
 --
 ALTER TABLE `surat_tugas`
   MODIFY `id_surattugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `transportasi`
+--
+ALTER TABLE `transportasi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=373;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

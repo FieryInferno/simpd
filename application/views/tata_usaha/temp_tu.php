@@ -52,6 +52,7 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <body class="sidebar-mini skin-blue-light">
 <div class="wrapper">
@@ -82,9 +83,7 @@
               </li>
               <li class="user-body"></li>
               <li class="user-footer">
-                <div class="pull-left">
-                  <a class="btn btn-default btn-default" data-toggle="modal" data-target="#modal-info">Profile</a>
-                </div>
+                
                 <div class="pull-right">
                   <a href="<?php echo base_url()."index.php/c_login/logout"?>" class="btn btn-default btn-flat">Log out</a>
                 </div>
@@ -110,23 +109,23 @@
         <div class="panel">
           <ul class="sidebar-menu" data-widget="tree">
             <li>
-              <a href="<?php echo base_url()."index.php/tata_usaha/C_SPD/index"?>">
+              <a href="<?php echo base_url()."tata_usaha/tata_usaha"?>">
                 <i class="fa fa-bank"></i> <span>Dashboard</span>
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url()."tata_usaha/spd"?>">
+              <a href="<?php echo base_url()."tata_usaha/tata_usaha/data_spd"?>">
                 <i class="fa fa-file"></i> <span>SPD</span>
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
-                <i class="fa fa-money"></i> <span>RAB</span>
+              <a href="<?= base_url('tata_usaha/tata_usaha/data_lhp'); ?>">
+                <i class="fa fa-file"></i> <span>LHP</span>
               </a>
             </li>
             <li>
-              <a href="<?php echo base_url()."index.php/Administrator/Administrator/index"?>">
-                <i class="fa fa-folder"></i> <span>SPJ</span>
+              <a href="<?= base_url('tata_usaha/tata_usaha/data_realisasi'); ?>">
+                <i class="fa fa-money"></i> <span>Realisasi Biaya</span>
               </a>
             </li>
           </ul>
@@ -149,7 +148,7 @@
   </footer>
   <div class="control-sidebar-bg"></div>
 
-  <!-- jQuery 3 -->
+ <!-- jQuery 3 -->
   <script src="<?php echo base_url(); ?>assets/jquery.min.js"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="<?php echo base_url(); ?>assets/jquery-ui.min.js"></script>
@@ -190,10 +189,11 @@
   <script src="<?php echo base_url(); ?>assets/jquery.dataTables.min.js"></script>
   <script src="<?php echo base_url(); ?>assets/dataTables.bootstrap.min.js"></script>
   <script src="<?php echo base_url();?>assets/dataTables.responsive.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script>
-    $('document').ready(() => {
-
-    })
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2();
+    });
 
     $(function () {
       $("#example1").DataTable({
@@ -248,6 +248,35 @@
             $('#tempat_tujuan_kecamatan').html(data);
           } else {
             $('#tempat_berangkat_kecamatan').html(data);
+          }
+        }
+      });
+    }
+
+    function pilihTingkat(data) {
+      $.ajax({
+        url     : `<?= base_url(); ?>pegawai/pegawai/tingkat`,
+        type    : 'post',
+        data    : {
+          id  : data.value
+        }, 
+        success : function(result){
+          switch (result.eselon) {
+            case 'I':
+              $('#tingkat_biaya').val('B')
+              break;
+            case 'II':
+              $('#tingkat_biaya').val('C')
+              break;
+            case 'III':
+              $('#tingkat_biaya').val('D')
+              break;
+            case 'IV':
+              $('#tingkat_biaya').val('E')
+              break;
+          
+            default:
+              break;
           }
         }
       });

@@ -56,11 +56,11 @@
       <?php if ($this->session->pesan) echo $this->session->pesan; ?> 
   <div class="login-box-body">
 
-  	
-  	<a href="<?php echo base_url(); ?>assets/index2.html"></center><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="90px" class="" style="opacity: .8; display : block; margin : auto;" ><br>
+    
+    <a href="<?php echo base_url(); ?>assets/index2.html"></center><img src="<?php echo base_url();?>assets/images/logobps.png" alt="AdminLTE Logo" width="90px" class="" style="opacity: .8; display : block; margin : auto;" ><br>
            <center><font face="calibri" size="3" color="black"><b>Sistem Informasi Manajemen Kegiatan Perjalanan Dinas Di Badan Pusat Statistik Subang</b></a>
 
-  	</font></center>
+    </font></center>
     
              <hr>
     <p class="login-box-msg">Silahkan Login Terlebih Dahulu</p>
@@ -108,11 +108,11 @@
 <!-- /.login-box -->
 
 <!-- jQuery 3 -->
-<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="../../plugins/iCheck/icheck.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/plugins/iCheck/icheck.min.js"></script>
 <script>
   $(function () {
     $('input').iCheck({

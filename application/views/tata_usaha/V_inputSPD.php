@@ -4,18 +4,18 @@
     <font face="calibri" size="5" color="black"><h2 class="box-title">Tambah SPD</h2></font>
   </div>
   <div class="box-body">
-    <form role="form" enctype ="multipart/form-data" method= "post" action ="<?= base_url(); ?>tata_usaha/spd/tambah">
+    <form role="form" enctype ="multipart/form-data" method= "post" action ="<?= base_url(); ?>tata_usaha/tata_usaha/tambah_spd">
       <div class="form-group">
         <label>Nomor</label>
-        <input type="text" name="nomor_spd" value = "<?php echo sprintf("%03s", $id_spd)."/"."SPD"."/"."BPS"."/"."3213"."/".date('m')."/".date('Y') ?>" class="form-control" >
+        <input type="text" name="nomor_spd" value = "<?php echo sprintf("%03s", $id_spd)."/"."SPD"."/"."BPS"."/"."3213"."/".date('m')."/".date('Y') ?>" class="form-control" readonly>
       </div>
       <div class="form-group">
         <label>Nama Pegawai</label>
-        <select name="id_pegawai" class='form-control'>
+        <select name="id_pegawai" class='form-control js-example-basic-single' onchange="pilihTingkat(this)">
           <option>Pilih Pegawai</option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
@@ -26,17 +26,17 @@
       </div>
       <div class="form-group">
         <label>Kendaraan</label>
-        <select name="kendaraan" class='form-control'>
+        <select name="kendaraan" class='form-control js-example-basic-single'>
           <option>Pilih Kendaraan</option>
-          <option>Kendaraan Dinas</option>
-          <option>Kendaraan Pribadi</option>
-          <option>Kendaraan Umum</option>
+          <option value="Kendaraan Dinas">Kendaraan Dinas</option>
+          <option value="Kendaraan Pribadi">Kendaraan Pribadi</option>
+          <option value="Kendaraan Umum">Kendaraan Umum</option>
         </select>
       </div>
       <div class="form-group">
         <label>Tempat Berangkat</label><br/>
         <label for="">Provinsi</label>
-        <select name="tempat_berangkat_provinsi" id="" onchange="pilihProvinsi(this)" class="form-control">
+        <select name="tempat_berangkat_provinsi" id="" onchange="pilihProvinsi(this)" class="form-control js-example-basic-single">
           <option>Pilih Provinsi</option>
           <?php
             foreach ($provinsi as $key) { ?>
@@ -45,18 +45,18 @@
           ?>
         </select>
         <label for="">Kabupaten</label>
-        <select name="tempat_berangkat_kabupaten" id="tempat_berangkat_kabupaten" onchange="pilihKabupaten(this)" class="form-control">
+        <select name="tempat_berangkat_kabupaten" id="tempat_berangkat_kabupaten" onchange="pilihKabupaten(this)" class="form-control js-example-basic-single">
           <option>Pilih Kabupaten</option>
         </select>
         <label for="">Kecamatan</label>
-        <select name="tempat_berangkat_kecamatan" id="tempat_berangkat_kecamatan" class="form-control">
+        <select name="tempat_berangkat_kecamatan" id="tempat_berangkat_kecamatan" class="form-control js-example-basic-single">
           <option>Pilih Kecamatan</option>
         </select>
       </div>
       <div class="form-group">
         <label>Tempat Tujuan</label><br/>
         <label for="">Provinsi</label>
-        <select name="tempat_tujuan_provinsi" id="" onchange="pilihProvinsi(this, 'tujuan')" class="form-control">
+        <select name="tempat_tujuan_provinsi" id="" onchange="pilihProvinsi(this, 'tujuan')" class="form-control js-example-basic-single">
           <option>Pilih Provinsi</option>
           <?php
             foreach ($provinsi as $key) { ?>
@@ -65,11 +65,11 @@
           ?>
         </select>
         <label for="">Kabupaten</label>
-        <select name="tempat_tujuan_kabupaten" id="tempat_tujuan_kabupaten" onchange="pilihKabupaten(this, 'tujuan')" class="form-control">
+        <select name="tempat_tujuan_kabupaten" id="tempat_tujuan_kabupaten" onchange="pilihKabupaten(this, 'tujuan')" class="form-control js-example-basic-single">
           <option>Pilih Kabupaten</option>
         </select>
         <label for="">Kecamatan</label>
-        <select name="tempat_tujuan_kecamatan" id="tempat_tujuan_kecamatan" class="form-control">
+        <select name="tempat_tujuan_kecamatan" id="tempat_tujuan_kecamatan" class="form-control js-example-basic-single">
           <option>Pilih Kecamatan</option>
         </select>
       </div>
@@ -93,46 +93,72 @@
       </div>
       <div class="form-group">
         <label>Pengikut 1</label>
-       <select name="pengikut_1" class='form-control'>
-          <option>Pilih Pegawai</option>
+        <select name="pengikut_1" class='form-control js-example-basic-single'>
+          <option></option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
       </div>
       <div class="form-group">
         <label>Pengikut 2</label>
-        <select name="pengikut_2" class='form-control'>
-          <option>Pilih Pegawai</option>
+        <select name="pengikut_2" class='form-control js-example-basic-single'>
+          <option></option>
           <?php
             foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
       </div>
       <div class="form-group">
         <label>Pengikut 3</label>
-        <select name="pengikut_3" class='form-control'>
-          <option>Pilih Pegawai</option>
+        <select name="pengikut_3" class='form-control js-example-basic-single'>
+          <option></option>
           <?php
-            foreach ($pegawai as $key) { ?>  
-              <option value='<?= $key['id']; ?>'><?= $key['nama'] ?></option>
+            foreach ($pegawai as $key) { ?> 
+              <option value='<?= $key['id']; ?>'><?= $key['nip'] . ' - ' . $key['nama'] ?></option>
             <?php } 
           ?>
         </select>
       </div>
       <div class="form-group">
-        <label>Tingkat Biaya</label>
-        <select name ="tingkat_biaya" class="form-control" >
-          <option>A</option>
-          <option>B</option>
-          <option>C</option>
-          <option>D</option>
-          <option>E</option>
-          <option>F</option>
+        <label></label>
+        <input type="text" name="tingkat_biaya" class="form-control"  id="tingkat_biaya">
+      </div>
+      <div class="form-group">
+        <label>Kegiatan</label>
+        <select name="id_kegiatan" class='form-control'>
+          <option>Pilih Kegiatan</option>
+          <?php
+            foreach ($kegiatan as $key) { ?>  
+              <option value='<?= $key['id_kegiatan']; ?>'><?= $key['nama_kegiatan'] ?></option>
+            <?php } 
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Komponen</label>
+        <select name="id_komponen" class='form-control'>
+          <option>Pilih Komponen</option>
+          <?php
+            foreach ($komponen as $key) { ?>  
+              <option value='<?= $key['id_komponen']; ?>'><?= $key['nama_komponen'] ?></option>
+            <?php } 
+          ?>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Program</label>
+        <select name="id_anggaran" class='form-control'>
+          <option>Pilih Anggaran</option>
+          <?php
+            foreach ($anggaran as $key) { ?>  
+              <option value='<?= $key['id_anggaran']; ?>'><?= $key['nomor_anggaran'] ?></option>
+            <?php } 
+          ?>
         </select>
       </div>
       <div class="form-group">
