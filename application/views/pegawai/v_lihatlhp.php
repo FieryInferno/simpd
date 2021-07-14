@@ -17,6 +17,7 @@
               <th>Jam</th>
               <th>Permasalahan</th>
               <th>Solusi</th>
+              <th>Tanggal</th>
               <th>Keterangan</th>
               <th>Bukti</th>
               <th>Aksi</th>
@@ -31,6 +32,7 @@
                   <td><?php echo $row->jam?></td>
                   <td><?php echo $row->permasalahan?></td>
                   <td><?php echo $row->solusi?></td>
+                  <td><?php echo $row->tanggal; ?></td>
                   <td><?php echo $row->keterangan?></td>
                   <td><a href="<?= base_url('assets/file_lhp/' . $row->bukti_kegiatan); ?>" class="btn btn-primary" target="_blank">Lihat File</a></td>
                   <td>

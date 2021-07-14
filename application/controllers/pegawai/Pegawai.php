@@ -69,7 +69,7 @@ class Pegawai extends CI_Controller {
     }
 
 
-   public function lihat_Lhp ($id_spd){
+  public function lihat_Lhp ($id_spd){
     $data             = $this->M_SPD->getByIdSPD($id_spd);
     $data['data']     = $this->M_Lhp->get_lhp($id_spd);
     $data['content']  = 'Pegawai/v_lihatlhp';
@@ -84,6 +84,7 @@ class Pegawai extends CI_Controller {
     $permasalahan = $_POST ['permasalahan'];
     $solusi       = $_POST ['solusi'];
     $keterangan   = $_POST ['keterangan'];
+    $tanggal      = date('Y-m-d');
     
     $config['upload_path']    = './assets/file_lhp';
     $config['allowed_types']  = 'pdf|jpg|jpeg|png';
@@ -105,7 +106,8 @@ class Pegawai extends CI_Controller {
       'permasalahan'    => $permasalahan, 
       'solusi'          => $solusi, 
       'keterangan'      => $keterangan, 
-      'bukti_kegiatan'  => $bukti_kegiatan
+      'bukti_kegiatan'  => $bukti_kegiatan,
+      'tanggal'         => $tanggal
     ];
 
     $res  = $this->M_Lhp->Insertdata('lhp', $data);
@@ -217,7 +219,8 @@ class Pegawai extends CI_Controller {
         'nama_pengeluaran'  => $this->input->post('nama_pengeluaran'),
         'jumlah'            => $this->input->post('jumlah'),
         'bukti'             => $bukti,
-        'keterangan'        => $this->input->post('keterangan')
+        'keterangan'        => $this->input->post('keterangan'),
+        'tanggal'           => date('Y-m-d')
       ]);
       $this->session->flashdata('pesan', '
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -288,7 +291,7 @@ class Pegawai extends CI_Controller {
         </button>
       </div>
     ');
-    redirect('pegawai/pegawai/detail_realisasi/' . $id_spd);
+    redirect('pegawai/pegawai/data_realisasibiaya/' . $id_spd);
   }
 
   public function cetak_realisasi($id_spd)

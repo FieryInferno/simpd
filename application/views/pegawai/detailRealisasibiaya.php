@@ -16,6 +16,7 @@
               <th>Nama Pengeluaran</th>
               <th>Jumlah</th>
               <th>Bukti</th>
+              <th>Tanggal Input</th>
               <th>Keterangan</th>
               <th>Aksi</th>
             </tr>
@@ -28,6 +29,7 @@
                   <td><?php echo $row->nama_pengeluaran; ?></td>
                   <td><?php echo $row->jumlah; ?></td>
                   <td><img src="<?= base_url('assets/file_realisasi/' . $row->bukti); ?>" alt="" width="30%"></td>
+                  <td><?php echo $row->tanggal; ?></td>
                   <td><?php echo $row->keterangan?></td>
                   <td>
                     <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#modalEdit<?= $row->id_realisasi; ?>" class="btn btn-success float-left"><i class="fa fa-edit"></i>Edit</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Jul 2021 pada 19.23
+-- Waktu pembuatan: 14 Jul 2021 pada 20.03
 -- Versi server: 10.4.19-MariaDB
 -- Versi PHP: 8.0.6
 
@@ -158,15 +158,18 @@ CREATE TABLE `lhp` (
   `permasalahan` varchar(200) NOT NULL,
   `solusi` varchar(200) NOT NULL,
   `keterangan` varchar(200) NOT NULL,
-  `bukti_kegiatan` varchar(100) NOT NULL
+  `bukti_kegiatan` varchar(100) NOT NULL,
+  `tanggal` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `lhp`
 --
 
-INSERT INTO `lhp` (`id_lhp`, `id_spd`, `id_pegawai`, `jam`, `kegiatan`, `permasalahan`, `solusi`, `keterangan`, `bukti_kegiatan`) VALUES
-(5, 41, '11', '07.21 - 08.15', 'Melakukan Survey HPD', '-', '-', '-', 'New_Mockup_2_copy_61.png');
+INSERT INTO `lhp` (`id_lhp`, `id_spd`, `id_pegawai`, `jam`, `kegiatan`, `permasalahan`, `solusi`, `keterangan`, `bukti_kegiatan`, `tanggal`) VALUES
+(5, 41, '11', '07.21 - 08.15', 'Melakukan Survey HPD', '-', '-', '-', 'New_Mockup_2_copy_61.png', '2021-07-15'),
+(6, 41, '11', '01', 'asdfadsf', 'addfdsaf', 'adfadsf', 'adfadsf', 'logo_bpn.png', '2021-07-14'),
+(7, 50, '11', '01', 'adfadf', 'masalah', 'solusi', 'keterangan', 'logo_bpn1.png', '2021-07-14');
 
 -- --------------------------------------------------------
 
@@ -247,25 +250,27 @@ CREATE TABLE `realisasi_biaya` (
   `jumlah` varchar(100) NOT NULL,
   `bukti` varchar(100) NOT NULL,
   `jenis` enum('transportasi','penginapan','representasi') NOT NULL,
-  `keterangan` text DEFAULT NULL
+  `keterangan` text DEFAULT NULL,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `realisasi_biaya`
 --
 
-INSERT INTO `realisasi_biaya` (`id_realisasi`, `nama_pengeluaran`, `id_spd`, `jumlah`, `bukti`, `jenis`, `keterangan`) VALUES
-(6, 'bensin', '2', '10000', 'Capture.PNG', 'transportasi', ''),
-(7, 'bensin', '2', '20000', 'Capture1.PNG', 'transportasi', ''),
-(8, 'hotel', '2', '100000', 'Drawinsaasg1.jpg', 'penginapan', ''),
-(9, 'penginapan sementara', '2', '80000', 'Drawing1-2.jpg', 'penginapan', ''),
-(10, 'naon', '2', '40000', 'Drawing1-21.jpg', 'representasi', ''),
-(11, 'dfb', '2', '60000', 'Screenshot_2020-04-16-14-19-54-03.jpg', 'representasi', ''),
-(12, 'Mengisi bensin', '41', '11.0000', 'New_Mockup_1.png', 'transportasi', ''),
-(13, 'tambal ban', '41', '11', 'New_Mockup_2_copy4.png', 'transportasi', 'masalah selesai'),
-(14, 'Beli bensin', '50', '50000', 'logo_bpn1.png', 'transportasi', NULL),
-(15, 'a', '50', '50000', 'logo_bpn2.png', 'representasi', NULL),
-(16, 'Bayar Hotel', '50', '50000', 'logo_bpn3.png', 'penginapan', NULL);
+INSERT INTO `realisasi_biaya` (`id_realisasi`, `nama_pengeluaran`, `id_spd`, `jumlah`, `bukti`, `jenis`, `keterangan`, `tanggal`) VALUES
+(6, 'bensin', '2', '10000', 'Capture.PNG', 'transportasi', '', '2021-07-15'),
+(7, 'bensin', '2', '20000', 'Capture1.PNG', 'transportasi', '', '2021-07-15'),
+(8, 'hotel', '2', '100000', 'Drawinsaasg1.jpg', 'penginapan', '', '2021-07-15'),
+(9, 'penginapan sementara', '2', '80000', 'Drawing1-2.jpg', 'penginapan', '', '2021-07-15'),
+(10, 'naon', '2', '40000', 'Drawing1-21.jpg', 'representasi', '', '2021-07-15'),
+(11, 'dfb', '2', '60000', 'Screenshot_2020-04-16-14-19-54-03.jpg', 'representasi', '', '2021-07-15'),
+(12, 'Mengisi bensin', '41', '11.0000', 'New_Mockup_1.png', 'transportasi', '', '2021-07-15'),
+(13, 'tambal ban', '41', '11', 'New_Mockup_2_copy4.png', 'transportasi', 'masalah selesai', '2021-07-15'),
+(14, 'Beli bensin', '50', '50000', 'logo_bpn1.png', 'transportasi', NULL, '2021-07-15'),
+(15, 'a', '50', '50000', 'logo_bpn2.png', 'representasi', NULL, '2021-07-15'),
+(16, 'Bayar Hotel', '50', '50000', 'logo_bpn3.png', 'penginapan', NULL, '2021-07-15'),
+(18, 'qwertyuiop', '41', '50000', 'logo_bpn.png', 'transportasi', 'adfadsf', '2021-07-14');
 
 -- --------------------------------------------------------
 
@@ -8398,7 +8403,7 @@ ALTER TABLE `komponen`
 -- AUTO_INCREMENT untuk tabel `lhp`
 --
 ALTER TABLE `lhp`
-  MODIFY `id_lhp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_lhp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `pegawai`
@@ -8410,7 +8415,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT untuk tabel `realisasi_biaya`
 --
 ALTER TABLE `realisasi_biaya`
-  MODIFY `id_realisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_realisasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT untuk tabel `sbm`

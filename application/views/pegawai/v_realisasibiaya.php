@@ -9,13 +9,14 @@
         <a href="" button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#modal-lhp" class="btn btn-primary float-left"><i class="fa fa-plus-square-o"></i> Tambah </a>
         <hr>
         <?= $this->session->pesan ? $this->session->pesan : '' ; ?>
-        <table id="" class = "table table-bordered table-striped">
+        <table id="example1" class = "table table-bordered table-striped">
           <thead>
             <tr class="nowrap">
               <th>Nomor SPD</th> 
               <th>Nama Pengeluaran</th>
               <th>Jumlah</th>
               <th>Bukti</th>
+              <th>Tanggal</th>
               <th>Aksi</th>
             </tr>
           </thead>
@@ -26,8 +27,8 @@
                   <td><?php echo $row->nomor_spd?></td>
                   <td><?php echo $row->nama_pengeluaran; ?></td>
                   <td><?php echo $row->jumlah; ?></td>
-                  <td><img src="<?= base_url('assets/' . $row->bukti); ?>" alt="" width="30%"></td>
-                  <td><?php echo $row->keterangan?></td>
+                  <td><img src="<?= base_url('assets/' . $row->bukti); ?>" alt="" width="10%"></td>
+                  <td><?php echo $row->tanggal; ?></td>
                   <td>
                     <button type="button" class="btn btn-primary float-left" data-toggle="modal" data-target="#modalEdit<?= $row->id_realisasi; ?>" class="btn btn-success float-left"><i class="fa fa-edit"></i>Edit</button>
                     <a href="<?= base_url('pegawai/pegawai/hapus_realisasi/' . $id_spd . '/' . $row->id_realisasi); ?>" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Hapus </a>
