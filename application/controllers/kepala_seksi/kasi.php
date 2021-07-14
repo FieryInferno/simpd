@@ -77,4 +77,18 @@ class Kasi extends CI_Controller {
 		$data['content']	= 'kepala_seksi/lihatSpd';
 		$this->load->view('kepala_seksi/temp_kasi', $data);
   }
+
+  public function konfirmasiSpd($id_spd)
+  {
+    $this->db->update('spd', ['status'  => 'konfirmasi'], ['id_spd' => $id_spd]);
+    $this->session->set_flashdata('pesan', '
+      <div class="alert alert-success alert-dismissible show" role="alert">
+        <strong>Sukses!</strong> Berhasil konfirmasi data.
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    ');
+    redirect('kepala_seksi/spd');
+  }
 }

@@ -5,7 +5,6 @@
     <h4>
   </div> 
 </center>
-
 <div class="row">
   <div class="col-xs-12">
     <div class="box">
@@ -13,6 +12,7 @@
         <h3 class="box-title">Data SPD</h3>
       </div>
       <div class="box-body">
+        <?= $this->session->pesan ? $this->session->pesan : '' ; ?>
         <hr>
         <table id="example1" class = "table table-bordered table-striped">
           <thead>
@@ -33,6 +33,20 @@
                 <td></td>
                 <td>
                   <a href="<?= base_url('kepala_seksi/spd/lihat/' . $row->id_spd); ?>" class="btn btn-success" ><i class="fa fa-eye"></i> Lihat </a>
+                  <?php
+                    switch ($row->status) {
+                      case 'belum_konfirmasi': ?>
+                        <a href="<?= base_url('kepala_seksi/spd/konfirmasi/' . $row->id_spd); ?>" class="btn btn-primary" ><i class="fa fa-check"></i> Konfirmasi </a>
+                        <?php break;
+                      case 'konfirmasi': ?>
+                        <button class="btn btn-success" ><i class="fa fa-check"></i> Telah Dikonfirmasi </button>
+                        <?php break;
+                      
+                      default:
+                        # code...
+                        break;
+                    }
+                  ?>
                 </td>
               </tr>
             <?php endforeach; ?>

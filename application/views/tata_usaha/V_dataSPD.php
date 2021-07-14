@@ -50,7 +50,11 @@
                 <td>
                   <a href="edit_spd/<?php echo $row->id_spd ?>" type="button" class="btn btn-success btn-sm" ><i class="fa fa-edit"></i> Ubah </a>
                   <a href="hapus_spd/<?php echo $row->id_spd ?>" type="button" class="btn btn-danger btn-sm" ><i class="fa fa-trash"></i> Hapus </a>
-                  <a href="<?= base_url('tata_usaha/tata_usaha/lihat_spd/' . $row->id_spd); ?>" class="btn btn-warning btn-sm" target="_blank"><i class="fa fa-print"></i> Lihat Surat</a>
+                  <?php
+                    if ($row->status == 'konfirmasi') { ?>
+                      <a href="<?= base_url('tata_usaha/tata_usaha/lihat_spd/' . $row->id_spd); ?>" class="btn btn-warning btn-sm" target="_blank"><i class="fa fa-print"></i> Lihat Surat</a>
+                    <?php }
+                  ?>
                   <a  data-toggle="modal" data-target="#Modalupload<?= $row->id_spd; ?>" class="btn btn-primary btn-sm" ><i class="fa fa-upload"></i> Upload </a>
                   <?php
                     if ($row->file_ttd) { ?>
