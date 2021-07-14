@@ -21,6 +21,7 @@
               <th>Tujuan</th>
               <th>Tanggal</th>
               <th>Keterangan</th>
+              <th>Aksi</th>
             </tr>
           </thead>
           <tbody>
@@ -29,7 +30,10 @@
                 <td><?php echo $row->nomor_spd?></td>
                 <td><?php echo $row->tujuan?></td>
                 <td><?php echo $row->tanggalBerangkat; ?></td>
-                <td><?php echo $row->keterangan?></td>
+                <td></td>
+                <td>
+                  <a href="<?= base_url('kepala_seksi/spd/lihat/' . $row->id_spd); ?>" class="btn btn-success" ><i class="fa fa-eye"></i> Lihat </a>
+                </td>
               </tr>
             <?php endforeach; ?>
           </tbody>

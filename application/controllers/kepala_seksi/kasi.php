@@ -57,4 +57,24 @@ class Kasi extends CI_Controller {
 		$data['content']	= 'kepala_seksi/spd';
 		$this->load->view('kepala_seksi/temp_kasi', $data);
   }
+
+  public function lihatSpd($id_spd)
+  {
+    $data             = $this->db->get_where('spd', ['id_spd' => $id_spd])->row_array();
+    $data['pegawai']              = $this->M_Pegawai->getById($data['id_pegawai']);
+    $data['pegawai1']             = $this->M_Pegawai->getByP1($data['pengikut_1']);
+    $data['pegawai2']             = $this->M_Pegawai->getByP2($data['pengikut_2']);
+    $data['pegawai3']             = $this->M_Pegawai->getByP3($data['pengikut_3']);
+    $data['provinsi_berangkat']   = $this->M_Wilayah->getProvinsi($data['provinsi_berangkat']);
+    $data['kabupaten_berangkat']  = $this->M_Wilayah->getKabupaten($data['kabupaten_berangkat']);
+    $data['kecamatan_berangkat']  = $this->M_Wilayah->getKecamatan($data['kecamatan_berangkat']);
+    $data['provinsi_tujuan']      = $this->M_Wilayah->getProvinsi($data['provinsi_tujuan']);
+    $data['kabupaten_tujuan']     = $this->M_Wilayah->getKabupaten($data['kabupaten_tujuan']);
+    $data['kecamatan_tujuan']     = $this->M_Wilayah->getKecamatan($data['kecamatan_tujuan']);
+    $data['kegiatan']             = $this->M_Kegiatan->getbykegiatan($data['id_kegiatan']);
+    $data['komponen']             = $this->M_Komponen->getbykomponen($data['id_komponen']);
+    $data['anggaran']             = $this->M_Anggaran->getbyanggaran($data['id_anggaran']);
+		$data['content']	= 'kepala_seksi/lihatSpd';
+		$this->load->view('kepala_seksi/temp_kasi', $data);
+  }
 }
