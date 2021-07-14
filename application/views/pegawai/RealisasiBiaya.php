@@ -24,7 +24,7 @@
                   <td><?php echo $row->tujuan?></td>
                   <td><?php echo $row->tanggalBerangkat?></td>
                   <td>
-                   
+                    <a href="<?= base_url('tata_usaha/tata_usaha/lihat_spd/' . $row->id_spd); ?>" type="button" class="btn btn-success" target="_blank"><i class="fa fa-eye"></i> Lihat Surat SPD </a>
                     <a class="btn btn-primary"  href="<?php echo base_url('pegawai/pegawai/data_realisasibiaya/' . $row->id_spd); ?>">
                       Detail Realisasi Biaya
                     </a>
@@ -33,7 +33,7 @@
                     <a href="<?= base_url('pegawai/pegawai/pengembalianbiaya/' . $row->id_spd); ?>" class="btn btn-warning">
                       Pengembalian Biaya
                     </a>
-                    <a  data-toggle="modal" data-target="#Modalupload<?= $row->id_spd; ?>" class="btn btn-primary btn-sm" ><i class="fa fa-upload"></i> Upload </a>
+                    <a  data-toggle="modal" data-target="#Modalupload<?= $row->id_spd; ?>" class="btn btn-primary" ><i class="fa fa-upload"></i> Upload </a>
                   
                   <div class="modal fade" id="Modalupload<?= $row->id_spd; ?>">
                     <div class="modal-dialog">

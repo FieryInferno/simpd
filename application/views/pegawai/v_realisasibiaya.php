@@ -16,7 +16,6 @@
               <th>Nama Pengeluaran</th>
               <th>Jumlah</th>
               <th>Bukti</th>
-              
               <th>Aksi</th>
             </tr>
           </thead>
