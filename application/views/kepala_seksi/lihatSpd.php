@@ -1,4 +1,8 @@
-<font face="calibri" size = "6" color="black">Selamat Datang <?php echo $_SESSION['nama'] ;?></font>
+<center>
+  <div class="alert alert-success alert-dismissible" style = "color: blue;" role="alert">
+    <h4>Selamat datang <?php echo $_SESSION['nama']?>, anda login sebagai Kepala Seksi<h4>
+  </div> 
+</center>
 <div class="box">
   <div class="box-header with-border">
     <font face="calibri" size="5" color="black"><h2 class="box-title">Detail SPD</h2></font>
