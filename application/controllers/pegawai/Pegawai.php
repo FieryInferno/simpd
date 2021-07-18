@@ -334,7 +334,6 @@ class Pegawai extends CI_Controller {
       'provinsi'  => $data['spd']['provinsi_tujuan']
     ])->row_array();
     if ($data['spd']['kabupaten_berangkat'] == $data['spd']['kabupaten_tujuan']) {
-      $data['uangHarian']   = $sbm['dalam_kota'];
       switch ($this->session->eselon) {
         case 'I':
           $data['representasi'] = 100000;
@@ -348,7 +347,6 @@ class Pegawai extends CI_Controller {
           break;
       }
     } else {
-      $data['uangHarian'] = $sbm['luar_kota'];
       switch ($this->session->eselon) {
         case 'I':
           $data['representasi'] = 200000;
@@ -361,6 +359,25 @@ class Pegawai extends CI_Controller {
           # code...
           break;
       }
+    }
+    
+    switch ($this->session->eselon) {
+      case 'I':
+        $data['uangHarian'] = $sbm['i'];
+        break;
+      case 'II':
+        $data['uangHarian'] = $sbm['ii'];
+        break;
+      case 'III':
+        $data['uangHarian'] = $sbm['iii'];
+        break;
+      case 'IV':
+        $data['uangHarian'] = $sbm['iv'];
+        break;
+      
+      default:
+        # code...
+        break;
     }
 
     $data['realisasi_transportasi'] = 0;
